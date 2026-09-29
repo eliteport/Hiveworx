@@ -28,7 +28,7 @@
 [hidden]{display:none!important}
 html{scroll-behavior:smooth;background:var(--ink)}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{background:var(--ink);color:var(--paper);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{margin:0;background:var(--ink);color:var(--paper);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:4px}
 .wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--gut)}
@@ -745,7 +745,8 @@ a.sd-series-next{color:var(--paper)}
 /* ---------- Mobile hero: no sketch, one step up for title and lead ---------- */
 @media (max-width:880px){
   .hero-sketch{display:none}
-  .hero h1{font-size:48px}
+  /* 48px, but never wider than the screen: "Experience-based" is ~7.4× the font size wide */
+  .hero h1{font-size:min(48px,12vw)}
   .hero-lead{font-size:19px}
 }
 @media (max-width:600px){

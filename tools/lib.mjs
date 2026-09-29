@@ -32,9 +32,10 @@ function chrome(args, done, timeoutMs = 45000) {
   const profile = fs.mkdtempSync(path.join(os.tmpdir(), 'hx-chrome-'));
   const p = spawn(CHROME, ['--headless=new', '--disable-gpu', '--hide-scrollbars', '--no-first-run',
     '--no-default-browser-check', `--user-data-dir=${profile}`, ...args], { stdio: ['ignore', 'pipe', 'ignore'] });
-  let out = '';
+  let out = '', settled = false;
   return new Promise((ok, fail) => {
     const finish = (err) => {
+      if (settled) return; settled = true;   /* kill() fires 'exit' too: finish only once */
       clearTimeout(timer); clearInterval(poll);
       try { p.kill('SIGKILL'); } catch {}
       fs.rmSync(profile, { recursive: true, force: true });
