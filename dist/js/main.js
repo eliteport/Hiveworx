@@ -70,7 +70,7 @@
     price:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12 12 20 4 12V4h8Z"/><circle cx="8.5" cy="8.5" r="1.5"/></svg>'};
   var SESSIONS=[],MENTORS=[],MENTOR_ORDER=[],HIDDEN=[];   /* HIDDEN: pages switched off in sessions.json (hiddenPages) */
   function esc(t){return String(t==null?'':t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
-  function art(){return '<div class="ph ph-art" role="img" aria-label="Image coming soon"><span class="ph-text">No image</span></div>'}
+  function art(){return '<div class="ph ph-art" role="img" aria-label="Image coming soon"><span class="ph-text">Coming soon</span></div>'}
   /* a session photo when there is one, otherwise the image placeholder */
   function media(s,lazy){return s.image?'<img class="ws-photo"'+(lazy?' loading="lazy"':'')+' src="'+esc(asset(s.image.src))+'" alt="'+esc(s.image.alt)+'" width="1672" height="941"'+(s.image.focus?' style="object-position:'+esc(s.image.focus)+'"':'')+'>':art(s.art)}
   function typeLabel(s){return s.format==='talk'?'Talk':'Workshop'}
