@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+._*
+
+# dependencies and secrets
+node_modules/
+.env
+.env.*
+
+# build tool scratch files
+tools/.share-render.html
+tools/.webp.html
+
+# dist/ is committed on purpose: the host publishes it as-is (the build needs Chrome, which the host lacks)

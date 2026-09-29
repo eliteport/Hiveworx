@@ -1,0 +1,521 @@
+{
+  "sessions": [
+    {
+      "slug": "spectral-timbres",
+      "title": "Synthesis of Acoustic and Electronic Timbres Using Spectral Analysis",
+      "format": "workshop",
+      "formatLabel": "Hands-on workshop",
+      "discipline": "Sound + Visual",
+      "mentor": {
+        "name": "Giorgi Koberidze",
+        "role": "Composer & performer",
+        "initials": "GK",
+        "bio": [
+          "Giorgi Koberidze is a composer, performer and multi-disciplinary artist based in Tbilisi, Georgia. Currently serving as a Professor of Music Technology at the Tbilisi State Conservatoire, Koberidze’s work investigates the synthesis of digital systems with organic acoustic phenomena. He holds a Master’s degree in Classical Composition with the thesis “Synthesis of Acoustic and Electronic Timbre,” which laid the theoretical and technical groundwork for his current research into spectral synthesis and instrumental-electronic hybridization.",
+          "His work in film and spatial audio has received significant international recognition. He composed the score for “What Do We See When We Look at the Sky?” (FIPRESCI Prize winner, Berlinale), for which he was nominated for Best Music at the German Film Critics Association Awards. Expanding beyond the screen, his recent large-scale work, “Forests, Tales, Cities, Forests,” is an “invisible cinema” composition designed for darkened halls, for which he was awarded the Tsinandali Award.",
+          "Beyond composition he organizes an annual experimental music residency in the remote high-altitude region of Tusheti."
+        ],
+        "short": "Composer, performer and Professor of Music Technology at the Tbilisi State Conservatoire, working where digital systems meet organic acoustic sound.",
+        "photo": "images/upcoming-workshop.webp"
+      },
+      "forWho": "Composers, electronic musicians, sound artists, producers, modular synthesis enthusiasts and anyone interested in spectral sound, electroacoustic music, synthesis, and new approaches to acoustic instruments.",
+      "about": [
+
+      ],
+      "dateISO": null,
+      "date": "To be announced",
+      "time": "To be announced",
+      "location": "Hiveworx studio, Lisbon",
+      "price": "To be announced",
+      "priceNote": "",
+      "status": "Registration of interest",
+      "featured": false,
+      "art": "spectral",
+      "included": [
+        {
+          "icon": "clock",
+          "text": "Arrive a few minutes early. We start on time and the first steps build everything that follows."
+        },
+        {
+          "icon": "phone",
+          "text": "Switch your phone off, not just to silent, for the whole session."
+        },
+        {
+          "icon": "quiet",
+          "text": "We work with sound. Keep talk low and avoid extra noise while others are listening."
+        },
+        {
+          "icon": "steps",
+          "text": "Follow the process step by step, even if you know a shortcut. Each stage prepares the next."
+        },
+        {
+          "icon": "calm",
+          "text": "Stay calm and patient. Spectral work rewards slow, careful listening."
+        },
+        {
+          "icon": "tools",
+          "text": "Handle the equipment with care, and ask before you patch or unplug anything."
+        }
+      ],
+      "image": {
+        "src": "images/upcoming-workshop.webp",
+        "alt": "Black and white portrait of Giorgi Koberidze in a dark coat, head bowed, in front of an old stone wall"
+      },
+      "summary": "Synthesis of Acoustic and Electronic Timbres Using Spectral Analysis invites participants into a different way of combining acoustic and electronic sound not by layering one over the other, but by taking them apart together, down to their shared spectral structure. Working from real acoustic recordings, we’ll decompose sound into its individual harmonics, then reassemble those fragments into new electronic material using modular synthesis.",
+      "explore": [
+        {
+          "title": "Spectral Anatomy",
+          "text": "Analyze an acoustic recording and break it down into its constituent partials, seeing for the first time what a sound is actually made of."
+        },
+        {
+          "title": "Harmonic Extraction & Recombination",
+          "text": "Select, isolate, and recombine harmonics from different instruments into new wavetables, arriving at combinations no single acoustic instrument could ever produce."
+        },
+        {
+          "title": "Granular Transformation",
+          "text": "Shape that extracted material through granular synthesis, exploring how waveform structure and micro-timing become expressive tools in their own right."
+        },
+        {
+          "title": "Modular Processing",
+          "text": "Route the reorganized spectral material through a modular (Eurorack) system to further granulate and transform it."
+        },
+        {
+          "title": "Rebuilding the Imaginary Instrument",
+          "text": "Reunite the transformed electronic layer with its acoustic source, integrating the two at the level of timbre instead of simply stacking them."
+        },
+        {
+          "title": "Timbre as Structure",
+          "text": "Rethink composition with color and texture — not harmony — as the primary driver of musical motion, a core idea from the spectral music tradition applied to a hands-on electronic workflow."
+        }
+      ],
+      "outcome": [
+        "Each participant will leave the workshop with a deeper understanding of what timbre really is and how it can function as a structural element in music. They will be encouraged to look at form and composition from a different perspective, where sound colour and spectral change can shape musical development.",
+        "Participants will also gain practical experience working with the fundamental building blocks of sound, experimenting with harmonics and spectral material to create and discover new synthetic instruments and timbres."
+      ],
+      "gallery": [
+
+      ],
+      "testimonials": [
+
+      ],
+      "includedLabel": "Note",
+      "includedTitle": "What you need <span class=\"v\">to know</span>",
+      "includedNote": "Come make it with us",
+      "levelNote": "The workshop works for composers with some studio experience as well as electronic musicians new to spectral or modular techniques. Basic familiarity with audio software is helpful, but no prior synthesis or modular experience is required.",
+      "level": "Beginner to intermediate",
+      "duration": "1 day",
+      "homePin": true
+    },
+    {
+      "slug": "drawing-letters",
+      "title": "Drawing Letters: How a Typeface Is Born",
+      "format": "workshop",
+      "formatLabel": "Hands-on workshop",
+      "discipline": "Typography",
+      "mentor": {
+        "name": "Temo K. Dolidze",
+        "role": "Product design specialist, entrepreneur",
+        "initials": "TD",
+        "photo": "images/founder.webp",
+        "bio": [
+          "In the world of product design, leading a team of specialists focused on design systems. The design freak deeply involved in arts, crafts, and the nuanced world of music and sound. An avid cyclist, I thrive on offroad and downhill challenges."
+        ]
+      },
+      "forWho": "Designers, illustrators, students and anyone curious about letters, including people who have never drawn one.",
+      "about": [
+        "Every typeface starts as a set of decisions: how wide, how heavy, how the curves meet the straights. Working the way type designers do, we’ll make those decisions ourselves and see how small choices change the voice of a whole alphabet."
+      ],
+      "dateISO": null,
+      "date": "To be announced",
+      "time": "To be announced",
+      "location": "Hiveworx studio, Lisbon",
+      "price": "To be announced",
+      "priceNote": "",
+      "status": "Registration of interest",
+      "featured": false,
+      "art": "type",
+      "summary": "A hands-on workshop about where letters come from. Starting with pencil, paper and a few simple rules, we’ll look at how a typeface is planned, drawn and refined, then take a handful of letters from first sketch to a digital shape you can type with.",
+      "levelNote": "No lettering or type design experience needed. Bring pencils and patience; everything else is provided.",
+      "explore": [
+        {
+          "title": "Anatomy of a letter",
+          "text": "Stems, bowls, counters and serifs: the parts that make a letter readable, and why they look the way they do."
+        },
+        {
+          "title": "Sketching with rules",
+          "text": "Draw a few key letters, like n, o, H and a, on a simple grid and see how proportion and contrast set the tone of a typeface."
+        },
+        {
+          "title": "From paper to vector",
+          "text": "Trace your best sketches into clean outlines and learn how curves are built from points and handles."
+        },
+        {
+          "title": "Spacing and rhythm",
+          "text": "Put letters side by side, adjust the gaps and watch a word start to read as one shape."
+        }
+      ],
+      "outcome": [
+        "You’ll leave with a small set of your own letters, from first sketch to digital outline, and a sharper eye for the type you see every day."
+      ],
+      "level": "All levels",
+      "duration": "To be announced",
+      "gallery": [
+
+      ],
+      "testimonials": [
+
+      ],
+      "image": {
+        "src": "images/drawing-letters.webp",
+        "alt": "Type design worktable: pencil sketches of the letter a on grid paper, a laptop showing the a as digital outlines, with violet notes like Start with a pencil, Cap height, Counter, Iterate, Spacing matters and Sketch, construct, refine, digitalize",
+        "focus": "50% 50%"
+      },
+      "homePin": true
+    },
+    {
+      "slug": "lets-touchdesign",
+      "title": "Let’s Touchdesign: Beginner Workshop",
+      "format": "workshop",
+      "formatLabel": "Hands-on workshop",
+      "discipline": "Sound + Visual",
+      "mentor": {
+        "name": "Luka Papashvili",
+        "role": "Multimedia artist",
+        "initials": "LP",
+        "bio": [
+          "Luka Papashvili is a Georgian multimedia artist working in generative art, live audiovisual performance and interactive installation. He began in graphic and product design, moved through motion design, and now works primarily in TouchDesigner, building real-time systems where sound, movement and presence drive the image as it is generated rather than played back.",
+          "Skywalker Visuals is his audio-reactive project, performed across clubs, festivals and stages in Georgia and internationally, with live visual collaborations alongside artists including Boston 168, Nico Moreno, Monolink, The Blaze, Phase Fatale, Vitalic, Octave One and Francis Mercier. His work spans LED stage visuals, projection mapping and interactive installations driven by depth cameras, MIDI, AI tracking and AR/XR media.",
+          "He is Visual Director of TKESHI festival, where since 2023 he has led the visual programme and its educational strand. He also created SYNC // STREAMS, a curated series of collaborative live audiovisual sets, teaches TouchDesigner workshops, and publishes custom TouchDesigner assets publicly through Derivative."
+        ],
+        "short": "Georgian multimedia artist building real-time generative visuals and interactive installations in TouchDesigner. Visual Director of TKESHI festival."
+      },
+      "summary": "This is a hands-on session for people who have never opened TouchDesigner. The workshop starts by exploring what the software actually is—a multitool for multimedia, rather than a single-purpose app—before participants build something together from an empty network. The primary goal is to get past the initial learning curve, have fun, and leave with a working patch featuring live, interactive parameters that react to sound, a knob, a camera, or a click.",
+      "about": [
+
+      ],
+      "forWho": "People who have never opened TouchDesigner.",
+      "levelNote": "Absolute beginner. No prior TouchDesigner, coding, or VJ experience is needed. Comfort with any creative software is helpful but not required.",
+      "explore": [
+        {
+          "title": "What is this thing?",
+          "text": "A brief talk covering multimedia practice and where TouchDesigner sits within stage visuals, installations, live performance, prototyping, and mapping."
+        },
+        {
+          "title": "Building the first patch",
+          "text": "Participants will follow along on their own machines to build a simple, good-looking patch from scratch, learning how a network takes shape and where the image originates."
+        },
+        {
+          "title": "Getting signals in",
+          "text": "Learning how sound becomes a number to drive an image, connecting a MIDI controller to a parameter, and using TouchDesigner’s own UI (sliders, buttons, panels) so a patch is playable without any hardware. Depth camera/Kinect integration will be added if the group moves quickly."
+        },
+        {
+          "title": "Choose your input & Apply it",
+          "text": "Using provided advanced project files, participants will choose an input (MIDI, depth camera, webcam, audio, or UI) and practice getting a couple of parameters of their visual to respond to it."
+        }
+      ],
+      "outcome": [
+        "Each participant will leave with their own working patch featuring at least two live interactive parameters. They will also take home advanced project files from the session to continue experimenting. Most importantly, attendees will leave knowing how a signal becomes an image, which is the foundational concept for everything built in TouchDesigner."
+      ],
+      "dateISO": "2026-10-06",
+      "date": "Tue 6 Oct 2026",
+      "time": "16:00",
+      "location": "Hiveworx studio, Lisbon",
+      "price": "Free",
+      "priceNote": "registration required",
+      "status": "Registration open",
+      "featured": true,
+      "art": "default",
+      "level": "Absolute beginner",
+      "duration": "4 hours 30 minutes, including breaks",
+      "bookUrl": "https://luma.com/n7wembxf",
+      "gallery": [
+
+      ],
+      "testimonials": [
+
+      ],
+      "image": {
+        "src": "images/lets-touchdesign.webp",
+        "alt": "A facilitator at a laptop leads a TouchDesigner session in a brick-walled room, with a node network on a large screen and participants working on their laptops",
+        "focus": "50% 40%"
+      }
+    },
+    {
+      "format": "workshop",
+      "formatLabel": "3-session workshop",
+      "discipline": "Image + Word",
+      "mentor": {
+        "name": "Salome Kikaleishvili",
+        "role": "Film critic, journalist and lecturer",
+        "initials": "SK",
+        "photo": "images/salome-kikaleishvili.webp",
+        "bio": [
+          "Film critic, journalist, and lecturer from Tbilisi, Georgia. She has extensive experience in media and cultural journalism and has served on FIPRESCI juries at international film festivals since 2007. She is currently an international voter for the Golden Globes and a member of the European Film Academy."
+        ]
+      },
+      "about": [
+
+      ],
+      "dateISO": null,
+      "date": "To be announced",
+      "time": "To be announced",
+      "location": "Hiveworx studio, Lisbon",
+      "price": "To be announced",
+      "priceNote": "",
+      "status": "Registration of interest",
+      "featured": false,
+      "art": "default",
+      "level": "All levels",
+      "duration": "3 weeks · one 2-hour session a week",
+      "gallery": [
+
+      ],
+      "testimonials": [
+
+      ],
+      "slug": "how-to-speak-about-art",
+      "image": {"src": "images/how-to-speak-about-art.webp", "alt": "Halftone photo of a woman calling out with a hand at her mouth; violet sketches stream from her voice: a portrait, a camera, a film strip, an eye, speech bubbles and a written page", "focus": "20% 50%"},
+      "title": "How to Speak About Art",
+      "summary": "The visual image has always been a way of keeping people present: from cave painting to painting, photography and cinema. This workshop follows that line and turns it into a practical skill: what to look at, what to notice, and how to put what you see into words.",
+      "forWho": "Anyone who wants to look at art and film more deeply and talk about it with confidence.",
+      "levelNote": "No background in art history or criticism needed.",
+      "explore": [
+        {
+          "title": "From cave painting to cinema",
+          "text": "How the visual image evolved as a way of keeping people present, and what painting, photography and film each added."
+        },
+        {
+          "title": "Looking and describing",
+          "text": "What to look at, what to notice, and how to describe a painting or an image in clear, confident words."
+        },
+        {
+          "title": "Culture as a phenomenon",
+          "text": "What we mean by culture, and how art forms cross into and feed one another."
+        },
+        {
+          "title": "Culture as a weapon",
+          "text": "Cinema and propaganda, with examples from Leni Riefenstahl, Mikhail Kalatozov and Otar Iosseliani."
+        },
+        {
+          "title": "Outside the room",
+          "text": "One session takes the group out of the studio to look at work together in person."
+        }
+      ],
+      "outcome": [
+        "You’ll be able to look at a painting or an image and articulate it with confidence, and you’ll leave with one finished piece of writing."
+      ]
+    },
+    {
+      "format": "workshop",
+      "formatLabel": "3-session workshop",
+      "discipline": "Image + Word",
+      "mentor": {
+        "name": "Salome Kikaleishvili",
+        "role": "Film critic, journalist and lecturer",
+        "initials": "SK",
+        "photo": "images/salome-kikaleishvili.webp",
+        "bio": [
+          "Film critic, journalist, and lecturer from Tbilisi, Georgia. She has extensive experience in media and cultural journalism and has served on FIPRESCI juries at international film festivals since 2007. She is currently an international voter for the Golden Globes and a member of the European Film Academy."
+        ]
+      },
+      "about": [
+
+      ],
+      "dateISO": null,
+      "date": "To be announced",
+      "time": "To be announced",
+      "location": "Hiveworx studio, Lisbon",
+      "price": "To be announced",
+      "priceNote": "",
+      "status": "Registration of interest",
+      "featured": false,
+      "art": "default",
+      "level": "All levels",
+      "duration": "3 weeks · one 2-hour session a week",
+      "gallery": [
+
+      ],
+      "testimonials": [
+
+      ],
+      "slug": "how-to-write",
+      "title": "How to Write",
+      "summary": "A craft workshop for anyone who writes, about culture or for work. You’ll learn how written genres differ, how an article is built and how to run a good interview, then put it into practice by covering a real exhibition or event together.",
+      "forWho": "Aspiring journalists, communicators and anyone who writes for work, whatever the subject.",
+      "levelNote": "Open to everyone. You don’t need to care about film to get a lot out of it.",
+      "explore": [
+        {
+          "title": "Written genres",
+          "text": "How publications differ, and what makes a profile, a story and a review."
+        },
+        {
+          "title": "How an article is built",
+          "text": "Structure, breaking a piece into parts, finding its axis or starting point, and the possibilities of creative writing."
+        },
+        {
+          "title": "The interview",
+          "text": "Preparation, conducting the conversation, the role of detail and environment, building rapport and the psychology of the encounter. Task: record an interview."
+        },
+        {
+          "title": "Covering a live event",
+          "text": "The group goes to an exhibition or event, interviews the curator or author, gathers material and builds an article together, with the tutor working alongside."
+        }
+      ],
+      "outcome": [
+        "You’ll leave with a recorded interview and a finished article built from a real cultural event."
+      ]
+    },
+    {
+      "format": "workshop",
+      "formatLabel": "3-session workshop",
+      "discipline": "Image + Word",
+      "mentor": {
+        "name": "Salome Kikaleishvili",
+        "role": "Film critic, journalist and lecturer",
+        "initials": "SK",
+        "photo": "images/salome-kikaleishvili.webp",
+        "bio": [
+          "Film critic, journalist, and lecturer from Tbilisi, Georgia. She has extensive experience in media and cultural journalism and has served on FIPRESCI juries at international film festivals since 2007. She is currently an international voter for the Golden Globes and a member of the European Film Academy."
+        ]
+      },
+      "about": [
+
+      ],
+      "dateISO": null,
+      "date": "To be announced",
+      "time": "To be announced",
+      "location": "Hiveworx studio, Lisbon",
+      "price": "To be announced",
+      "priceNote": "",
+      "status": "Registration of interest",
+      "featured": false,
+      "art": "default",
+      "level": "All levels",
+      "duration": "3 weeks · one 2-hour session a week",
+      "gallery": [
+
+      ],
+      "testimonials": [
+
+      ],
+      "slug": "how-films-are-judged",
+      "title": "How Films Are Judged",
+      "summary": "Not how a film is made, but how it is seen, valued, selected and awarded. Led by a Golden Globes voter and European Film Academy member, this workshop looks at what voters look for, how critical consensus forms, and how a film travels from festival to prize.",
+      "forWho": "Film lovers, aspiring critics and anyone curious about how films are valued and rewarded.",
+      "levelNote": "Open to everyone. No background in film criticism needed.",
+      "explore": [
+        {
+          "title": "How films are judged",
+          "text": "What voters look for, how critical consensus forms, and how a film travels from festival to prize."
+        },
+        {
+          "title": "Watching together",
+          "text": "A film watched as a group, with attention to what to notice while watching."
+        },
+        {
+          "title": "Writing a review",
+          "text": "Analysis, evaluation and narration: how a review is built. Task: write a review."
+        },
+        {
+          "title": "The shadow side: censorship",
+          "text": "Concrete, comparative cases from specific countries: what was cut or banned, and who decided."
+        }
+      ],
+      "outcome": [
+        "You’ll leave knowing how films are evaluated from the inside, and with a finished review of your own."
+      ]
+    }
+  ],
+  "defaults": {
+    "included": [
+      {
+        "icon": "clock",
+        "text": "Arrive a few minutes early. We start on time and the first steps build everything that follows."
+      },
+      {
+        "icon": "phone",
+        "text": "Switch your phone off, not just to silent, for the whole session."
+      },
+      {
+        "icon": "quiet",
+        "text": "We work side by side. Keep talk low and avoid extra noise while others are concentrating."
+      },
+      {
+        "icon": "steps",
+        "text": "Follow the process step by step, even if you know a shortcut. Each stage prepares the next."
+      },
+      {
+        "icon": "calm",
+        "text": "Stay calm and patient. Good work rewards slow, careful attention."
+      },
+      {
+        "icon": "tools",
+        "text": "Handle the equipment with care, and ask before you move or unplug anything."
+      }
+    ],
+    "gallery": [
+      {
+        "src": "gallery/g1.jpg",
+        "alt": "Talk day: mentor on the floor, everyone taking notes"
+      },
+      {
+        "src": "gallery/g2.jpg",
+        "alt": "The workshop room, set up for a design lecture"
+      },
+      {
+        "src": "gallery/g3.jpg",
+        "alt": "Arrivals: what’s happening here?"
+      },
+      {
+        "src": "gallery/g4.jpg",
+        "alt": "Conversations at the bar between sessions"
+      },
+      {
+        "src": "gallery/g5.jpg",
+        "alt": "Light, space and chairs for a flexible layout"
+      },
+      {
+        "src": "gallery/g6.jpg",
+        "alt": "Making together around one table"
+      }
+    ],
+    "testimonials": [
+      {
+        "quote": "I came in thinking I had no design skills. I left with something I made with my own hands, and a completely different way of looking at everyday objects.",
+        "name": "Participant name",
+        "role": "Past workshop participant",
+        "initials": "AB",
+        "placeholder": true
+      },
+      {
+        "quote": "The mentor showed us their real process, including the mistakes. That honesty made it easy to try things and fail without feeling judged. I’m already booked for the next one.",
+        "name": "Participant name",
+        "role": "Past workshop participant",
+        "initials": "CD",
+        "placeholder": true
+      }
+    ],
+    "includedLabel": "Note",
+    "includedTitle": "What you need <span class=\"v\">to know</span>",
+    "includedNote": "Come make it with us"
+  },
+  "mentors": [
+    {
+      "name": "Temo K. Dolidze",
+      "role": "Product design specialist, entrepreneur",
+      "photo": "images/founder.webp",
+      "short": "In the world of product design, leading a team of specialists focused on design systems. The design freak deeply involved in arts, crafts, and the nuanced world of music and sound. An avid cyclist, I thrive on offroad and downhill challenges."
+    },
+    {
+      "name": "Salome Kikaleishvili",
+      "role": "Film critic, journalist and lecturer",
+      "short": "Film critic, journalist, and lecturer from Tbilisi, Georgia. She has extensive experience in media and cultural journalism and has served on FIPRESCI juries at international film festivals since 2007. She is currently an international voter for the Golden Globes and a member of the European Film Academy.",
+      "photo": "images/salome-kikaleishvili.webp"
+    }
+  ],
+  "mentorOrder": [
+    "Temo K. Dolidze",
+    "Giorgi Koberidze",
+    "Salome Kikaleishvili"
+  ]
+}
