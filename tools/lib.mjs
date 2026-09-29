@@ -62,10 +62,11 @@ export async function dumpDom(url, { reducedMotion = true, tries = 3 } = {}) {
   }
 }
 
-export async function screenshot(url, out, width, height) {
+export async function screenshot(url, out, width, height, { reducedMotion = false } = {}) {
   fs.rmSync(out, { force: true });
   let last = -1;
-  await chrome([`--window-size=${width},${height}`, '--virtual-time-budget=6000', `--screenshot=${out}`, url], () => {
+  await chrome([...(reducedMotion ? ['--force-prefers-reduced-motion'] : []),
+    `--window-size=${width},${height}`, '--virtual-time-budget=6000', `--screenshot=${out}`, url], () => {
     if (!fs.existsSync(out)) return false;
     const size = fs.statSync(out).size; const stable = size > 0 && size === last; last = size; return stable;
   });

@@ -68,7 +68,7 @@
     duration:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10M7 21h10M8 3c0 5 8 5 8 9s-8 4-8 9M16 3c0 5-8 5-8 9s8 4 8 9"/></svg>',
     person:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.8"/><path d="M4.5 20c.6-4.4 3.5-7 7.5-7s6.9 2.6 7.5 7"/></svg>',
     price:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12 12 20 4 12V4h8Z"/><circle cx="8.5" cy="8.5" r="1.5"/></svg>'};
-  var SESSIONS=[],MENTORS=[],MENTOR_ORDER=[];
+  var SESSIONS=[],MENTORS=[],MENTOR_ORDER=[],HIDDEN=[];   /* HIDDEN: pages switched off in sessions.json (hiddenPages) */
   function esc(t){return String(t==null?'':t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
   function art(){return '<div class="ph ph-art" role="img" aria-label="Image coming soon"><span class="ph-text">No image</span></div>'}
   /* a session photo when there is one, otherwise the image placeholder */
@@ -313,6 +313,7 @@
   }
   function route(){
     var h=(location.hash||'').slice(1),first=!routed;routed=true;
+    if(HIDDEN.indexOf(h)>=0)h='';   /* a hidden page opens the home page instead */
     if(BASE!==null){
       if(PAGE==='404')return;
       /* old one-page links (hiveworx.com/#w-…) move to the page's own address */
@@ -359,7 +360,7 @@
     var io=new IntersectionObserver(function(es){es.forEach(function(e){
       if(!e.isIntersecting)return;io.disconnect();counted=true;
       els.forEach(function(el){var to=+el.dataset.to,t0=null;
-        function step(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/1400),v=1-Math.pow(1-p,3);el.textContent=Math.round(to*v);if(p<1)requestAnimationFrame(step)}
+        function step(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/1400),v=1-Math.pow(1-p,3);el.textContent=Math.round(to*v).toLocaleString('en');if(p<1)requestAnimationFrame(step)}
         el.textContent='0';requestAnimationFrame(step)});
     })},{threshold:.4});
     io.observe(document.querySelector('.stats'));
@@ -380,7 +381,7 @@
 
   /* no-cache: always check for a newer sessions.json, so edited dates and links show at once */
   fetch(asset('sessions.json'),{cache:'no-cache'}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){
-    SESSIONS=d.sessions||[];MENTORS=d.mentors||[];MENTOR_ORDER=d.mentorOrder||[];DEF=d.defaults||{};renderFeatured();renderHomeGrid();route();
+    SESSIONS=d.sessions||[];MENTORS=d.mentors||[];MENTOR_ORDER=d.mentorOrder||[];HIDDEN=d.hiddenPages||[];DEF=d.defaults||{};renderFeatured();renderHomeGrid();route();
   }).catch(function(){
     var f=document.getElementById('featured');if(f)f.innerHTML='<p class="empty">Workshops couldn’t load. Refresh the page to try again.</p>';route();
   });
@@ -391,10 +392,10 @@
   });
 
   /* ===== Contact form =====
-     FORM_ENDPOINT: paste a form service URL (Formspree, Netlify Forms, Basin...)
-     to send messages straight from the page. Until then the form opens the
-     visitor's email app with the message filled in, and says so. */
-  var FORM_ENDPOINT='';
+     Messages go through Formspree (form "Hiveworx website"), which emails them to the inbox set there;
+     the visitor's address becomes the reply-to. Clear FORM_ENDPOINT to fall back to opening the
+     visitor's email app instead. */
+  var FORM_ENDPOINT='https://formspree.io/f/xeaonrwb';
   var form=document.getElementById('contactForm');
   if(form){
     var F={name:form.elements.name,email:form.elements.email,who:form.elements.who,topic:form.elements.topic,message:form.elements.message},
@@ -434,7 +435,9 @@
       var d={name:F.name.value.trim(),email:F.email.value.trim(),who:F.who.value,topic:F.topic.value.trim(),message:F.message.value.trim()};
       if(FORM_ENDPOINT){
         var btn=form.querySelector('[type=submit]');btn.disabled=true;
-        fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(d)})
+        var payload={name:d.name,email:d.email,'I am a':d.who,topic:d.topic,message:d.message,
+          _subject:'['+d.who+'] '+d.topic+' · Hiveworx website',_gotcha:form.elements._gotcha?form.elements._gotcha.value:''};
+        fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(payload)})
           .then(function(r){if(!r.ok)throw 0;form.reset();count.textContent='0 / 2000';status.textContent='Thanks, '+d.name+'. Your message was sent. We’ll reply to '+d.email+'.'})
           .catch(function(){status.classList.add('is-error');status.textContent='Your message couldn’t be sent. Try again, or email hello@hiveworx.com.'})
           .then(function(){btn.disabled=false});

@@ -1,7 +1,9 @@
 {
+  "hiddenPages": ["mentors"],
   "sessions": [
     {
       "slug": "spectral-timbres",
+      "bookUrl": "https://luma.com/ymgqxtp3",
       "title": "Synthesis of Acoustic and Electronic Timbres Using Spectral Analysis",
       "format": "workshop",
       "formatLabel": "Hands-on workshop",

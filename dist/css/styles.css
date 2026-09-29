@@ -826,3 +826,17 @@ a.sd-series-next{color:var(--paper)}
 /* ---------- Philosophy illustration: whole image at the full content width ---------- */
 .studio:has(.studio-img){border:0;background:none;overflow:visible}
 .studio-img{display:block;width:100%;height:auto;aspect-ratio:1672/941;border-radius:10px}
+
+/* ---------- Menu item that isn’t ready yet: name in the menu, handwritten "soon" above it ---------- */
+.nav-soon{position:relative;display:inline-block;color:var(--mute-2);cursor:default;user-select:none}
+.nav-soon .soon{position:absolute;left:50%;bottom:100%;font-size:18px;white-space:nowrap;transform:translate(-50%,3px) rotate(-6deg)}
+@media (max-width:880px){
+  .nav ul .nav-soon{display:block;padding:40px 0 20px;font-size:clamp(32px,8.5vw,44px);letter-spacing:-.03em;line-height:1.1;border-bottom:1px solid var(--line)}
+  .nav ul .nav-soon .soon{left:2px;bottom:auto;top:8px;font-size:30px;letter-spacing:0;transform:rotate(-6deg);transform-origin:left bottom}
+}
+
+/* contact form spam trap: kept off-screen, never shown to people */
+.ct-hp{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
+
+/* About: partner logos are hidden, so Partners ends at its button; one section gap (not two) before the numbers */
+#partners{padding-bottom:0}

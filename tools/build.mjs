@@ -130,6 +130,10 @@ const pages = [
   })),
 ];
 
+/* pages switched off in sessions.json ("hiddenPages": ["mentors"]) are not built or listed */
+const hidden = new Set(data.hiddenPages || []);
+for (let i = pages.length - 1; i >= 0; i--) if (hidden.has(pages[i].page)) { console.log('  (hidden: /' + pagePath(pages[i].page) + ')'); pages.splice(i, 1); }
+
 /* ---------- turn one rendered view into a finished page ---------- */
 function finish(html, { page, base, url, title, desc, image, ld, noindex }) {
   const view = page.startsWith('w-') ? 'detail' : page;
@@ -167,8 +171,9 @@ function finish(html, { page, base, url, title, desc, image, ld, noindex }) {
 /* ---------- build ---------- */
 const server = await serve(ROOT);
 const src = `http://127.0.0.1:${server.port}/index.html`;
-fs.rmSync(DIST, { recursive: true, force: true });
+/* empty dist/ rather than delete it, so a local server running inside it keeps working */
 fs.mkdirSync(DIST, { recursive: true });
+for (const e of fs.readdirSync(DIST)) fs.rmSync(path.join(DIST, e), { recursive: true, force: true });
 const built = [];
 try {
   for (const p of pages) {

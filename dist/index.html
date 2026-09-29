@@ -70,7 +70,8 @@
     <ul id="menu">
       <li><a href="./about/">About</a></li>
       <li><a href="./workshops/">Workshops &amp; talks</a></li>
-      <li><a href="./mentors/">Mentors</a></li>
+      <!-- the Mentors page is hidden until it's ready: the menu keeps the name with a "soon" note -->
+      <li><span class="nav-soon" aria-disabled="true">Mentors <span class="soon hand" aria-label="(coming soon)">soon</span></span></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <a class="btn btn-primary nav-cta" href="./workshops/">Explore workshops <span class="arr">→</span></a>
@@ -226,7 +227,7 @@
         <svg class="glyph" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><rect x="5" y="8" width="20" height="16"></rect><path d="m5 20 6-5 5 4 4-3 5 4M30 12h9M30 18h9M5 30h34M5 36h24"></path></svg>
         <span class="go" aria-hidden="true">↗</span>
         <h3>Image + Word</h3>
-        <p>Storytelling through photography, editing, light and time, and the words that go with them.</p>
+        <p>The art of telling stories through images and words, across film, photography, books, and everything in between.</p>
       </a>
       <a class="dcard" href="./workshops/">
         <svg class="glyph" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M22 4 38 13v18L22 40 6 31V13Z"></path><path d="M6 13l16 9 16-9M22 22v18"></path></svg>
@@ -378,6 +379,8 @@
         <textarea data-lenis-prevent="" id="ct-msg" name="message" rows="5" required="" maxlength="2000" placeholder="Write your message…*"></textarea>
         <div class="field-foot"><p class="field-err" id="ct-msg-err"></p><span class="ct-count" id="ct-count" aria-live="off">0 / 2000</span></div>
       </div>
+      <!-- spam trap: hidden from people, bots tend to fill it; Formspree drops messages that have it -->
+      <input class="ct-hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
       <button class="btn btn-primary ct-submit" type="submit">Send message <span class="arr">→</span></button>
       <p class="ct-status" id="ct-status" role="status" aria-live="polite"></p>
     </form>
@@ -415,7 +418,7 @@
       </div>
       <div>
         <h4>Hiveworx</h4>
-        <ul><li><a class="link" href="./about/">About</a></li><li><a class="link" href="#approach">Philosophy</a></li><li><a class="link" href="#program">Upcoming workshop</a></li><li><a class="link" href="./workshops/">Workshops &amp; talks</a></li><li><a class="link" href="./mentors/">Mentors</a></li></ul>
+        <ul><li><a class="link" href="./about/">About</a></li><li><a class="link" href="#approach">Philosophy</a></li><li><a class="link" href="#program">Upcoming workshop</a></li><li><a class="link" href="./workshops/">Workshops &amp; talks</a></li></ul>
       </div>
     </div>
     <div class="f-bottom"><span>© 2026 Hiveworx · hiveworx.com</span><span>hello@hiveworx.com</span></div>
