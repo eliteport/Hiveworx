@@ -1,0 +1,49 @@
+{
+  "title": "Let’s Touchdesign: Beginner Workshop",
+  "format": "workshop",
+  "formatLabel": "Hands-on workshop",
+  "discipline": "Sound + Visual",
+  "mentor": "luka-papashvili",
+  "date": "2026-10-06",
+  "time": "16:00",
+  "duration": "4 hours 30 minutes, including breaks",
+  "location": "Hiveworx studio, Lisbon",
+  "level": "Absolute beginner",
+  "price": "Free",
+  "priceNote": "registration required",
+  "status": "open",
+  "bookUrl": "https://luma.com/n7wembxf",
+  "image": "/images/sessions/lets-touchdesign/image.webp",
+  "imageAlt": "A facilitator at a laptop leads a TouchDesigner session in a brick-walled room, with a node network on a large screen and participants working on their laptops",
+  "imageFocus": "50% 40%",
+  "summary": "This is a hands-on session for people who have never opened TouchDesigner. The workshop starts by exploring what the software actually is—a multitool for multimedia, rather than a single-purpose app—before participants build something together from an empty network. The primary goal is to get past the initial learning curve, have fun, and leave with a working patch featuring live, interactive parameters that react to sound, a knob, a camera, or a click.",
+  "about": [],
+  "forWho": "People who have never opened TouchDesigner.",
+  "levelNote": "Absolute beginner. No prior TouchDesigner, coding, or VJ experience is needed. Comfort with any creative software is helpful but not required.",
+  "explore": [
+    {
+      "title": "What is this thing?",
+      "text": "A brief talk covering multimedia practice and where TouchDesigner sits within stage visuals, installations, live performance, prototyping, and mapping."
+    },
+    {
+      "title": "Building the first patch",
+      "text": "Participants will follow along on their own machines to build a simple, good-looking patch from scratch, learning how a network takes shape and where the image originates."
+    },
+    {
+      "title": "Getting signals in",
+      "text": "Learning how sound becomes a number to drive an image, connecting a MIDI controller to a parameter, and using TouchDesigner’s own UI (sliders, buttons, panels) so a patch is playable without any hardware. Depth camera/Kinect integration will be added if the group moves quickly."
+    },
+    {
+      "title": "Choose your input & Apply it",
+      "text": "Using provided advanced project files, participants will choose an input (MIDI, depth camera, webcam, audio, or UI) and practice getting a couple of parameters of their visual to respond to it."
+    }
+  ],
+  "outcomeLabel": "",
+  "outcome": [
+    "Each participant will leave with their own working patch featuring at least two live interactive parameters. They will also take home advanced project files from the session to continue experimenting. Most importantly, attendees will leave knowing how a signal becomes an image, which is the foundational concept for everything built in TouchDesigner."
+  ],
+  "practical": {
+    "discriminant": "default"
+  },
+  "metaDescription": ""
+}

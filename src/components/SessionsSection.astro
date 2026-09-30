@@ -1,0 +1,25 @@
+---
+/* "Explore our workshops and talks": three cards with All / Workshops / Talks filters (home and About) */
+import type { Session } from '../lib/content';
+import SessionCard from './SessionCard.astro';
+interface Props { id: string; filtersId: string; sessions: Session[]; upcoming: string | null }
+const { id, filtersId, sessions, upcoming } = Astro.props;
+---
+<section class="edition" id={id}>
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="label">Workshops &amp; talks</p>
+        <h2>Explore our workshops <span class="v">and talks.</span></h2>
+      </div>
+      <p>Each edition is a temporary, themed experience: talks, workshop series, practical activities, mentors’ stories, a public exhibition and a community gathering.</p>
+    </div>
+    <div class="filters" id={filtersId} data-card-filter role="group" aria-label="Filter by format">
+      <button class="filter" type="button" data-filter="all" aria-pressed="true">All</button>
+      <button class="filter" type="button" data-filter="workshop" aria-pressed="false">Workshops</button>
+      <button class="filter" type="button" data-filter="talk" aria-pressed="false">Talks</button>
+    </div>
+    <div class="cls-grid">{sessions.map((s) => <SessionCard session={s} nextUp={s.slug === upcoming} />)}</div>
+    <div class="cls-more"><a class="btn btn-primary" href="/workshops/">See all workshops <span class="arr">→</span></a></div>
+  </div>
+</section>

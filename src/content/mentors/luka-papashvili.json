@@ -1,0 +1,13 @@
+{
+  "name": "Luka Papashvili",
+  "role": "Multimedia artist",
+  "initials": "LP",
+  "short": "Georgian multimedia artist building real-time generative visuals and interactive installations in TouchDesigner. Visual Director of TKESHI festival.",
+  "bio": [
+    "Luka Papashvili is a Georgian multimedia artist working in generative art, live audiovisual performance and interactive installation. He began in graphic and product design, moved through motion design, and now works primarily in TouchDesigner, building real-time systems where sound, movement and presence drive the image as it is generated rather than played back.",
+    "Skywalker Visuals is his audio-reactive project, performed across clubs, festivals and stages in Georgia and internationally, with live visual collaborations alongside artists including Boston 168, Nico Moreno, Monolink, The Blaze, Phase Fatale, Vitalic, Octave One and Francis Mercier. His work spans LED stage visuals, projection mapping and interactive installations driven by depth cameras, MIDI, AI tracking and AR/XR media.",
+    "He is Visual Director of TKESHI festival, where since 2023 he has led the visual programme and its educational strand. He also created SYNC // STREAMS, a curated series of collaborative live audiovisual sets, teaches TouchDesigner workshops, and publishes custom TouchDesigner assets publicly through Derivative."
+  ],
+  "listed": true,
+  "order": 99
+}

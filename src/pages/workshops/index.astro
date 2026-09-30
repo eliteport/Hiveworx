@@ -1,0 +1,35 @@
+---
+import Base from '../../layouts/Base.astro';
+import SessionCard from '../../components/SessionCard.astro';
+import { getContent } from '../../lib/content';
+import { SITE, TITLES, DESCRIPTIONS, breadcrumb } from '../../lib/seo';
+
+const { sessions, upcoming } = await getContent();
+const disciplines = [...new Set(sessions.map((s) => s.discipline).filter(Boolean))];
+const count = (n: number) => `${n} ${n === 1 ? 'session' : 'sessions'}`;
+---
+<Base title={TITLES.workshops} description={DESCRIPTIONS.workshops} path="/workshops/"
+  ld={[breadcrumb([['Home', SITE + '/'], ['Workshops & talks', SITE + '/workshops/']])]}>
+  <section class="page-head">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a class="link" href="/">Home</a><span aria-hidden="true">/</span><span>Workshops &amp; talks</span></nav>
+      <h1 class="page-title">Workshops <span class="v">&amp; talks</span></h1>
+      <p class="page-lead">Each edition is a temporary, themed experience: talks, workshop series, practical activities, mentors’ stories, a public exhibition and a community gathering. Everything is taught by practitioners, not professors.</p>
+      <!-- filters: data-group says which card attribute a group filters on -->
+      <div class="filter-bar" id="pageFilters">
+        <div class="filters" id="pageFormat" data-group="kind" role="group" aria-label="Filter by format">
+          <button class="filter" type="button" data-v="all" aria-pressed="true">All formats</button>
+          <button class="filter" type="button" data-v="workshop" aria-pressed="false">Workshops</button>
+          <button class="filter" type="button" data-v="talk" aria-pressed="false">Talks</button>
+        </div>
+        <div class="filters" id="pageDisc" data-group="disc" role="group" aria-label="Filter by discipline">
+          <button class="filter" type="button" data-v="all" aria-pressed="true">All disciplines</button>
+          {disciplines.map((d) => <button class="filter" type="button" data-v={d} aria-pressed="false">{d}</button>)}
+        </div>
+      </div>
+      <p class="result-count" id="resultCount" aria-live="polite">{count(sessions.length)}</p>
+      <div class="cls-grid" id="pageGrid">{sessions.map((s) => <SessionCard session={s} nextUp={s.slug === upcoming} />)}</div>
+      <p class="empty" id="pageEmpty" hidden>Nothing here yet for this filter. <button class="linkbtn" type="button" id="resetFilters">Show everything</button></p>
+    </div>
+  </section>
+</Base>

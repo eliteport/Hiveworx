@@ -1,0 +1,37 @@
+---
+/* home page: the big "next up" card (Keystatic → Home page: next up & pinned) */
+import type { Session } from '../lib/content';
+import { sessionUrl } from '../lib/content';
+import { ICON } from '../lib/icons';
+import Media from './Media.astro';
+interface Props { session: Session | null }
+const { session: s } = Astro.props;
+const type = s ? s.typeLabel.toLowerCase() : 'workshop';
+---
+{s && (
+<section id="program">
+  <div class="wrap">
+    <div class="ws-head">
+      <p class="label">Upcoming {type}</p>
+      <span class="hand">next up</span>
+    </div>
+    <div id="featured">
+      <article class="ws-card">
+        <div class="ws-art"><Media session={s} />
+          <div class="ws-tags"><span class="tag">{s.discipline}</span><span class="tag tag-ghost">{s.typeLabel}</span>{s.soldOut && <span class="tag tag-sold">Sold out</span>}</div>
+        </div>
+        <div class="ws-body">
+          <div class="ws-title"><h2><a href={sessionUrl(s)}>{s.title}</a></h2>{s.mentor && <p class="ws-by"><Fragment set:html={ICON.person} />{s.typeLabel} by: <b>{s.mentor.name}</b></p>}</div>
+          <ul class="ws-meta">
+            <li><Fragment set:html={ICON.date} /><span><b>Date</b>{s.date}</span></li>
+            <li><Fragment set:html={ICON.time} /><span><b>Start time</b>{s.time}</span></li>
+            <li><Fragment set:html={ICON.loc} /><span><b>Location</b>{s.location}</span></li>
+            <li><Fragment set:html={ICON.fmt} /><span><b>Format</b>{s.formatLabel}</span></li>
+          </ul>
+          <div class="ws-ctas"><a class="btn btn-light" href={sessionUrl(s)}>See {type} details <span class="arr">→</span></a></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+)}

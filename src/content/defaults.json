@@ -1,0 +1,31 @@
+{
+  "label": "Note",
+  "title": "What you need <span class=\"v\">to know</span>",
+  "note": "Come make it with us",
+  "items": [
+    {
+      "icon": "clock",
+      "text": "Arrive a few minutes early. We start on time and the first steps build everything that follows."
+    },
+    {
+      "icon": "phone",
+      "text": "Switch your phone off, not just to silent, for the whole session."
+    },
+    {
+      "icon": "quiet",
+      "text": "We work side by side. Keep talk low and avoid extra noise while others are concentrating."
+    },
+    {
+      "icon": "steps",
+      "text": "Follow the process step by step, even if you know a shortcut. Each stage prepares the next."
+    },
+    {
+      "icon": "calm",
+      "text": "Stay calm and patient. Good work rewards slow, careful attention."
+    },
+    {
+      "icon": "tools",
+      "text": "Handle the equipment with care, and ask before you move or unplug anything."
+    }
+  ]
+}

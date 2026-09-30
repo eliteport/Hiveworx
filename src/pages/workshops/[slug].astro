@@ -1,0 +1,103 @@
+---
+/* one page per workshop/talk: /workshops/<web address>/ */
+import Base from '../../layouts/Base.astro';
+import Media from '../../components/Media.astro';
+import SessionCard from '../../components/SessionCard.astro';
+import { getContent, type Session } from '../../lib/content';
+import { ICON, INC, hex } from '../../lib/icons';
+import { SITE, sessionTitle, sessionDescription, sessionLd, breadcrumb } from '../../lib/seo';
+
+export async function getStaticPaths() {
+  const { sessions } = await getContent();
+  return sessions.map((s) => ({ params: { slug: s.slug }, props: { slug: s.slug } }));
+}
+const { sessions, upcoming, standard } = await getContent();
+const s = sessions.find((x) => x.slug === Astro.props.slug) as Session;
+const url = `${SITE}/workshops/${s.slug}/`;
+const tl = s.typeLabel, tll = tl.toLowerCase();
+const bio = s.mentor?.bio ?? [];
+const lead = s.summary || s.about[0] || '';
+const rest = s.summary ? s.about : s.about.slice(1);
+const book = s.bookUrl || `mailto:hello@hiveworx.com?subject=${encodeURIComponent((s.dateISO ? 'Booking: ' : 'Interest: ') + s.title)}`;
+const endNote = s.practical?.note || standard?.note || 'just bring curiosity';
+const facts: [string, string, string][] = [
+  [ICON.date, 'Date', s.date], [ICON.time, 'Start time', s.time], [ICON.loc, 'Location', s.location],
+  [ICON.fmt, 'Format', s.formatLabel], [ICON.level, 'Level', s.level], [ICON.duration, 'Duration', s.duration],
+];
+const more = sessions.filter((x) => x.slug !== s.slug).slice(0, 3);
+const n2 = (i: number) => (i < 9 ? '0' : '') + (i + 1);
+---
+<Base title={sessionTitle(s)} description={sessionDescription(s)} path={`/workshops/${s.slug}/`} image={s.image?.src}
+  ld={[sessionLd(s, url), breadcrumb([['Home', SITE + '/'], ['Workshops & talks', SITE + '/workshops/'], [s.title, url]])]}>
+  <!-- 1. title + hero -->
+  <section class="sd-head"><div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a class="link" href="/">Home</a><span aria-hidden="true">/</span><a class="link" href="/workshops/">Workshops &amp; talks</a><span aria-hidden="true">/</span><span>{tl}</span></nav>
+    <div class="ws-tags"><span class="tag">{s.discipline}</span><span class="tag tag-ghost">{s.formatLabel}</span></div>
+    <h1 class="sd-title">{s.title}</h1>
+    {s.mentor && <div class="sd-by"><div class="cls-mentor"><Fragment set:html={ICON.person} /><span><b>{s.mentor.name}</b>{s.mentor.role}</span></div></div>}
+    <div class="sd-hero"><div class="sd-frame"><Media session={s} /></div><Fragment set:html={hex('sd-hex-a', 0.08) + hex('sd-hex-b', -0.06) + hex('sd-hex-c', 0.12)} /></div>
+  </div></section>
+
+  <!-- 2. tabbed content on the left, the details card on the right (it follows the scroll) -->
+  <section class="sd-main"><div class="wrap sd-main-grid">
+    <div class="sd-main-col">
+      {bio.length > 0 && (
+        <div class="tabs sd-tabs" role="tablist" aria-label="Workshop information">
+          <button class="tab" role="tab" id="sdt-details" aria-controls="sdp-details" aria-selected="true">{tl} details</button>
+          <button class="tab" role="tab" id="sdt-mentor" aria-controls="sdp-mentor" aria-selected="false" tabindex="-1">About the mentor</button>
+        </div>
+      )}
+      <div class="sd-panel-tab" role="tabpanel" id="sdp-details" aria-labelledby="sdt-details">
+        <div class="sd-block"><p class="label">About this {tll}</p>
+          <p class="sd-sec-body">{lead}</p>
+          {rest.map((p) => <p class="sd-sec-body">{p}</p>)}
+        </div>
+        {s.forWho && <div class="sd-block"><p class="label">Who it’s for</p><p class="sd-sec-body">{s.forWho}</p>{s.levelNote && <p class="sd-sec-body">{s.levelNote}</p>}</div>}
+        {s.explore.length > 0 && (
+          <div class="sd-block"><p class="label">What you’ll explore</p>
+            <ol class="sd-explore">
+              {s.explore.map((e, i) => e.text
+                ? <li><details name="explore"><summary><span class="sd-ex-n">{n2(i)}</span><h3>{e.title}</h3></summary><p>{e.text}</p></details></li>
+                : <li><div class="sd-ex-row"><span class="sd-ex-n">{n2(i)}</span><h3>{e.title}</h3></div></li>)}
+            </ol>
+            {s.outcome.length > 0 && <div class="sd-outcome"><p class="label">{s.outcomeLabel || 'End of day outcome'}</p>{s.outcome.map((p) => <p class="sd-sec-body">{p}</p>)}</div>}
+          </div>
+        )}
+      </div>
+      {bio.length > 0 && (
+        <div class="sd-panel-tab" role="tabpanel" id="sdp-mentor" aria-labelledby="sdt-mentor" hidden>
+          <div class="sd-block"><p class="label">About the mentor</p><h2 class="sd-mentor-name">{s.mentor!.name}</h2>{bio.map((p) => <p class="sd-sec-body">{p}</p>)}</div>
+        </div>
+      )}
+      <!-- closing note: the last thing in the column, so the sticky card stops level with it -->
+      <p class="hand sd-end-note">{endNote}</p>
+    </div>
+    <aside class="sd-card" aria-label={`${tl} details`}>
+      {s.soldOut
+        ? <div class="sd-card-price"><span class="sd-card-k">Tickets</span><b>Sold out</b></div>
+        : <div class="sd-card-price"><span class="sd-card-k">Price</span><b>{s.price || 'To be announced'}</b>{s.priceNote && <span>{s.priceNote}</span>}</div>}
+      <ul class="sd-card-facts">
+        {facts.filter(([, , v]) => v).map(([icon, label, v]) => <li><Fragment set:html={icon} /><span><b>{label}</b>{v}</span></li>)}
+      </ul>
+      {s.soldOut
+        ? <span class="btn btn-light sd-card-cta is-disabled" aria-disabled="true">Sold out</span>
+        : <a class="btn btn-light sd-card-cta" href={book} target={s.bookUrl ? '_blank' : undefined} rel={s.bookUrl ? 'noopener' : undefined}>Register for the {tll} <span class="arr">→</span></a>}
+    </aside>
+  </div></section>
+
+  <!-- 3. practical notes -->
+  {s.practical && s.practical.items.length > 0 && (
+    <section class="sd-inc-wrap"><div class="wrap"><div class="sd-inc">
+      <div><p class="label">{s.practical.label || standard?.label || 'The practical bit'}</p><h2 set:html={s.practical.title || standard?.title || 'What’s <span class="v">included</span>'} /></div>
+      <ul class="sd-inc-grid">{s.practical.items.map((it) => <li><Fragment set:html={INC[it.icon] || INC.idea} /><span>{it.text}</span></li>)}</ul>
+    </div></div></section>
+  )}
+
+  <!-- 4. more sessions -->
+  <section class="sd-more">
+    <div class="wrap">
+      <div class="sec-head"><div><p class="label">Keep exploring</p><h2 class="more-title">More workshops &amp; talks</h2></div><a class="btn btn-ghost" href="/workshops/">See all workshops <span class="arr">→</span></a></div>
+      <div class="cls-grid" id="moreGrid" style="margin-top:32px">{more.map((x) => <SessionCard session={x} nextUp={x.slug === upcoming} />)}</div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,23 @@
+---
+import Base from '../../layouts/Base.astro';
+import AboutIntro from '../../components/static/AboutIntro.astro';
+import AboutFounder from '../../components/static/AboutFounder.astro';
+import AboutPartners from '../../components/static/AboutPartners.astro';
+import AboutGallery from '../../components/static/AboutGallery.astro';
+import AboutNumbers from '../../components/static/AboutNumbers.astro';
+import SessionsSection from '../../components/SessionsSection.astro';
+import { getContent, homeSessions } from '../../lib/content';
+import { SITE, TITLES, DESCRIPTIONS, breadcrumb } from '../../lib/seo';
+
+const { sessions, upcoming, pinned } = await getContent();
+---
+<Base title={TITLES.about} description={DESCRIPTIONS.about} path="/about/"
+  ld={[{ '@type': 'AboutPage', url: SITE + '/about/', name: 'About Hiveworx', about: { '@id': SITE + '/#org' } },
+       breadcrumb([['Home', SITE + '/'], ['About', SITE + '/about/']])]}>
+  <AboutIntro />
+  <AboutFounder />
+  <AboutPartners />
+  <AboutGallery />
+  <AboutNumbers />
+  <SessionsSection id="about-classes" filtersId="aboutFilters" sessions={homeSessions(sessions, upcoming, pinned)} upcoming={upcoming} />
+</Base>

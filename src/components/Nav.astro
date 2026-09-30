@@ -1,0 +1,24 @@
+---
+/* main menu; "Mentors" is a link only when the Mentors page is switched on (Keystatic → Site settings) */
+import { getContent } from "../lib/content";
+const { mentorsPage } = await getContent();
+const here = Astro.url.pathname;
+const cur = (p: string) => (here === p ? "page" : undefined);
+---
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="Hiveworx home"><svg viewBox="0 0 899 144" aria-hidden="true"><use href="#logo"/></svg></a>
+    <ul id="menu">
+      <li><a href="/about/" aria-current={cur("/about/")}>About</a></li>
+      <li><a href="/workshops/" aria-current={cur("/workshops/")}>Workshops &amp; talks</a></li>
+      {mentorsPage
+        ? <li><a href="/mentors/" aria-current={cur("/mentors/")}>Mentors</a></li>
+        : <li><span class="nav-soon" aria-disabled="true">Mentors <span class="soon hand" aria-label="(coming soon)">soon</span></span></li>}
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <a class="btn btn-primary nav-cta" href="/workshops/">Explore workshops <span class="arr">→</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+      <svg width="20" height="14" viewBox="0 0 20 14" aria-hidden="true"><path class="mb-l1" d="M0 1h20" stroke="currentColor" stroke-width="1.6"/><path class="mb-l2" d="M0 7h20" stroke="currentColor" stroke-width="1.6"/><path class="mb-l3" d="M0 13h20" stroke="currentColor" stroke-width="1.6"/></svg>
+    </button>
+  </div>
+</header>

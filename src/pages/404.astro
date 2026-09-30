@@ -1,0 +1,13 @@
+---
+import Base from '../layouts/Base.astro';
+import { DESCRIPTIONS } from '../lib/seo';
+---
+<Base title="Page not found · Hiveworx" description={DESCRIPTIONS.home} path="/404.html" noindex>
+  <section class="page-head">
+    <div class="wrap notfound">
+      <h1>This page doesn’t exist.</h1>
+      <p>It may have moved, or the address has a typo. Try the program instead.</p>
+      <a class="btn btn-primary" href="/workshops/">See all workshops <span class="arr">→</span></a>
+    </div>
+  </section>
+</Base>
