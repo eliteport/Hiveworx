@@ -1,21 +1,16 @@
 {
-  "title": "Design Thinking: What It Is and Why It’s So Important for Product Development",
+  "title": "Design Thinking: What It Is and why It’s so important for product development",
   "format": "talk",
   "formatLabel": "Online talk",
   "discipline": "Design Thinking",
   "mentor": "temo-k-dolidze",
   "date": "2026-10-05",
   "time": "10:00",
-  "duration": "",
   "location": "Online",
-  "level": "",
-  "price": "",
-  "priceNote": "",
   "status": "soldout",
   "image": "/images/sessions/design-thinking/image.webp",
   "imageAlt": "The five stages of design thinking drawn as circles: Empathy, Define, Ideate, Prototype and Test, over large faded letters reading Design Thinking, with violet hand-drawn notes: What’s happening here? and Design lecture",
   "imageFocus": "50% 50%",
-  "summary": "",
   "about": [
     "In 1958, just four months after the launch of Sputnik and President Eisenhower’s establishment of NASA, Stanford engineering professor John Arnold gave a speech arguing that design engineering should be human-centered.",
     "At the time, Arnold’s proposal was highly unconventional. During the Cold War, engineers were largely focused on two priorities: winning the Space Race and optimizing the hydrogen bomb.",
@@ -23,32 +18,24 @@
     "Through this program, McKim and others contributed to the development of the design thinking process, which later helped lay the foundation for Stanford’s d.school. Design thinking also became a core methodology for companies such as IDEO.",
     "The design thinking process is not linear, and there is no single prescribed way to follow it. It is an iterative system with many variations. However, Stanford’s d.school teaches a well-tested process that provides a practical starting point for tackling problems of any level of complexity."
   ],
-  "forWho": "",
-  "levelNote": "",
   "explore": [
     {
-      "title": "Human-Centered Design",
-      "text": ""
+      "title": "Human-Centered Design"
     },
     {
-      "title": "Empathy",
-      "text": ""
+      "title": "Empathy"
     },
     {
-      "title": "Experimentation and Prototyping",
-      "text": ""
+      "title": "Experimentation and Prototyping"
     },
     {
-      "title": "Bias Toward Action",
-      "text": ""
+      "title": "Bias Toward Action"
     },
     {
-      "title": "Show, Don’t Tell",
-      "text": ""
+      "title": "Show, Don’t Tell"
     },
     {
-      "title": "The Power of Iteration",
-      "text": ""
+      "title": "The Power of Iteration"
     }
   ],
   "outcomeLabel": "What you’ll take away",
