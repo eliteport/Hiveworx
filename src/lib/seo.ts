@@ -1,7 +1,7 @@
 /* Page titles, descriptions and structured data (schema.org) for Google. */
 import type { Session, Mentor } from './content';
 
-export const SITE = 'https://hiveworx.com';
+export const SITE = 'https://www.hiveworx.com';   // Vercel serves the site on www (hiveworx.com forwards here)
 export const abs = (p: string) => SITE + '/' + p.replace(/^\.?\//, '');
 export const DEFAULT_IMAGE = '/images/og-hiveworx.png';
 

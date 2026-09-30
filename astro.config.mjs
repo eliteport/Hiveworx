@@ -5,7 +5,7 @@ import keystatic from '@keystatic/astro';
 import vercel from '@astrojs/vercel';
 
 export default defineConfig({
-  site: 'https://hiveworx.com',
+  site: 'https://www.hiveworx.com',
   output: 'static',
   adapter: vercel(),
   integrations: [react(), keystatic()],
