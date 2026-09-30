@@ -1,0 +1,10 @@
+---
+/* a session's photo, or the "Coming soon" placeholder */
+import type { Session } from '../lib/content';
+interface Props { session: Session; lazy?: boolean }
+const { session: s, lazy = false } = Astro.props;
+---
+{s.image
+  ? <img class="ws-photo" loading={lazy ? 'lazy' : undefined} src={s.image.src} alt={s.image.alt} width="1672" height="941"
+      style={s.image.focus ? `object-position:${s.image.focus}` : undefined}>
+  : <div class="ph ph-art" role="img" aria-label="Image coming soon"><span class="ph-text">Coming soon</span></div>}

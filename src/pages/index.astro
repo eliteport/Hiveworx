@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import HomeHero from '../components/static/HomeHero.astro';
+import HomeValues from '../components/static/HomeValues.astro';
+import HomeDisciplines from '../components/static/HomeDisciplines.astro';
+import HomeApproach from '../components/static/HomeApproach.astro';
+import HomeJoin from '../components/static/HomeJoin.astro';
+import HomeContact from '../components/static/HomeContact.astro';
+import Featured from '../components/Featured.astro';
+import SessionsSection from '../components/SessionsSection.astro';
+import { getContent, homeSessions } from '../lib/content';
+import { SITE, TITLES, DESCRIPTIONS } from '../lib/seo';
+
+const { sessions, upcoming, pinned } = await getContent();
+const next = sessions.find((s) => s.slug === upcoming) ?? null;
+---
+<Base title={TITLES.home} description={DESCRIPTIONS.home} path="/"
+  ld={[{ '@type': 'WebSite', '@id': SITE + '/#site', name: 'Hiveworx', url: SITE + '/', publisher: { '@id': SITE + '/#org' } }]}>
+  <HomeHero />
+  <Featured session={next} />
+  <SessionsSection id="classes" filtersId="homeFilters" sessions={homeSessions(sessions, upcoming, pinned)} upcoming={upcoming} />
+  <HomeValues />
+  <HomeDisciplines />
+  <HomeApproach />
+  <HomeJoin />
+  <HomeContact />
+</Base>

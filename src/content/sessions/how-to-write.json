@@ -1,0 +1,47 @@
+{
+  "title": "Finding the Words – The craft of writing",
+  "format": "workshop",
+  "formatLabel": "3-session workshop",
+  "discipline": "Image + Word",
+  "mentor": "salome-kikaleishvili",
+  "time": "",
+  "duration": "3 weeks · one 2-hour session a week",
+  "location": "Hiveworx studio, Lisbon",
+  "level": "All levels",
+  "price": "",
+  "priceNote": "",
+  "status": "interest",
+  "image": "/images/sessions/how-to-write/image.webp",
+  "imageAlt": "Black and white photo of a journalist interviewing an artist at a gallery opening, with notebooks, a camera and a laptop on the table; violet notes sketch written genres, the live event, an article structure and the final outcome: a recorded interview and a finished article",
+  "imageFocus": "",
+  "summary": "A craft workshop for anyone who writes, about culture or for work. You’ll learn how written genres differ, how an article is built and how to run a good interview, then put it into practice by covering a real exhibition or event together.",
+  "about": [],
+  "forWho": "Aspiring journalists, communicators and anyone who writes for work, whatever the subject.",
+  "levelNote": "Open to everyone. You don’t need to care about film to get a lot out of it.",
+  "explore": [
+    {
+      "title": "Written genres",
+      "text": "How publications differ, and what makes a profile, a story and a review."
+    },
+    {
+      "title": "How an article is built",
+      "text": "Structure, breaking a piece into parts, finding its axis or starting point, and the possibilities of creative writing."
+    },
+    {
+      "title": "The interview",
+      "text": "Preparation, conducting the conversation, the role of detail and environment, building rapport and the psychology of the encounter. Task: record an interview."
+    },
+    {
+      "title": "Covering a live event",
+      "text": "The group goes to an exhibition or event, interviews the curator or author, gathers material and builds an article together, with the tutor working alongside."
+    }
+  ],
+  "outcomeLabel": "",
+  "outcome": [
+    "You’ll leave with a recorded interview and a finished article built from a real cultural event."
+  ],
+  "practical": {
+    "discriminant": "default"
+  },
+  "metaDescription": ""
+}

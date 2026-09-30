@@ -14,13 +14,13 @@ const at = (p) => `http://127.0.0.1:${server.port}/${p}`;
 
 try {
   if (job === 'share') {
-    const logo = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8').match(/<symbol id="logo"[\s\S]*?<\/symbol>/)[0];
+    const logo = fs.readFileSync(path.join(ROOT, 'src/components/static/Sprite.astro'), 'utf8').match(/<symbol id="logo"[\s\S]*?<\/symbol>/)[0];
     const page = fs.readFileSync(path.join(ROOT, 'tools/share-image.html'), 'utf8').replace('<!--LOGO-->', logo);
     fs.writeFileSync(path.join(ROOT, 'tools/.share-render.html'), page);
-    const out = path.join(ROOT, 'images/og-hiveworx.png');
+    const out = path.join(ROOT, 'public/images/og-hiveworx.png');
     await screenshot(at('tools/.share-render.html'), out, 1200, 630);
     fs.rmSync(path.join(ROOT, 'tools/.share-render.html'));
-    console.log('wrote images/og-hiveworx.png', fs.statSync(out).size, 'bytes');
+    console.log('wrote public/images/og-hiveworx.png', fs.statSync(out).size, 'bytes');
   } else if (job === 'webp') {
     const quality = +(q || 0.86);
     const page = `<!doctype html><body><pre id="out"></pre><script>

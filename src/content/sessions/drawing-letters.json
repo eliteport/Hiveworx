@@ -1,0 +1,49 @@
+{
+  "title": "Drawing Letters: How a Typeface Is Born",
+  "format": "workshop",
+  "formatLabel": "Hands-on workshop",
+  "discipline": "Typography",
+  "mentor": "temo-k-dolidze",
+  "time": "",
+  "duration": "To be announced",
+  "location": "Hiveworx studio, Lisbon",
+  "level": "All levels",
+  "price": "",
+  "priceNote": "",
+  "status": "interest",
+  "image": "/images/sessions/drawing-letters/image.webp",
+  "imageAlt": "Type design worktable: pencil sketches of the letter a on grid paper, a laptop showing the a as digital outlines, with violet notes like Start with a pencil, Cap height, Counter, Iterate, Spacing matters and Sketch, construct, refine, digitalize",
+  "imageFocus": "50% 50%",
+  "summary": "A hands-on workshop about where letters come from. Starting with pencil, paper and a few simple rules, we’ll look at how a typeface is planned, drawn and refined, then take a handful of letters from first sketch to a digital shape you can type with.",
+  "about": [
+    "Every typeface starts as a set of decisions: how wide, how heavy, how the curves meet the straights. Working the way type designers do, we’ll make those decisions ourselves and see how small choices change the voice of a whole alphabet."
+  ],
+  "forWho": "Designers, illustrators, students and anyone curious about letters, including people who have never drawn one.",
+  "levelNote": "No lettering or type design experience needed. Bring pencils and patience; everything else is provided.",
+  "explore": [
+    {
+      "title": "Anatomy of a letter",
+      "text": "Stems, bowls, counters and serifs: the parts that make a letter readable, and why they look the way they do."
+    },
+    {
+      "title": "Sketching with rules",
+      "text": "Draw a few key letters, like n, o, H and a, on a simple grid and see how proportion and contrast set the tone of a typeface."
+    },
+    {
+      "title": "From paper to vector",
+      "text": "Trace your best sketches into clean outlines and learn how curves are built from points and handles."
+    },
+    {
+      "title": "Spacing and rhythm",
+      "text": "Put letters side by side, adjust the gaps and watch a word start to read as one shape."
+    }
+  ],
+  "outcomeLabel": "",
+  "outcome": [
+    "You’ll leave with a small set of your own letters, from first sketch to digital outline, and a sharper eye for the type you see every day."
+  ],
+  "practical": {
+    "discriminant": "default"
+  },
+  "metaDescription": ""
+}

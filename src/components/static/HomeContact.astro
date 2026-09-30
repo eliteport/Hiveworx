@@ -1,0 +1,65 @@
+---
+// copied from the one-page site; edit freely
+---
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <p class="label ct-label">Get in touch</p>
+    <div class="ct-grid">
+    <div class="ct-panel ct-info">
+      <p class="ct-lead ct-lead-first"><span>Want to teach,</span> <span class="ct-w">tell your story,</span> <span>partner with us</span> <span class="ct-w">or just ask a question?</span> <span>Send us a message.</span></p>
+      <ul class="ct-list">
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="m3.5 7 8.5 6.5L20.5 7"/></svg>
+          <span><a class="link" id="email" href="mailto:hello@hiveworx.com">hello@hiveworx.com</a><button class="linkbtn ct-copy" id="copyBtn" type="button">Copy</button></span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.5 7-11.5A7 7 0 0 0 5 9.5C5 14.5 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+          <span>Hiveworx studio, Lisbon, Portugal</span>
+        </li>
+      </ul>
+      <p class="copy-msg" id="copyMsg" role="status" aria-live="polite"></p>
+    </div>
+
+    <form class="ct-panel ct-form" id="contactForm" novalidate>
+      <div class="field">
+        <label class="sr-only" for="ct-name">Your name</label>
+        <input id="ct-name" name="name" type="text" autocomplete="name" required placeholder="Your name*">
+        <p class="field-err" id="ct-name-err"></p>
+      </div>
+      <div class="field">
+        <label class="sr-only" for="ct-email">Email</label>
+        <input id="ct-email" name="email" type="email" autocomplete="email" required placeholder="Email address*">
+        <p class="field-err" id="ct-email-err"></p>
+      </div>
+      <div class="field">
+        <label class="sr-only" for="ct-who">I am a</label>
+        <div class="select">
+          <select id="ct-who" name="who" required>
+            <option value="" disabled selected>I am a…*</option>
+            <option>Mentor</option>
+            <option>Institution</option>
+            <option>Funder</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <p class="field-err" id="ct-who-err"></p>
+      </div>
+      <div class="field">
+        <label class="sr-only" for="ct-topic">Topic</label>
+        <input id="ct-topic" name="topic" type="text" required maxlength="120" placeholder="Topic*">
+        <p class="field-err" id="ct-topic-err"></p>
+      </div>
+      <div class="field">
+        <label class="sr-only" for="ct-msg">Message</label>
+        <textarea data-lenis-prevent id="ct-msg" name="message" rows="5" required maxlength="2000" placeholder="Write your message…*"></textarea>
+        <div class="field-foot"><p class="field-err" id="ct-msg-err"></p><span class="ct-count" id="ct-count" aria-live="off">0 / 2000</span></div>
+      </div>
+      <!-- spam trap: hidden from people, bots tend to fill it; Formspree drops messages that have it -->
+      <input class="ct-hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="btn btn-primary ct-submit" type="submit">Send message <span class="arr">→</span></button>
+      <p class="ct-status" id="ct-status" role="status" aria-live="polite"></p>
+    </form>
+    </div>
+  </div>
+</section>

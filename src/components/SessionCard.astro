@@ -1,0 +1,26 @@
+---
+/* one workshop/talk card (home, About, Workshops & talks, "more" on session pages) */
+import type { Session } from '../lib/content';
+import { sessionUrl } from '../lib/content';
+import { ICON } from '../lib/icons';
+import Media from './Media.astro';
+interface Props { session: Session; nextUp?: boolean }
+const { session: s, nextUp = false } = Astro.props;
+/* with a date and a registration link, "Book a spot" goes straight to registration */
+const bookable = !!(s.dateISO && s.bookUrl && !s.soldOut);
+const label = s.dateISO && !s.soldOut ? 'Book a spot' : 'View details';
+/* cards have little room: an unset price shows as TBD; sold-out sessions show no price */
+const price = s.soldOut ? '' : s.price || 'TBD';
+---
+<article class="cls" data-kind={s.format} data-disc={s.discipline}>
+  <div class="cls-art"><Media session={s} lazy /><span class="cls-type">{s.typeLabel}</span>{s.soldOut
+    ? <span class="cls-status cls-status-sold">Sold out</span>
+    : nextUp && <span class="cls-status cls-status-up">next up</span>}</div>
+  <div class="cls-body">
+    <p class="cls-tag">{s.discipline}</p>
+    <h3><a href={sessionUrl(s)}>{s.title}</a></h3>
+    <ul class="cls-when"><li><Fragment set:html={ICON.date} />{s.date}</li><li><Fragment set:html={ICON.time} />{s.time}</li></ul>
+    {s.mentor && <div class="cls-mentor"><Fragment set:html={ICON.person} /><span><b>{s.mentor.name}</b>{s.mentor.role}</span></div>}
+    <div class="cls-foot">{price && <p class="price"><b>{price}</b>{s.priceNote}</p>}<a class="btn btn-ghost btn-sm" href={bookable ? s.bookUrl! : sessionUrl(s)} target={bookable ? '_blank' : undefined} rel={bookable ? 'noopener' : undefined}>{label} <span class="arr">→</span></a></div>
+  </div>
+</article>

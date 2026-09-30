@@ -1,0 +1,89 @@
+{
+  "title": "Synthesis of Acoustic and Electronic Timbres Using Spectral Analysis",
+  "format": "workshop",
+  "formatLabel": "Hands-on workshop",
+  "discipline": "Sound + Visual",
+  "mentor": "giorgi-koberidze",
+  "date": "2026-10-07",
+  "time": "18:00",
+  "duration": "2 hours 30 minutes",
+  "location": "Hiveworx – Design school",
+  "level": "Beginner to intermediate",
+  "price": "Free",
+  "priceNote": "registration required",
+  "status": "open",
+  "bookUrl": "https://luma.com/ymgqxtp3",
+  "image": "/images/sessions/spectral-timbres/image.webp",
+  "imageAlt": "Black and white portrait of Giorgi Koberidze in a dark coat, head bowed, in front of an old stone wall",
+  "imageFocus": "",
+  "summary": "Synthesis of Acoustic and Electronic Timbres Using Spectral Analysis invites participants into a different way of combining acoustic and electronic sound not by layering one over the other, but by taking them apart together, down to their shared spectral structure. Working from real acoustic recordings, we’ll decompose sound into its individual harmonics, then reassemble those fragments into new electronic material using modular synthesis.",
+  "about": [],
+  "forWho": "Composers, electronic musicians, sound artists, producers, modular synthesis enthusiasts and anyone interested in spectral sound, electroacoustic music, synthesis, and new approaches to acoustic instruments.",
+  "levelNote": "The workshop works for composers with some studio experience as well as electronic musicians new to spectral or modular techniques. Basic familiarity with audio software is helpful, but no prior synthesis or modular experience is required.",
+  "explore": [
+    {
+      "title": "Spectral Anatomy",
+      "text": "Analyze an acoustic recording and break it down into its constituent partials, seeing for the first time what a sound is actually made of."
+    },
+    {
+      "title": "Harmonic Extraction & Recombination",
+      "text": "Select, isolate, and recombine harmonics from different instruments into new wavetables, arriving at combinations no single acoustic instrument could ever produce."
+    },
+    {
+      "title": "Granular Transformation",
+      "text": "Shape that extracted material through granular synthesis, exploring how waveform structure and micro-timing become expressive tools in their own right."
+    },
+    {
+      "title": "Modular Processing",
+      "text": "Route the reorganized spectral material through a modular (Eurorack) system to further granulate and transform it."
+    },
+    {
+      "title": "Rebuilding the Imaginary Instrument",
+      "text": "Reunite the transformed electronic layer with its acoustic source, integrating the two at the level of timbre instead of simply stacking them."
+    },
+    {
+      "title": "Timbre as Structure",
+      "text": "Rethink composition with color and texture — not harmony — as the primary driver of musical motion, a core idea from the spectral music tradition applied to a hands-on electronic workflow."
+    }
+  ],
+  "outcomeLabel": "",
+  "outcome": [
+    "Each participant will leave the workshop with a deeper understanding of what timbre really is and how it can function as a structural element in music. They will be encouraged to look at form and composition from a different perspective, where sound colour and spectral change can shape musical development.",
+    "Participants will also gain practical experience working with the fundamental building blocks of sound, experimenting with harmonics and spectral material to create and discover new synthetic instruments and timbres."
+  ],
+  "practical": {
+    "discriminant": "custom",
+    "value": {
+      "label": "Note",
+      "title": "What you need <span class=\"v\">to know</span>",
+      "note": "Come make it with us",
+      "items": [
+        {
+          "icon": "clock",
+          "text": "Arrive a few minutes early. We start on time and the first steps build everything that follows."
+        },
+        {
+          "icon": "phone",
+          "text": "Switch your phone off, not just to silent, for the whole session."
+        },
+        {
+          "icon": "quiet",
+          "text": "We work with sound. Keep talk low and avoid extra noise while others are listening."
+        },
+        {
+          "icon": "steps",
+          "text": "Follow the process step by step, even if you know a shortcut. Each stage prepares the next."
+        },
+        {
+          "icon": "calm",
+          "text": "Stay calm and patient. Spectral work rewards slow, careful listening."
+        },
+        {
+          "icon": "tools",
+          "text": "Handle the equipment with care, and ask before you patch or unplug anything."
+        }
+      ]
+    }
+  },
+  "metaDescription": ""
+}

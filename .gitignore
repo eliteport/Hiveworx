@@ -2,13 +2,14 @@
 .DS_Store
 ._*
 
-# dependencies and secrets
+# dependencies, secrets, build output
 node_modules/
 .env
 .env.*
+dist/
+.astro/
+.vercel/
 
 # build tool scratch files
 tools/.share-render.html
 tools/.webp.html
-
-# dist/ is committed on purpose: the host publishes it as-is (the build needs Chrome, which the host lacks)
