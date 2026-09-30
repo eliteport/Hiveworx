@@ -841,3 +841,30 @@ a.sd-series-next{color:var(--paper)}
 
 /* About: partner logos are hidden, so Partners ends at its button; one section gap (not two) before the numbers */
 #partners{padding-bottom:0}
+
+/* ---------- Sold out: badge on the card photo, disabled button on the session page ---------- */
+.cls-status-sold{background:var(--paper);color:var(--ink);border-color:transparent;font-weight:500;letter-spacing:.02em}
+.sd-card-cta.is-disabled{background:rgba(255,255,255,.14);color:rgba(255,255,255,.72);cursor:not-allowed;justify-content:center}
+.sd-card-cta.is-disabled:hover{background:rgba(255,255,255,.14);box-shadow:none}
+/* a topic that is just a title: same row as the accordion, without the arrow */
+.sd-ex-row{display:grid;grid-template-columns:56px 1fr;align-items:center;gap:16px;padding:24px 0}
+@media (max-width:600px){.sd-ex-row{grid-template-columns:40px 1fr;gap:10px}}
+
+/* featured card: "Sold out" tag on the photo, pushed to the right like the small cards' badge */
+.ws-card .ws-art .tag-sold{margin-left:auto;background:var(--paper);color:var(--ink);font-weight:500}
+
+/* ---------- Tags on photos (cards, workshop list, home "upcoming" card) ----------
+   Uppercase, 80% backgrounds so the photo shows through, and the text optically centred:
+   this typeface carries more space above the letters than below, so the padding sits 1.5px lower. */
+.cls-type,.cls-status:not(.cls-status-up),.ws-card .ws-art .tag{
+  display:inline-flex;align-items:center;font-size:12px;line-height:1;letter-spacing:.08em;text-transform:uppercase;
+  padding:8px 10px 6px;border:1px solid transparent;border-radius:4px}
+.cls-type,.ws-card .ws-art .tag{background:rgba(154,58,207,.8);color:#fff}
+.cls[data-kind="talk"] .cls-type{background:rgba(243,241,247,.8);color:var(--ink)}
+.ws-card .ws-art .tag-ghost{background:rgba(10,12,18,.8);border-color:rgba(255,255,255,.28);color:var(--paper)}
+.cls-status-sold,.ws-card .ws-art .tag-sold{background:rgba(243,241,247,.8);color:var(--ink);border-color:transparent;font-weight:500}
+
+/* ---------- Buttons: the label sits 1px lower so it reads centred in the frame ---------- */
+.btn{padding-top:16px;padding-bottom:14px}
+.nav .btn,.btn-sm{padding-top:12px;padding-bottom:10px}
+.cls .btn-sm{padding-top:16px;padding-bottom:14px}

@@ -1,5 +1,7 @@
 {
-  "hiddenPages": ["mentors"],
+  "hiddenPages": [
+    "mentors"
+  ],
   "sessions": [
     {
       "slug": "spectral-timbres",
@@ -21,16 +23,14 @@
         "photo": "images/upcoming-workshop.webp"
       },
       "forWho": "Composers, electronic musicians, sound artists, producers, modular synthesis enthusiasts and anyone interested in spectral sound, electroacoustic music, synthesis, and new approaches to acoustic instruments.",
-      "about": [
-
-      ],
-      "dateISO": null,
-      "date": "To be announced",
-      "time": "To be announced",
-      "location": "Hiveworx studio, Lisbon",
-      "price": "To be announced",
-      "priceNote": "",
-      "status": "Registration of interest",
+      "about": [],
+      "dateISO": "2026-10-07",
+      "date": "Wed 7 Oct 2026",
+      "time": "18:00",
+      "location": "Hiveworx – Design school",
+      "price": "Free",
+      "priceNote": "registration required",
+      "status": "Registration open",
       "featured": false,
       "art": "spectral",
       "included": [
@@ -94,18 +94,14 @@
         "Each participant will leave the workshop with a deeper understanding of what timbre really is and how it can function as a structural element in music. They will be encouraged to look at form and composition from a different perspective, where sound colour and spectral change can shape musical development.",
         "Participants will also gain practical experience working with the fundamental building blocks of sound, experimenting with harmonics and spectral material to create and discover new synthetic instruments and timbres."
       ],
-      "gallery": [
-
-      ],
-      "testimonials": [
-
-      ],
+      "gallery": [],
+      "testimonials": [],
       "includedLabel": "Note",
       "includedTitle": "What you need <span class=\"v\">to know</span>",
       "includedNote": "Come make it with us",
       "levelNote": "The workshop works for composers with some studio experience as well as electronic musicians new to spectral or modular techniques. Basic familiarity with audio software is helpful, but no prior synthesis or modular experience is required.",
       "level": "Beginner to intermediate",
-      "duration": "1 day",
+      "duration": "2 hours 30 minutes",
       "homePin": true
     },
     {
@@ -161,12 +157,8 @@
       ],
       "level": "All levels",
       "duration": "To be announced",
-      "gallery": [
-
-      ],
-      "testimonials": [
-
-      ],
+      "gallery": [],
+      "testimonials": [],
       "image": {
         "src": "images/drawing-letters.webp",
         "alt": "Type design worktable: pencil sketches of the letter a on grid paper, a laptop showing the a as digital outlines, with violet notes like Start with a pencil, Cap height, Counter, Iterate, Spacing matters and Sketch, construct, refine, digitalize",
@@ -192,9 +184,7 @@
         "short": "Georgian multimedia artist building real-time generative visuals and interactive installations in TouchDesigner. Visual Director of TKESHI festival."
       },
       "summary": "This is a hands-on session for people who have never opened TouchDesigner. The workshop starts by exploring what the software actually is—a multitool for multimedia, rather than a single-purpose app—before participants build something together from an empty network. The primary goal is to get past the initial learning curve, have fun, and leave with a working patch featuring live, interactive parameters that react to sound, a knob, a camera, or a click.",
-      "about": [
-
-      ],
+      "about": [],
       "forWho": "People who have never opened TouchDesigner.",
       "levelNote": "Absolute beginner. No prior TouchDesigner, coding, or VJ experience is needed. Comfort with any creative software is helpful but not required.",
       "explore": [
@@ -225,22 +215,18 @@
       "price": "Free",
       "priceNote": "registration required",
       "status": "Registration open",
-      "featured": true,
       "art": "default",
       "level": "Absolute beginner",
       "duration": "4 hours 30 minutes, including breaks",
       "bookUrl": "https://luma.com/n7wembxf",
-      "gallery": [
-
-      ],
-      "testimonials": [
-
-      ],
+      "gallery": [],
+      "testimonials": [],
       "image": {
         "src": "images/lets-touchdesign.webp",
         "alt": "A facilitator at a laptop leads a TouchDesigner session in a brick-walled room, with a node network on a large screen and participants working on their laptops",
         "focus": "50% 40%"
-      }
+      },
+      "homePin": true
     },
     {
       "format": "workshop",
@@ -255,9 +241,7 @@
           "Film critic, journalist, and lecturer from Tbilisi, Georgia. She has extensive experience in media and cultural journalism and has served on FIPRESCI juries at international film festivals since 2007. She is currently an international voter for the Golden Globes and a member of the European Film Academy."
         ]
       },
-      "about": [
-
-      ],
+      "about": [],
       "dateISO": null,
       "date": "To be announced",
       "time": "To be announced",
@@ -269,15 +253,15 @@
       "art": "default",
       "level": "All levels",
       "duration": "3 weeks · one 2-hour session a week",
-      "gallery": [
-
-      ],
-      "testimonials": [
-
-      ],
+      "gallery": [],
+      "testimonials": [],
       "slug": "how-to-speak-about-art",
-      "image": {"src": "images/how-to-speak-about-art.webp", "alt": "Halftone photo of a woman calling out with a hand at her mouth; violet sketches stream from her voice: a portrait, a camera, a film strip, an eye, speech bubbles and a written page", "focus": "20% 50%"},
-      "title": "How to Speak About Art",
+      "image": {
+        "src": "images/how-to-speak-about-art.webp",
+        "alt": "Halftone photo of a woman calling out with a hand at her mouth; violet sketches stream from her voice: a portrait, a camera, a film strip, an eye, speech bubbles and a written page",
+        "focus": "20% 50%"
+      },
+      "title": "The Image and the Mirror – From cave walls to cinema",
       "summary": "The visual image has always been a way of keeping people present: from cave painting to painting, photography and cinema. This workshop follows that line and turns it into a practical skill: what to look at, what to notice, and how to put what you see into words.",
       "forWho": "Anyone who wants to look at art and film more deeply and talk about it with confidence.",
       "levelNote": "No background in art history or criticism needed.",
@@ -320,9 +304,7 @@
           "Film critic, journalist, and lecturer from Tbilisi, Georgia. She has extensive experience in media and cultural journalism and has served on FIPRESCI juries at international film festivals since 2007. She is currently an international voter for the Golden Globes and a member of the European Film Academy."
         ]
       },
-      "about": [
-
-      ],
+      "about": [],
       "dateISO": null,
       "date": "To be announced",
       "time": "To be announced",
@@ -334,15 +316,14 @@
       "art": "default",
       "level": "All levels",
       "duration": "3 weeks · one 2-hour session a week",
-      "gallery": [
-
-      ],
-      "testimonials": [
-
-      ],
+      "gallery": [],
+      "testimonials": [],
       "slug": "how-to-write",
-      "image": {"src": "images/how-to-write.webp", "alt": "Black and white photo of a journalist interviewing an artist at a gallery opening, with notebooks, a camera and a laptop on the table; violet notes sketch written genres, the live event, an article structure and the final outcome: a recorded interview and a finished article"},
-      "title": "How to Write",
+      "image": {
+        "src": "images/how-to-write.webp",
+        "alt": "Black and white photo of a journalist interviewing an artist at a gallery opening, with notebooks, a camera and a laptop on the table; violet notes sketch written genres, the live event, an article structure and the final outcome: a recorded interview and a finished article"
+      },
+      "title": "Finding the Words – The craft of writing",
       "summary": "A craft workshop for anyone who writes, about culture or for work. You’ll learn how written genres differ, how an article is built and how to run a good interview, then put it into practice by covering a real exhibition or event together.",
       "forWho": "Aspiring journalists, communicators and anyone who writes for work, whatever the subject.",
       "levelNote": "Open to everyone. You don’t need to care about film to get a lot out of it.",
@@ -381,9 +362,7 @@
           "Film critic, journalist, and lecturer from Tbilisi, Georgia. She has extensive experience in media and cultural journalism and has served on FIPRESCI juries at international film festivals since 2007. She is currently an international voter for the Golden Globes and a member of the European Film Academy."
         ]
       },
-      "about": [
-
-      ],
+      "about": [],
       "dateISO": null,
       "date": "To be announced",
       "time": "To be announced",
@@ -395,14 +374,10 @@
       "art": "default",
       "level": "All levels",
       "duration": "3 weeks · one 2-hour session a week",
-      "gallery": [
-
-      ],
-      "testimonials": [
-
-      ],
+      "gallery": [],
+      "testimonials": [],
       "slug": "how-films-are-judged",
-      "title": "How Films Are Judged",
+      "title": "The Verdict – How films are judged, awarded and remembered",
       "summary": "Not how a film is made, but how it is seen, valued, selected and awarded. Led by a Golden Globes voter and European Film Academy member, this workshop looks at what voters look for, how critical consensus forms, and how a film travels from festival to prize.",
       "forWho": "Film lovers, aspiring critics and anyone curious about how films are valued and rewarded.",
       "levelNote": "Open to everyone. No background in film criticism needed.",
@@ -427,6 +402,70 @@
       "outcome": [
         "You’ll leave knowing how films are evaluated from the inside, and with a finished review of your own."
       ]
+    },
+    {
+      "slug": "design-thinking",
+      "title": "Design Thinking: What It Is and Why It’s So Important for Product Development",
+      "format": "talk",
+      "formatLabel": "Online talk",
+      "discipline": "Design Thinking",
+      "mentor": {
+        "name": "Temo K. Dolidze",
+        "role": "Product design specialist, entrepreneur",
+        "initials": "TD",
+        "photo": "images/founder.webp",
+        "bio": [
+          "In the world of product design, leading a team of specialists focused on design systems. The design freak deeply involved in arts, crafts, and the nuanced world of music and sound. An avid cyclist, I thrive on offroad and downhill challenges."
+        ]
+      },
+      "metaDescription": "An online talk by Temo K. Dolidze on design thinking: where it came from, its core principles, and why it puts people’s needs first in product development.",
+      "about": [
+        "In 1958, just four months after the launch of Sputnik and President Eisenhower’s establishment of NASA, Stanford engineering professor John Arnold gave a speech arguing that design engineering should be human-centered.",
+        "At the time, Arnold’s proposal was highly unconventional. During the Cold War, engineers were largely focused on two priorities: winning the Space Race and optimizing the hydrogen bomb.",
+        "Inspired by Arnold’s ideas, mechanical engineering professor Bob McKim, with the help of art professor Matt Kahn, created an engineering program called Product Design.",
+        "Through this program, McKim and others contributed to the development of the design thinking process, which later helped lay the foundation for Stanford’s d.school. Design thinking also became a core methodology for companies such as IDEO.",
+        "The design thinking process is not linear, and there is no single prescribed way to follow it. It is an iterative system with many variations. However, Stanford’s d.school teaches a well-tested process that provides a practical starting point for tackling problems of any level of complexity."
+      ],
+      "explore": [
+        {
+          "title": "Human-Centered Design"
+        },
+        {
+          "title": "Empathy"
+        },
+        {
+          "title": "Experimentation and Prototyping"
+        },
+        {
+          "title": "Bias Toward Action"
+        },
+        {
+          "title": "Show, Don’t Tell"
+        },
+        {
+          "title": "The Power of Iteration"
+        }
+      ],
+      "outcomeLabel": "What you’ll take away",
+      "outcome": [
+        "After this talk, you will have a better understanding of how great products are created and how the design thinking methodology laid the foundation for a process that teaches us to focus on people’s needs."
+      ],
+      "dateISO": "2026-10-05",
+      "date": "Mon 5 Oct 2026",
+      "time": "10:00",
+      "location": "Online",
+      "price": "",
+      "priceNote": "",
+      "status": "Sold out",
+      "included": [],
+      "gallery": [],
+      "testimonials": [],
+      "image": {
+        "src": "images/design-thinking.webp",
+        "alt": "The five stages of design thinking drawn as circles: Empathy, Define, Ideate, Prototype and Test, over large faded letters reading Design Thinking, with violet hand-drawn notes: What’s happening here? and Design lecture",
+        "focus": "50% 50%"
+      },
+      "featured": true
     }
   ],
   "defaults": {

@@ -18,7 +18,10 @@
   var TITLES={home:'Hiveworx · Hands-on design workshops in Lisbon','about-us':'About Hiveworx · An experience-based design school in Lisbon',
     mentors:'Mentors · Practitioners who teach at Hiveworx, Lisbon',workshops:'Design workshops & talks in Lisbon · Hiveworx'};
   /* "Drawing Letters · Workshop in Lisbon · Hiveworx"; titles that already say workshop/talk just add the city */
-  function sessionTitle(s){return s.title+(new RegExp('\\b'+typeLabel(s)+'\\b','i').test(s.title)?' in Lisbon':' · '+typeLabel(s)+' in Lisbon')+' · Hiveworx'}
+  function sessionTitle(s){
+    if(/^online$/i.test(String(s.location||'').trim()))return s.title+' · Online '+typeLabel(s).toLowerCase()+' · Hiveworx';
+    return s.title+(new RegExp('\\b'+typeLabel(s)+'\\b','i').test(s.title)?' in Lisbon':' · '+typeLabel(s)+' in Lisbon')+' · Hiveworx';
+  }
 
   var nav=document.getElementById('nav');
   function onScroll(){nav.classList.toggle('scrolled',window.scrollY>8)}
@@ -77,15 +80,19 @@
   function byDate(a,b){if(!a.dateISO&&!b.dateISO)return 0;if(!a.dateISO)return 1;if(!b.dateISO)return -1;return a.dateISO<b.dateISO?-1:1}
   /* card price has little room: "To be announced" shows as TBD (the workshop page keeps the full words) */
   function tbd(v){return /^to be announced$/i.test(String(v||"").trim())?"TBD":v}
+  /* "status": "Sold out" in sessions.json: a badge on cards, no booking buttons */
+  function soldOut(s){return /sold out/i.test(s.status||'')}
   function card(s){
+    var so=soldOut(s),bookable=s.dateISO&&s.bookUrl&&!so;
     return '<article class="cls" data-kind="'+esc(s.format)+'" data-disc="'+esc(s.discipline)+'">'+
-      '<div class="cls-art">'+media(s,1)+'<span class="cls-type">'+typeLabel(s)+'</span>'+(s.featured?'<span class="cls-status cls-status-up">next up</span>':'')+'</div>'+
+      '<div class="cls-art">'+media(s,1)+'<span class="cls-type">'+typeLabel(s)+'</span>'+
+        (so?'<span class="cls-status cls-status-sold">Sold out</span>':s.featured?'<span class="cls-status cls-status-up">next up</span>':'')+'</div>'+
       '<div class="cls-body"><p class="cls-tag">'+esc(s.discipline)+'</p>'+seriesLine(s)+
       '<h3><a href="'+href('w-'+s.slug)+'">'+esc(s.title)+'</a></h3>'+
       '<ul class="cls-when"><li>'+ICON.date+esc(s.date)+'</li><li>'+ICON.time+esc(s.time)+'</li></ul>'+
       '<div class="cls-mentor">'+ICON.person+'<span><b>'+esc(s.mentor.name)+'</b>'+esc(s.mentor.role)+'</span></div>'+
-      '<div class="cls-foot"><p class="price"><b>'+esc(tbd(s.price))+'</b>'+esc(s.priceNote)+'</p>'+
-      '<a class="btn btn-ghost btn-sm" '+(s.dateISO&&s.bookUrl?'href="'+esc(s.bookUrl)+'" target="_blank" rel="noopener"':'href="'+href('w-'+s.slug)+'"')+'>'+(s.dateISO?'Book a spot':'View details')+' <span class="arr">→</span></a></div></div></article>';
+      '<div class="cls-foot">'+(s.price?'<p class="price"><b>'+esc(tbd(s.price))+'</b>'+esc(s.priceNote)+'</p>':'')+
+      '<a class="btn btn-ghost btn-sm" '+(bookable?'href="'+esc(s.bookUrl)+'" target="_blank" rel="noopener"':'href="'+href('w-'+s.slug)+'"')+'>'+(s.dateISO&&!so?'Book a spot':'View details')+' <span class="arr">→</span></a></div></div></article>';
   }
   function metaList(s){
     return '<ul class="ws-meta"><li>'+ICON.date+'<span><b>Date</b>'+esc(s.date)+'</span></li><li>'+ICON.time+'<span><b>Start time</b>'+esc(s.time)+'</span></li>'+
@@ -108,8 +115,11 @@
     var s=SESSIONS.filter(function(x){return x.featured})[0]; var el=document.getElementById('featured');
     if(!el)return;
     if(!s){el.closest('section').hidden=true;return}
+    /* the section label follows the session: "Upcoming workshop" or "Upcoming talk" */
+    var lab=el.closest('section').querySelector('.ws-head .label');if(lab)lab.textContent='Upcoming '+typeLabel(s).toLowerCase();
     el.innerHTML='<article class="ws-card"><div class="ws-art">'+media(s)+
-      '<div class="ws-tags"><span class="tag">'+esc(s.discipline)+'</span><span class="tag tag-ghost">'+typeLabel(s)+'</span></div></div><div class="ws-body">'+
+      '<div class="ws-tags"><span class="tag">'+esc(s.discipline)+'</span><span class="tag tag-ghost">'+typeLabel(s)+'</span>'+
+        (soldOut(s)?'<span class="tag tag-sold">Sold out</span>':'')+'</div></div><div class="ws-body">'+
       '<div class="ws-title"><h2><a href="'+href('w-'+s.slug)+'">'+esc(s.title)+'</a></h2><p class="ws-by">'+ICON.person+typeLabel(s)+' by: <b>'+esc(s.mentor.name)+'</b></p></div>'+
       metaList(s)+
       '<div class="ws-ctas"><a class="btn btn-light" href="'+href('w-'+s.slug)+'">See '+typeLabel(s).toLowerCase()+' details <span class="arr">→</span></a></div></div></article>';
@@ -210,8 +220,10 @@
             (s.summary?s.about:s.about.slice(1)).map(function(p){return '<p class="sd-sec-body">'+esc(p)+'</p>'}).join('')+'</div>'+
           (s.forWho?'<div class="sd-block"><p class="label">Who it’s for</p><p class="sd-sec-body">'+esc(s.forWho)+'</p>'+(s.levelNote?'<p class="sd-sec-body">'+esc(s.levelNote)+'</p>':'')+'</div>':'')+
           (explore.length?'<div class="sd-block"><p class="label">What you’ll explore</p>'+
-            '<ol class="sd-explore">'+explore.map(function(e,i){return '<li><details name="explore"><summary><span class="sd-ex-n">'+(i<9?'0':'')+(i+1)+'</span><h3>'+esc(e.title)+'</h3></summary><p>'+esc(e.text)+'</p></details></li>'}).join('')+'</ol>'+
-            (outcome.length?'<div class="sd-outcome"><p class="label">End of day outcome</p>'+outcome.map(function(p,i){return '<p class="sd-sec-body">'+esc(p)+'</p>'}).join('')+'</div>':'')+'</div>':'')+
+            /* a topic with text opens like an accordion; a topic that is just a title is a plain row */
+            '<ol class="sd-explore">'+explore.map(function(e,i){var n='<span class="sd-ex-n">'+(i<9?'0':'')+(i+1)+'</span><h3>'+esc(e.title)+'</h3>';
+              return e.text?'<li><details name="explore"><summary>'+n+'</summary><p>'+esc(e.text)+'</p></details></li>':'<li><div class="sd-ex-row">'+n+'</div></li>'}).join('')+'</ol>'+
+            (outcome.length?'<div class="sd-outcome"><p class="label">'+esc(s.outcomeLabel||'End of day outcome')+'</p>'+outcome.map(function(p,i){return '<p class="sd-sec-body">'+esc(p)+'</p>'}).join('')+'</div>':'')+'</div>':'')+
         '</div>'+
         (bio.length?'<div class="sd-panel-tab" role="tabpanel" id="sdp-mentor" aria-labelledby="sdt-mentor" hidden>'+
           '<div class="sd-block"><p class="label">About the mentor</p><h2 class="sd-mentor-name">'+esc(s.mentor.name)+'</h2>'+
@@ -220,12 +232,14 @@
         '<p class="hand sd-end-note">'+esc(s.includedNote||DEF.includedNote||'just bring curiosity')+'</p>'+
       '</div>'+
       '<aside class="sd-card" aria-label="'+tl+' details">'+
-        '<div class="sd-card-price"><span class="sd-card-k">Price</span><b>'+esc(s.price)+'</b>'+(s.priceNote?'<span>'+esc(s.priceNote)+'</span>':'')+'</div>'+
+        (soldOut(s)?'<div class="sd-card-price"><span class="sd-card-k">Tickets</span><b>Sold out</b></div>':
+          s.price?'<div class="sd-card-price"><span class="sd-card-k">Price</span><b>'+esc(s.price)+'</b>'+(s.priceNote?'<span>'+esc(s.priceNote)+'</span>':'')+'</div>':'')+
         '<ul class="sd-card-facts">'+
           fact(ICON.date,'Date',s.date)+fact(ICON.time,'Start time',s.time)+fact(ICON.loc,'Location',s.location)+
           fact(ICON.fmt,'Format',s.formatLabel)+fact(ICON.level,'Level',s.level)+fact(ICON.duration,'Duration',s.duration)+
         '</ul>'+
-        '<a class="btn btn-light sd-card-cta" href="'+book+'"'+(s.bookUrl?' target="_blank" rel="noopener"':'')+'>Register for the '+tll+' <span class="arr">→</span></a>'+
+        (soldOut(s)?'<span class="btn btn-light sd-card-cta is-disabled" aria-disabled="true">Sold out</span>':
+          '<a class="btn btn-light sd-card-cta" href="'+book+'"'+(s.bookUrl?' target="_blank" rel="noopener"':'')+'>Register for the '+tll+' <span class="arr">→</span></a>')+
       '</aside>'+
     '</div></section>'+
     /* 3. good to know / what's included */

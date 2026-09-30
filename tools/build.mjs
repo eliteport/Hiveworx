@@ -78,7 +78,7 @@ function lisbonOffset(dateISO) {
   return name === 'GMT' ? '+00:00' : name.replace('GMT', '');
 }
 function sessionLd(s, url) {
-  const description = clip(s.summary || (s.about || [])[0], 300);
+  const description = clip(s.metaDescription || s.summary || (s.about || [])[0], 300);
   const image = s.image ? [abs(s.image.src)] : undefined;
   if (!s.dateISO) {
     return { '@type': 'Course', name: s.title, description, url, image, provider: { '@id': ORG['@id'] }, inLanguage: 'en' };
@@ -92,16 +92,20 @@ function sessionLd(s, url) {
     const mins = +tm[1] * 60 + +tm[2] + +dm[1] * 60 + (+dm[2] || 0);
     if (mins < 24 * 60) endDate = `${s.dateISO}T${String(Math.floor(mins / 60)).padStart(2, '0')}:${String(mins % 60).padStart(2, '0')}:00${off}`;
   }
+  const online = /^online$/i.test(String(s.location || '').trim());
   const ev = {
     '@type': 'Event', name: s.title, description, url, image, startDate, endDate,
-    eventStatus: 'https://schema.org/EventScheduled', eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-    location: { '@type': 'Place', name: s.location || 'Hiveworx studio, Lisbon', address: { '@type': 'PostalAddress', addressLocality: 'Lisbon', addressCountry: 'PT' } },
+    eventStatus: 'https://schema.org/EventScheduled',
+    eventAttendanceMode: `https://schema.org/${online ? 'Online' : 'Offline'}EventAttendanceMode`,
+    location: online ? { '@type': 'VirtualLocation', url }
+      : { '@type': 'Place', name: s.location || 'Hiveworx studio, Lisbon', address: { '@type': 'PostalAddress', addressLocality: 'Lisbon', addressCountry: 'PT' } },
     organizer: { '@id': ORG['@id'] },
     performer: s.mentor && s.mentor.name ? { '@type': 'Person', name: s.mentor.name } : undefined,
     inLanguage: 'en',
   };
   const price = /free/i.test(s.price || '') ? '0' : ((String(s.price || '').match(/\d+(?:[.,]\d+)?/) || [])[0] || '').replace(',', '.');
-  if (price) ev.offers = { '@type': 'Offer', price, priceCurrency: 'EUR', availability: 'https://schema.org/InStock', url: s.bookUrl || url };
+  const soldOut = /sold out/i.test(s.status || '');
+  if (price) ev.offers = { '@type': 'Offer', price, priceCurrency: 'EUR', availability: `https://schema.org/${soldOut ? 'SoldOut' : 'InStock'}`, url: s.bookUrl || url };
   return ev;
 }
 function mentorsLd() {
@@ -124,7 +128,7 @@ const pages = [
     ld: () => [{ '@type': 'AboutPage', url: SITE + '/about/', name: 'About Hiveworx', about: { '@id': ORG['@id'] } }, breadcrumb([['Home', SITE + '/'], ['About', SITE + '/about/']])] },
   ...sessions.map((s) => ({
     page: 'w-' + s.slug, session: s,
-    desc: clip(s.summary || (s.about || [])[0]),
+    desc: clip(s.metaDescription || s.summary || (s.about || [])[0]),
     image: s.image && s.image.src,
     ld: (url) => [sessionLd(s, url), breadcrumb([['Home', SITE + '/'], ['Workshops & talks', SITE + '/workshops/'], [s.title, url]])],
   })),
