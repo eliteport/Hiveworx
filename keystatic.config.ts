@@ -17,7 +17,7 @@ const paragraphs = (label: string, description?: string) => fields.array(
 
 export default config({
   storage: import.meta.env.PROD ? { kind: 'cloud' } : { kind: 'local' },
-  cloud: { project: 'hiveworx/hiveworx' },
+  cloud: { project: 'hiveworx-team/hiveworx' },
   ui: {
     brand: { name: 'Hiveworx' },
     navigation: {
