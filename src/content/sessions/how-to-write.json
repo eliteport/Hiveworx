@@ -4,16 +4,12 @@
   "formatLabel": "3-session workshop",
   "discipline": "Image + Word",
   "mentor": "salome-kikaleishvili",
-  "time": "",
-  "duration": "3 weeks · one 2-hour session a week",
+  "duration": "2-3 hour session",
   "location": "Hiveworx studio, Lisbon",
   "level": "All levels",
-  "price": "",
-  "priceNote": "",
   "status": "interest",
   "image": "/images/sessions/how-to-write/image.webp",
   "imageAlt": "Black and white photo of a journalist interviewing an artist at a gallery opening, with notebooks, a camera and a laptop on the table; violet notes sketch written genres, the live event, an article structure and the final outcome: a recorded interview and a finished article",
-  "imageFocus": "",
   "summary": "A craft workshop for anyone who writes, about culture or for work. You’ll learn how written genres differ, how an article is built and how to run a good interview, then put it into practice by covering a real exhibition or event together.",
   "about": [],
   "forWho": "Aspiring journalists, communicators and anyone who writes for work, whatever the subject.",
@@ -36,12 +32,10 @@
       "text": "The group goes to an exhibition or event, interviews the curator or author, gathers material and builds an article together, with the tutor working alongside."
     }
   ],
-  "outcomeLabel": "",
   "outcome": [
     "You’ll leave with a recorded interview and a finished article built from a real cultural event."
   ],
   "practical": {
     "discriminant": "default"
-  },
-  "metaDescription": ""
+  }
 }
