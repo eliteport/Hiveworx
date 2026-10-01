@@ -871,3 +871,13 @@ a.sd-series-next{color:var(--paper)}
 
 /* section links (/#contact…) land just under the sticky menu, also without smooth scrolling */
 section[id]{scroll-margin-top:72px}
+
+/* ---------- Cookie consent banner (bottom left; full width on phones) ---------- */
+.cc{position:fixed;left:16px;bottom:16px;z-index:60;max-width:440px;padding:18px 20px;display:flex;flex-direction:column;gap:14px;
+  background:var(--ink-2);border:1px solid var(--line-2);border-radius:10px;box-shadow:0 24px 60px -24px rgba(0,0,0,.8);animation:fade .35s var(--ease)}
+.cc[hidden]{display:none}
+.cc-text{font-size:14.5px;line-height:var(--lh-small);color:var(--mute)}
+.cc-btns{display:flex;gap:10px;justify-content:flex-end}
+@media (max-width:600px){.cc{right:16px;max-width:none}.cc-btns .btn{flex:1;justify-content:center}}
+@media (prefers-reduced-motion:reduce){.cc{animation:none}}
+.cc-open{font:inherit;color:inherit;text-decoration:underline;text-underline-offset:3px}
