@@ -117,6 +117,38 @@
     lb.addEventListener('keydown',function(e){if(e.key==='ArrowRight')openLB(cur+1);if(e.key==='ArrowLeft')openLB(cur-1)});
   }
 
+  /* ===== Cookie consent + Google Analytics (set up in src/components/Analytics.astro) ===== */
+  function choice(){try{return localStorage.getItem('hx-consent')}catch(e){return null}}
+  var cc=document.getElementById('cookieBanner');
+  function consent(v){
+    try{localStorage.setItem('hx-consent',v)}catch(e){}
+    if(window.gtag)gtag('consent','update',{analytics_storage:v});
+    if(v==='granted'&&window.hxLoadGA)hxLoadGA();
+    if(v==='denied'){
+      /* changed their mind: remove the analytics cookies already set */
+      document.cookie.split(';').forEach(function(c){
+        var n=c.split('=')[0].trim();if(!/^_ga/.test(n))return;
+        var host=location.hostname,base=host.replace(/^www\./,'');
+        ['','; domain='+host,'; domain=.'+base].forEach(function(d){document.cookie=n+'=; Max-Age=0; path=/'+d});
+      });
+    }
+    if(cc)cc.hidden=true;
+  }
+  if(cc){
+    if(!choice())cc.hidden=false;
+    cc.addEventListener('click',function(e){var b=e.target.closest('[data-consent]');if(b)consent(b.dataset.consent)});
+  }
+  var ccOpen=document.getElementById('cookieSettings');
+  if(ccOpen&&cc)ccOpen.addEventListener('click',function(){cc.hidden=false;cc.querySelector('[data-consent="granted"]').focus()});
+
+  /* events (sent only after Accept): booking clicks and contact messages */
+  function track(name,params){if(choice()==='granted'&&window.gtag)gtag('event',name,params||{})}
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href]');if(!a||!/luma\.com/.test(a.getAttribute('href')))return;
+    var card=a.closest('.cls'),title=card?card.querySelector('h3'):document.querySelector('.sd-title');
+    track('book_click',{session:title?title.textContent.trim():'',link_location:card?'card':'session_page'});
+  });
+
   /* ===== Contact ===== */
   var btn=document.getElementById('copyBtn'),msg=document.getElementById('copyMsg'),email='hello@hiveworx.com';
   if(btn)btn.addEventListener('click',function(){
@@ -172,7 +204,7 @@
         var payload={name:d.name,email:d.email,'I am a':d.who,topic:d.topic,message:d.message,
           _subject:'['+d.who+'] '+d.topic+' · Hiveworx website',_gotcha:form.elements._gotcha?form.elements._gotcha.value:''};
         fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(payload)})
-          .then(function(r){if(!r.ok)throw 0;form.reset();count.textContent='0 / 2000';status.textContent='Thanks, '+d.name+'. Your message was sent. We’ll reply to '+d.email+'.'})
+          .then(function(r){if(!r.ok)throw 0;track('generate_lead',{who:d.who});form.reset();count.textContent='0 / 2000';status.textContent='Thanks, '+d.name+'. Your message was sent. We’ll reply to '+d.email+'.'})
           .catch(function(){status.classList.add('is-error');status.textContent='Your message couldn’t be sent. Try again, or email hello@hiveworx.com.'})
           .then(function(){sb.disabled=false});
         return;

@@ -1,0 +1,30 @@
+---
+/* Google Analytics (GA4), only with consent.
+   - Nothing loads until a visitor clicks Accept in the cookie banner (the choice is remembered).
+   - Only the live site sends data: localhost and Vercel previews never load Google's script.
+   The banner and the event tracking live in public/js/site.js. */
+const GA_ID = 'G-448D58Z5SF';
+const LIVE_HOST = 'www.hiveworx.com';
+---
+<script is:inline define:vars={{ GA_ID, LIVE_HOST }}>
+  window.HX_GA = { id: GA_ID, live: location.hostname === LIVE_HOST };
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () { window.dataLayer.push(arguments); };
+  gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+  gtag('js', new Date());
+  gtag('config', GA_ID);
+  window.hxLoadGA = function () {
+    if (!window.HX_GA.live || window.hxGALoaded) return;
+    window.hxGALoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+  };
+  try {
+    if (localStorage.getItem('hx-consent') === 'granted') {
+      gtag('consent', 'update', { analytics_storage: 'granted' });
+      window.hxLoadGA();
+    }
+  } catch (e) {}
+</script>

@@ -4,6 +4,8 @@ import Sprite from '../components/static/Sprite.astro';
 import Nav from '../components/Nav.astro';
 import Lightbox from '../components/static/Lightbox.astro';
 import Footer from '../components/static/Footer.astro';
+import Analytics from '../components/Analytics.astro';
+import CookieBanner from '../components/CookieBanner.astro';
 import { SITE, abs, ORG, DEFAULT_IMAGE } from '../lib/seo';
 
 interface Props {
@@ -34,6 +36,7 @@ const graph = JSON.stringify({ '@context': 'https://schema.org', '@graph': [ORG,
 <meta property="og:image" content={abs(image)}>
 <meta property="og:locale" content="en_GB">
 <meta name="twitter:card" content="summary_large_image">
+<Analytics />
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -53,6 +56,7 @@ const graph = JSON.stringify({ '@context': 'https://schema.org', '@graph': [ORG,
 </main>
 <Lightbox />
 <Footer />
+<CookieBanner />
 <script is:inline src="/js/site.js"></script>
 <script is:inline defer src="/js/motion.js"></script>
 </body>
