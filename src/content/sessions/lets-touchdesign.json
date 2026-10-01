@@ -11,7 +11,7 @@
   "level": "Absolute beginner",
   "price": "Free",
   "priceNote": "registration required",
-  "status": "open",
+  "status": "soldout",
   "bookUrl": "https://luma.com/n7wembxf",
   "image": "/images/sessions/lets-touchdesign/image.webp",
   "imageAlt": "A facilitator at a laptop leads a TouchDesigner session in a brick-walled room, with a node network on a large screen and participants working on their laptops",
@@ -38,12 +38,10 @@
       "text": "Using provided advanced project files, participants will choose an input (MIDI, depth camera, webcam, audio, or UI) and practice getting a couple of parameters of their visual to respond to it."
     }
   ],
-  "outcomeLabel": "",
   "outcome": [
     "Each participant will leave with their own working patch featuring at least two live interactive parameters. They will also take home advanced project files from the session to continue experimenting. Most importantly, attendees will leave knowing how a signal becomes an image, which is the foundational concept for everything built in TouchDesigner."
   ],
   "practical": {
     "discriminant": "default"
-  },
-  "metaDescription": ""
+  }
 }
