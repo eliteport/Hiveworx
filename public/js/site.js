@@ -138,8 +138,8 @@
     if(!choice())cc.hidden=false;
     cc.addEventListener('click',function(e){var b=e.target.closest('[data-consent]');if(b)consent(b.dataset.consent)});
   }
-  var ccOpen=document.getElementById('cookieSettings');
-  if(ccOpen&&cc)ccOpen.addEventListener('click',function(){cc.hidden=false;cc.querySelector('[data-consent="granted"]').focus()});
+  /* "Cookie settings" (footer, privacy page) reopens the banner */
+  document.querySelectorAll('#cookieSettings,[data-cookie-settings]').forEach(function(b){if(cc)b.addEventListener('click',function(){cc.hidden=false;cc.querySelector('[data-consent="granted"]').focus()})});
 
   /* events (sent only after Accept): booking clicks and contact messages */
   function track(name,params){if(choice()==='granted'&&window.gtag)gtag('event',name,params||{})}
