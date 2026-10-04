@@ -891,3 +891,7 @@ section[id]{scroll-margin-top:72px}
 .legal b{color:var(--paper);font-weight:500}
 .legal code{font-size:.92em;color:var(--paper)}
 .legal .linkbtn{font:inherit;color:var(--paper);text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- Card titles: line height = 1.4 × font size, on every screen size ----------
+   Workshop/talk cards, the "Upcoming" card, study-field cards, value cards, mentor cards. */
+.cls h3,.ws-card .ws-body h2,.dcard h3,.card.value h3,.mt-body h3{line-height:1.4}
