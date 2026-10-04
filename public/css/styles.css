@@ -900,3 +900,7 @@ section[id]{scroll-margin-top:72px}
    Home and About section headings, Get involved panels, Contact headline, session-page sections. */
 main .about-head h2,main .sec-head h2,main .approach h2,main .goal h2,main .more-title,main .sd-inc h2,
 main .sd-gal-head h2,main .sd-cta h2,main .sd-sec-head h2,main .sd-mentor-name,main .contact .ct-lead-first,main .panel h3{line-height:1.3}
+
+/* ---------- Page titles: line height = 1.3 × font size ----------
+   Home hero, About headline, and the page-title of Workshops & talks, Mentors and Privacy. */
+main .hero h1,main .ab-title,main .page-title{line-height:1.3}
