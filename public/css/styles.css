@@ -895,3 +895,8 @@ section[id]{scroll-margin-top:72px}
 /* ---------- Card titles: line height = 1.3 × font size, on every screen size ----------
    Workshop/talk cards, the "Upcoming" card, study-field cards, value cards, mentor cards. */
 .cls h3,.ws-card .ws-body h2,.dcard h3,.card.value h3,.mt-body h3{line-height:1.3}
+
+/* ---------- Section titles: line height = 1.3 × font size, on every screen size ----------
+   Home and About section headings, Get involved panels, Contact headline, session-page sections. */
+main .about-head h2,main .sec-head h2,main .approach h2,main .goal h2,main .more-title,main .sd-inc h2,
+main .sd-gal-head h2,main .sd-cta h2,main .sd-sec-head h2,main .sd-mentor-name,main .contact .ct-lead-first,main .panel h3{line-height:1.3}
