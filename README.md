@@ -24,11 +24,23 @@ public/                 css, js (site.js, motion.js), images, robots.txt
 
 Locally, Keystatic saves straight into `src/content/`. Check the result on localhost, then commit.
 
-## Publish
+## Edit and publish
 
-Vercel builds the site from GitHub (framework preset: Astro; build command `astro build`).
-On the live site, editors sign in to `/keystatic` through Keystatic Cloud (free for up to 3 people);
-each save becomes a commit on GitHub, which Vercel then publishes.
+Branches: `main` is the live site (protected: changes arrive only through a merged pull request, and
+only when the Vercel build passes). `drafts` is where content edits wait.
+
+1. **Edit** at https://www.hiveworx.com/keystatic/branch/drafts (sign in with Keystatic Cloud,
+   team `hiveworx-team`; free for up to 3 people). Check the top-left says **drafts** before saving.
+2. **Preview** at https://hiveworx-git-drafts-hiveworx.vercel.app, about a minute after a save
+   (Vercel login; editors get access through an access request on the preview).
+3. **Publish**: open https://github.com/eliteport/Hiveworx/compare/main...drafts, click
+   **Create pull request**, wait for the green Vercel check, then **Merge pull request → Confirm merge**.
+   Vercel publishes www.hiveworx.com about a minute later. Don't delete the `drafts` branch.
+4. **Keep drafts current**: after merging, if a later pull request says the branch is out of date,
+   click **Update branch** on it, so the next edits start from what is live.
+
+Code and design changes use their own short-lived branch and pull request in the same way.
+Vercel builds the site from GitHub (`vercel.json`: framework Astro, `npm run build`).
 
 ## Adding things later
 

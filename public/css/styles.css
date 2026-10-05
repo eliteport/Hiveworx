@@ -871,3 +871,36 @@ a.sd-series-next{color:var(--paper)}
 
 /* section links (/#contact…) land just under the sticky menu, also without smooth scrolling */
 section[id]{scroll-margin-top:72px}
+
+/* ---------- Cookie consent banner (bottom left; full width on phones) ---------- */
+.cc{position:fixed;left:16px;bottom:16px;z-index:60;max-width:440px;padding:18px 20px;display:flex;flex-direction:column;gap:14px;
+  background:var(--ink-2);border:1px solid var(--line-2);border-radius:10px;box-shadow:0 24px 60px -24px rgba(0,0,0,.8);animation:fade .35s var(--ease)}
+.cc[hidden]{display:none}
+.cc-text{font-size:14.5px;line-height:var(--lh-small);color:var(--mute)}
+.cc-btns{display:flex;gap:10px;justify-content:flex-end}
+@media (max-width:600px){.cc{right:16px;max-width:none}.cc-btns .btn{flex:1;justify-content:center}}
+@media (prefers-reduced-motion:reduce){.cc{animation:none}}
+.cc-open{font:inherit;color:inherit;text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- Privacy policy text ---------- */
+.legal{max-width:68ch;margin-top:clamp(40px,5vw,64px)}
+.legal-date{font-size:14px;color:var(--mute-2)}
+.legal h2{font-size:clamp(22px,2.2vw,28px);letter-spacing:-.02em;line-height:var(--lh-subtitle);margin:48px 0 14px}
+.legal p{color:var(--mute);font-size:17px;line-height:var(--lh-body)}
+.legal p+p{margin-top:14px}
+.legal b{color:var(--paper);font-weight:500}
+.legal code{font-size:.92em;color:var(--paper)}
+.legal .linkbtn{font:inherit;color:var(--paper);text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- Card titles: line height = 1.2 × font size, on every screen size ----------
+   Workshop/talk cards, the "Upcoming" card, study-field cards, value cards, mentor cards. */
+.cls h3,.ws-card .ws-body h2,.dcard h3,.card.value h3,.mt-body h3{line-height:1.2}
+
+/* ---------- Section titles: line height = 1.2 × font size, on every screen size ----------
+   Home and About section headings, Get involved panels, Contact headline, session-page sections. */
+main .about-head h2,main .sec-head h2,main .approach h2,main .goal h2,main .more-title,main .sd-inc h2,
+main .sd-gal-head h2,main .sd-cta h2,main .sd-sec-head h2,main .sd-mentor-name,main .contact .ct-lead-first,main .panel h3{line-height:1.2}
+
+/* ---------- Page titles: line height = 1.2 × font size ----------
+   Home hero, About headline, and the page-title of Workshops & talks, Mentors and Privacy. */
+main .hero h1,main .ab-title,main .page-title{line-height:1.2}
