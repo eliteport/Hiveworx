@@ -33,7 +33,8 @@ export function displayDate(iso: string | null) {
 let cache: Promise<{ sessions: Session[]; mentors: Mentor[]; upcoming: string | null; pinned: string[]; mentorsPage: boolean; standard: Practical | null }> | null = null;
 
 export function getContent() {
-  if (cache) return cache;
+  /* build: read once and share; local preview (npm run dev): read fresh so edits show on reload */
+  if (cache && !import.meta.env.DEV) return cache;
   cache = (async () => {
     const [rawMentors, rawSessions, home, site, defaults] = await Promise.all([
       reader.collections.mentors.all(), reader.collections.sessions.all(),
