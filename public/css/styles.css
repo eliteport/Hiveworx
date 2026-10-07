@@ -53,6 +53,9 @@ section{padding-block:clamp(72px,10vw,136px)}
 .btn-light:hover{background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.18)}
 .link{color:var(--paper);text-decoration:none;background:linear-gradient(var(--violet),var(--violet)) 0 100%/0 1px no-repeat;transition:background-size .3s var(--ease),color .2s}
 .link:hover{background-size:100% 1px;color:#fff}
+/* text links styled like the main menu: muted, brighter on hover, no underline (contact email + address, footer menu) */
+.menu-link{text-decoration:none;color:var(--mute);transition:color .2s}
+.menu-link:hover{color:var(--paper)}
 
 /* ---------- Nav ---------- */
 .nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(10,12,18,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s}
