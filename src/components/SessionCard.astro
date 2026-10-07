@@ -12,7 +12,7 @@ const label = s.dateISO && !s.soldOut ? 'Book a spot' : 'View details';
 /* cards have little room: an unset price shows as TBD; sold-out sessions show no price */
 const price = s.soldOut ? '' : s.price || 'TBD';
 ---
-<article class="cls" data-kind={s.format} data-disc={s.discipline}>
+<article class="cls" data-kind={s.format} data-disc={s.discipline} data-date={s.dateISO}>
   <div class="cls-art"><Media session={s} lazy /><span class="cls-type">{s.typeLabel}</span>{s.soldOut
     ? <span class="cls-status cls-status-sold">Sold out</span>
     : nextUp && <span class="cls-status cls-status-up">next up</span>}</div>

@@ -68,7 +68,7 @@ export function sessionLd(s: Session, url: string) {
     eventStatus: 'https://schema.org/EventScheduled',
     eventAttendanceMode: `https://schema.org/${s.online ? 'Online' : 'Offline'}EventAttendanceMode`,
     location: s.online ? { '@type': 'VirtualLocation', url }
-      : { '@type': 'Place', name: s.location || 'Hiveworx studio, Lisbon', address: { '@type': 'PostalAddress', addressLocality: 'Lisbon', addressCountry: 'PT' } },
+      : { '@type': 'Place', name: s.location || 'Hiveworx – Design school', address: { '@type': 'PostalAddress', addressLocality: 'Lisbon', addressCountry: 'PT' } },
     organizer: { '@id': ORG['@id'] },
     performer: s.mentor ? { '@type': 'Person', name: s.mentor.name } : undefined,
     inLanguage: 'en',

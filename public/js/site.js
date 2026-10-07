@@ -53,6 +53,10 @@
   /* Workshops & talks page: format × discipline, with a count and an empty message */
   var bar=document.getElementById('pageFilters');
   if(bar){
+    /* the page is built ahead of time: drop sessions whose date has passed since then (Lisbon time), and filters left empty */
+    var today;try{today=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Lisbon'}).format(new Date())}catch(e){}
+    var gone=0;if(today)[].forEach.call(document.querySelectorAll('#pageGrid .cls[data-date]'),function(c){if(c.dataset.date<today){c.remove();gone++}});
+    if(gone)[].forEach.call(bar.querySelectorAll('[data-group="disc"] .filter:not([data-v="all"])'),function(b){if(!document.querySelector('#pageGrid .cls[data-disc="'+b.dataset.v.replace(/"/g,'\\"')+'"]'))b.remove()});
     var groups=[].slice.call(bar.querySelectorAll('[data-group]')),cards=[].slice.call(document.querySelectorAll('#pageGrid .cls'));
     var cnt=document.getElementById('resultCount'),empty=document.getElementById('pageEmpty');
     function apply(){
@@ -62,6 +66,7 @@
     }
     groups.forEach(function(g){var btns=[].slice.call(g.querySelectorAll('.filter'));btns.forEach(function(b){b.addEventListener('click',function(){btns.forEach(function(x){x.setAttribute('aria-pressed',x===b)});apply()})})});
     document.getElementById('resetFilters').addEventListener('click',function(){groups.forEach(function(g){g.querySelectorAll('.filter').forEach(function(x,i){x.setAttribute('aria-pressed',i===0)})});apply()});
+    if(gone)apply();
   }
 
   /* ===== Scroll effects ===== */

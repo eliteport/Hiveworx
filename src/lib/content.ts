@@ -33,7 +33,8 @@ export function displayDate(iso: string | null) {
 let cache: Promise<{ sessions: Session[]; mentors: Mentor[]; upcoming: string | null; pinned: string[]; mentorsPage: boolean; standard: Practical | null }> | null = null;
 
 export function getContent() {
-  if (cache) return cache;
+  /* build: read once and share; local preview (npm run dev): read fresh so edits show on reload */
+  if (cache && !import.meta.env.DEV) return cache;
   cache = (async () => {
     const [rawMentors, rawSessions, home, site, defaults] = await Promise.all([
       reader.collections.mentors.all(), reader.collections.sessions.all(),
@@ -86,3 +87,14 @@ export function homeSessions(all: Session[], upcoming: string | null, pinned: st
 }
 
 export const sessionUrl = (s: { slug: string }) => `/workshops/${s.slug}/`;
+
+/* today in Lisbon as "2026-10-07"; a session is past from the day after its date (undated ones never are).
+   public/js/site.js repeats this check in the browser, so sessions also drop off between site rebuilds. */
+export const todayISO = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Lisbon' }).format(new Date());
+export const isPast = (s: Session, today = todayISO()) => !!s.dateISO && s.dateISO < today;
+
+/* Workshops & talks page: no past sessions, next up first, then by date */
+export function listSessions(all: Session[], upcoming: string | null) {
+  const today = todayISO();
+  return all.filter((s) => !isPast(s, today)).sort((a, b) => Number(b.slug === upcoming) - Number(a.slug === upcoming) || byDate(a, b));
+}
