@@ -896,8 +896,8 @@ section[id]{scroll-margin-top:72px}
 .legal .linkbtn{font:inherit;color:var(--paper);text-decoration:underline;text-underline-offset:3px}
 
 /* ---------- Card titles: line height = 1.2 × font size, on every screen size ----------
-   Workshop/talk cards, the "Upcoming" card, study-field cards, value cards, mentor cards. */
-.cls h3,.ws-card .ws-body h2,.dcard h3,.card.value h3,.mt-body h3{line-height:1.2}
+   The "Upcoming" card, study-field cards, value cards, mentor cards. */
+.ws-card .ws-body h2,.dcard h3,.card.value h3,.mt-body h3{line-height:1.2}
 
 /* ---------- Section titles: line height = 1.2 × font size, on every screen size ----------
    Home and About section headings, Get involved panels, Contact headline, session-page sections. */
@@ -907,3 +907,9 @@ main .sd-gal-head h2,main .sd-cta h2,main .sd-sec-head h2,main .sd-mentor-name,m
 /* ---------- Page titles: line height = 1.2 × font size ----------
    Home hero, About headline, and the page-title of Workshops & talks, Mentors and Privacy. */
 main .hero h1,main .ab-title,main .page-title{line-height:1.2}
+
+/* ---------- Workshop/talk cards: title line height = 1.4 × font size ---------- */
+.cls h3{line-height:1.4}
+
+/* ---------- Workshop page title: line height = 1.2 × font size ---------- */
+main .sd-title{line-height:1.2}
