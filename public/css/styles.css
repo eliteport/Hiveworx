@@ -916,3 +916,6 @@ main .hero h1,main .ab-title,main .page-title{line-height:1.2}
 
 /* ---------- Workshop page title: line height = 1.2 × font size ---------- */
 main .sd-title{line-height:1.2}
+
+/* ---------- Founder portrait: 10% smaller than before (was the full column, up to 420px) ---------- */
+.portrait-photo{width:90%;max-width:378px}
