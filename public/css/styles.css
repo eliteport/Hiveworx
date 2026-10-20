@@ -947,6 +947,7 @@ html:not([data-theme="dark"]){
   --violet-wash:#F1E4FB; /* tinted surface */
   --focus:#7A2DB0;
   --logo-hex:#fff;       /* logo on light: white hexagons, #0A0C12 lettering and details (dark mode: #F3F1F7 / #0A0C12) */
+  --mute-bg:#E2E0E8;     /* "Mute" surface: workshop/talk cards and their image areas (brand Mute #A2A1B3 at 25% over white) */
   --tint-grid:rgba(21,18,31,.06);
   --art:radial-gradient(120% 90% at 30% 10%,#D8D6E0 0%,#E6E4EB 55%,#F1F0F4 100%);
 }
@@ -956,7 +957,8 @@ html:not([data-theme="dark"]) footer{background:var(--ink)}
 html:not([data-theme="dark"]) .logo{color:#0A0C12}   /* HIVEWORX lettering (fill: currentColor) */
 /* every section band is white too (they are tinted in dark mode); cards stay white on every screen size, set apart by their border */
 html:not([data-theme="dark"]) :is(.edition,.aud,.sd-inc-wrap,.sd-voices){background:var(--ink)}
-html:not([data-theme="dark"]) :is(.cls,#classes .cls,#about-classes .cls){background:var(--ink-2)}
+/* workshop and talk cards (incl. past ones): Mute surface, image area included */
+html:not([data-theme="dark"]) :is(.cls,#classes .cls,#about-classes .cls){background:var(--mute-bg)}
 html:not([data-theme="dark"]) .link:hover{color:var(--paper)}
 /* light buttons only ever sit on violet: same colours as in dark mode */
 html:not([data-theme="dark"]) .btn-light{background:#F3F1F7;color:#0A0C12}
@@ -964,7 +966,7 @@ html:not([data-theme="dark"]) .btn-light:hover{background:#fff;color:#0A0C12}
 
 /* art panels and photo frames: soft violet light instead of the dark radial glow */
 html:not([data-theme="dark"]) :is(.d-art,.portrait,.sd-frame){background:var(--art)}
-html:not([data-theme="dark"]) .cls-art{background:radial-gradient(120% 100% at 30% 0%,#D8D6E0,#ECEBF0 70%)}
+html:not([data-theme="dark"]) .cls-art{background:var(--mute-bg)}
 html:not([data-theme="dark"]) :is(.cls-art,.sd-frame)::before{background:linear-gradient(90deg,var(--tint-grid) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(var(--tint-grid) 1px,transparent 1px) 0 0/28px 28px}
 html:not([data-theme="dark"]) .portrait-photo{background:none}
 
@@ -973,6 +975,10 @@ html:not([data-theme="dark"]) .portrait-photo{background:none}
 html:not([data-theme="dark"]) .ws-card{
   --ink:#0A0C12;--ink-2:#10131B;--ink-3:#181C27;--line:rgba(236,232,245,.09);--line-2:rgba(236,232,245,.18);
   --paper:#F3F1F7;--mute:#A2A1B3;--mute-2:#6E6D80;--violet:#B24EE8;--violet-lt:#D29BF6;--violet-wash:#1E1230;--focus:#E9C8FF}
+/* ...except its colour on light: the brand violet #B24EE8; secondary text goes full white for contrast (white on #B24EE8 is 4.1:1) */
+html:not([data-theme="dark"]) .ws-card{background:#B24EE8}
+html:not([data-theme="dark"]) :is(.ws-card .ws-by,.ws-card .ws-meta b){color:#fff}
+html:not([data-theme="dark"]) .ws-card:hover{box-shadow:0 30px 80px -40px rgba(154,58,207,.55)}
 
 /* workshop cards: the "Book a spot" / "View details" button sits on white instead of being see-through */
 html:not([data-theme="dark"]) .cls-foot .btn-ghost:not(:hover){background:#fff}
@@ -982,7 +988,8 @@ html:not([data-theme="dark"]) .studio{background:var(--ink)}
 html:not([data-theme="dark"]) .studio-img{filter:invert(1) hue-rotate(180deg) saturate(1.15)}
 
 /* badges sitting on photos keep their dark/light chips, whatever the theme */
-html:not([data-theme="dark"]) .cls-status{background:rgba(10,12,18,.7);border-color:rgba(243,241,247,.18);color:#F3F1F7}
+html:not([data-theme="dark"]) .cls-status:not(.cls-status-up){background:rgba(10,12,18,.7);border-color:rgba(243,241,247,.18);color:#F3F1F7}
+html:not([data-theme="dark"]) .cls-status-up{color:#B24EE8}   /* handwritten "next up" on the photo: the bright dark-mode violet */
 html:not([data-theme="dark"]) .ws-card .ws-art .tag-ghost{background:rgba(10,12,18,.8);border-color:rgba(255,255,255,.28);color:#F3F1F7}
 html:not([data-theme="dark"]) :is(.cls[data-kind="talk"] .cls-type,.cls-status-sold,.ws-card .ws-art .tag-sold){background:rgba(255,255,255,.88);color:#0A0C12}
 
