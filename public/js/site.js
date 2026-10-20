@@ -50,15 +50,15 @@
       [].forEach.call(grid.querySelectorAll('.cls'),function(c){c.hidden=!(b.dataset.filter==='all'||c.dataset.kind===b.dataset.filter)});
     })});
   });
-  /* footer Light / Dark switch: light is the default; the choice is saved and applied before paint (Base.astro) */
+  /* footer Light / Dark switch: dark is the default; the choice is saved and applied before paint (Base.astro) */
   var themeBtns=[].slice.call(document.querySelectorAll('[data-theme-set]'));
   if(themeBtns.length){
     var root=document.documentElement,meta=document.querySelector('meta[name="theme-color"]');
-    function showTheme(){var t=root.dataset.theme==='dark'?'dark':'light';themeBtns.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.themeSet===t)});if(meta)meta.content=t==='dark'?'#0A0C12':'#FFFFFF'}
+    function showTheme(){var t=root.dataset.theme==='light'?'light':'dark';themeBtns.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.themeSet===t)});if(meta)meta.content=t==='dark'?'#0A0C12':'#FFFFFF'}
     themeBtns.forEach(function(b){b.addEventListener('click',function(){
-      var t=b.dataset.themeSet;if((root.dataset.theme==='dark'?'dark':'light')===t)return;
+      var t=b.dataset.themeSet;if((root.dataset.theme==='light'?'light':'dark')===t)return;
       root.classList.add('theme-anim');
-      if(t==='dark')root.dataset.theme='dark';else delete root.dataset.theme;
+      if(t==='light')root.dataset.theme='light';else delete root.dataset.theme;
       try{localStorage.setItem('hx-theme',t)}catch(e){}
       showTheme();setTimeout(function(){root.classList.remove('theme-anim')},450);
     })});
@@ -152,6 +152,13 @@
   /* ===== Cookie consent + Google Analytics (set up in src/components/Analytics.astro) ===== */
   function choice(){try{return localStorage.getItem('hx-consent')}catch(e){return null}}
   var cc=document.getElementById('cookieBanner');
+  /* while the banner is open the footer gets extra room underneath, so the banner never covers the Light/Dark switch */
+  if(cc){
+    var ccSpace=function(){document.documentElement.style.setProperty('--cc-space',cc.hidden?'0px':(cc.offsetHeight+24)+'px')};
+    new MutationObserver(ccSpace).observe(cc,{attributes:true,attributeFilter:['hidden']});
+    if(window.ResizeObserver)new ResizeObserver(ccSpace).observe(cc);
+    ccSpace();
+  }
   function consent(v){
     try{localStorage.setItem('hx-consent',v)}catch(e){}
     if(window.gtag)gtag('consent','update',{analytics_storage:v});
