@@ -1,11 +1,12 @@
 ---
 import Base from '../../layouts/Base.astro';
 import SessionCard from '../../components/SessionCard.astro';
-import { getContent, listSessions } from '../../lib/content';
+import { getContent, listSessions, pastSessions } from '../../lib/content';
 import { SITE, TITLES, DESCRIPTIONS, breadcrumb } from '../../lib/seo';
 
 const { sessions: all, upcoming } = await getContent();
 const sessions = listSessions(all, upcoming);
+const past = pastSessions(all);
 const disciplines = [...new Set(sessions.map((s) => s.discipline).filter(Boolean))];
 const count = (n: number) => `${n} ${n === 1 ? 'session' : 'sessions'}`;
 ---
@@ -31,6 +32,14 @@ const count = (n: number) => `${n} ${n === 1 ? 'session' : 'sessions'}`;
       <p class="result-count" id="resultCount" aria-live="polite">{count(sessions.length)}</p>
       <div class="cls-grid" id="pageGrid">{sessions.map((s) => <SessionCard session={s} nextUp={s.slug === upcoming} />)}</div>
       <p class="empty" id="pageEmpty" hidden>Nothing here yet for this filter. <button class="linkbtn" type="button" id="resetFilters">Show everything</button></p>
+    </div>
+  </section>
+
+  <!-- sessions that already happened, most recent first; site.js moves cards here when their date passes -->
+  <section class="past-sessions" id="past" hidden={past.length === 0}>
+    <div class="wrap">
+      <div class="sec-head"><div><p class="label">Archive</p><h2 class="more-title">Past workshops <span class="v">&amp; talks</span></h2></div></div>
+      <div class="cls-grid" id="pastGrid">{past.map((s) => <SessionCard session={s} past />)}</div>
     </div>
   </section>
 </Base>

@@ -392,11 +392,14 @@ footer .logo svg{height:30px}
 
 /* ---------- Footer ---------- */
 footer{border-top:1px solid var(--line);padding-block:64px 36px}
-.f-grid{display:grid;grid-template-columns:3.4fr 1fr;gap:36px}
+.f-grid{display:grid;grid-template-columns:1fr max-content max-content;gap:36px clamp(36px,6vw,88px)}
 .f-brand p{color:var(--mute);margin-top:16px;max-width:30ch;font-size:15.5px}
 .f-brand .hand{font-size:28px;margin-top:22px;display:inline-block;transform:rotate(-4deg)}
 footer h4{margin:0 0 14px;font-weight:500;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
 footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:15.5px}
+/* social links: line icon drawn like the card icons, takes the link colour (muted, brighter on hover) */
+.f-social{display:inline-flex;align-items:center;gap:10px}
+.f-social svg{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .f-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:56px;padding-top:24px;border-top:1px solid var(--line);font-size:13.5px;color:var(--mute-2)}
 @media (max-width:860px){.f-grid{grid-template-columns:1fr 1fr}.f-brand{grid-column:1/-1}}
 @media (max-width:420px){.f-grid{grid-template-columns:1fr}}
@@ -913,3 +916,10 @@ main .hero h1,main .ab-title,main .page-title{line-height:1.2}
 
 /* ---------- Workshop page title: line height = 1.2 × font size ---------- */
 main .sd-title{line-height:1.2}
+
+/* ---------- Founder portrait: 10% smaller than before (was the full column, up to 420px); just the photo, no frame ---------- */
+.portrait-photo{width:90%;max-width:378px;padding:0;border:0;background:none}
+
+/* ---------- Workshops & talks page: past sessions under the current ones ---------- */
+.past-sessions{padding-top:0}
+.past-sessions .cls-grid{margin-top:32px}

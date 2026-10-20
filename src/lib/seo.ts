@@ -37,6 +37,7 @@ export const ORG = {
   logo: SITE + '/images/og-hiveworx.png', description: DESCRIPTIONS.home,
   founder: { '@type': 'Person', name: 'Temo K. Dolidze' },
   address: { '@type': 'PostalAddress', addressLocality: 'Lisbon', addressCountry: 'PT' },
+  sameAs: ['https://www.instagram.com/hiveworx/'],
 };
 export const breadcrumb = (items: [string, string][]) => ({
   '@type': 'BreadcrumbList',

@@ -53,9 +53,21 @@
   /* Workshops & talks page: format × discipline, with a count and an empty message */
   var bar=document.getElementById('pageFilters');
   if(bar){
-    /* the page is built ahead of time: drop sessions whose date has passed since then (Lisbon time), and filters left empty */
+    /* the page is built ahead of time: sessions whose date has passed since then (Lisbon time) move to "Past"
+       (newest first, shown like the built past cards: no badge, no price, "View details"); filters left empty go */
     var today;try{today=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Lisbon'}).format(new Date())}catch(e){}
-    var gone=0;if(today)[].forEach.call(document.querySelectorAll('#pageGrid .cls[data-date]'),function(c){if(c.dataset.date<today){c.remove();gone++}});
+    var moved=today?[].filter.call(document.querySelectorAll('#pageGrid .cls[data-date]'),function(c){return c.dataset.date<today}):[],gone=moved.length;
+    var pastGrid=document.getElementById('pastGrid');
+    if(gone&&pastGrid){
+      var first=pastGrid.firstChild;
+      moved.sort(function(a,b){return a.dataset.date<b.dataset.date?1:-1}).forEach(function(c){
+        c.classList.add('cls-past');[].forEach.call(c.querySelectorAll('.cls-status,.price'),function(x){x.remove()});
+        var btn=c.querySelector('.cls-foot .btn'),page=c.querySelector('h3 a');
+        if(btn&&page){btn.href=page.getAttribute('href');btn.removeAttribute('target');btn.removeAttribute('rel');btn.innerHTML='View details <span class="arr">→</span>'}
+        pastGrid.insertBefore(c,first);
+      });
+      document.getElementById('past').hidden=false;
+    }else moved.forEach(function(c){c.remove()});
     if(gone)[].forEach.call(bar.querySelectorAll('[data-group="disc"] .filter:not([data-v="all"])'),function(b){if(!document.querySelector('#pageGrid .cls[data-disc="'+b.dataset.v.replace(/"/g,'\\"')+'"]'))b.remove()});
     var groups=[].slice.call(bar.querySelectorAll('[data-group]')),cards=[].slice.call(document.querySelectorAll('#pageGrid .cls'));
     var cnt=document.getElementById('resultCount'),empty=document.getElementById('pageEmpty');
