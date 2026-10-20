@@ -951,12 +951,15 @@ html:not([data-theme="dark"]){
   --tint-grid:rgba(21,18,31,.06);
   --art:radial-gradient(120% 90% at 30% 10%,#D8D6E0 0%,#E6E4EB 55%,#F1F0F4 100%);
 }
-html:not([data-theme="dark"]) .nav{background:rgba(255,255,255,.9)}
-html:not([data-theme="dark"]) footer{background:#fff}
+/* header and footer: the page grey (brand Mute tint); the header stays slightly see-through for its blur */
+html:not([data-theme="dark"]) .nav{background:rgba(226,224,232,.9)}
+html:not([data-theme="dark"]) footer{background:var(--ink)}
 html:not([data-theme="dark"]) :is(.edition,.aud,.sd-inc-wrap,.sd-voices){background:var(--band)}
-/* cards are white on the grey page everywhere (dark mode darkens cards inside its lighter bands; on light the band is the page grey) */
-html:not([data-theme="dark"]) :is(.cls,#classes .cls,#about-classes .cls){background:var(--ink-2)}
-html:not([data-theme="dark"]) :is(.sd-quote,.tabs){background:var(--ink-2)}
+/* "Explore our workshops & talks" (home, About) and "Get involved": white sections. As in dark mode, cards and
+   tabs inside these lighter sections take the page colour; workshop cards anywhere else are white on the grey page. */
+html:not([data-theme="dark"]) :is(#classes,#about-classes,#join){background:#fff}
+html:not([data-theme="dark"]) .cls{background:var(--ink-2)}
+html:not([data-theme="dark"]) :is(#classes,#about-classes) .cls{background:var(--ink)}
 html:not([data-theme="dark"]) .link:hover{color:var(--paper)}
 /* light buttons only ever sit on violet: same colours as in dark mode */
 html:not([data-theme="dark"]) .btn-light{background:#F3F1F7;color:#0A0C12}
@@ -1002,10 +1005,10 @@ html:not([data-theme="dark"]) .cc{box-shadow:0 24px 60px -24px rgba(40,20,70,.28
 /* phones: the menu bar's blur and the open-menu overlay */
 @media (max-width:880px){
   html:not([data-theme="dark"]) .nav{background:none}
-  html:not([data-theme="dark"]) .nav::before{background:rgba(255,255,255,.9)}
+  html:not([data-theme="dark"]) .nav::before{background:rgba(226,224,232,.9)}
   /* the closed overlay gets no fill: some renderers still paint it at opacity 0, which on light would veil the page */
   html:not([data-theme="dark"]) .nav ul{background:transparent}
-  html:not([data-theme="dark"]) .nav.open::before,html:not([data-theme="dark"]) .nav.open ul{background:rgba(255,255,255,.9)}
+  html:not([data-theme="dark"]) .nav.open::before,html:not([data-theme="dark"]) .nav.open ul{background:rgba(226,224,232,.94)}
 }
 
 /* ---------- Footer: Light / Dark switch ---------- */
