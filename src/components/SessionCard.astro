@@ -4,16 +4,16 @@ import type { Session } from '../lib/content';
 import { sessionUrl } from '../lib/content';
 import { ICON } from '../lib/icons';
 import Media from './Media.astro';
-interface Props { session: Session; nextUp?: boolean }
-const { session: s, nextUp = false } = Astro.props;
+interface Props { session: Session; nextUp?: boolean; past?: boolean }
+const { session: s, nextUp = false, past = false } = Astro.props;
 /* with a date and a registration link, "Book a spot" goes straight to registration */
-const bookable = !!(s.dateISO && s.bookUrl && !s.soldOut);
-const label = s.dateISO && !s.soldOut ? 'Book a spot' : 'View details';
+const bookable = !past && !!(s.dateISO && s.bookUrl && !s.soldOut);
+const label = !past && s.dateISO && !s.soldOut ? 'Book a spot' : 'View details';
 /* cards have little room: an unset price shows as TBD; sold-out sessions show no price */
-const price = s.soldOut ? '' : s.price || 'TBD';
+const price = past || s.soldOut ? '' : s.price || 'TBD';
 ---
-<article class="cls" data-kind={s.format} data-disc={s.discipline} data-date={s.dateISO}>
-  <div class="cls-art"><Media session={s} lazy /><span class="cls-type">{s.typeLabel}</span>{s.soldOut
+<article class:list={["cls", past && "cls-past"]} data-kind={s.format} data-disc={s.discipline} data-date={s.dateISO}>
+  <div class="cls-art"><Media session={s} lazy /><span class="cls-type">{s.typeLabel}</span>{past ? null : s.soldOut
     ? <span class="cls-status cls-status-sold">Sold out</span>
     : nextUp && <span class="cls-status cls-status-up">next up</span>}</div>
   <div class="cls-body">

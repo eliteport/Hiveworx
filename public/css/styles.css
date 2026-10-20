@@ -919,3 +919,7 @@ main .sd-title{line-height:1.2}
 
 /* ---------- Founder portrait: 10% smaller than before (was the full column, up to 420px); just the photo, no frame ---------- */
 .portrait-photo{width:90%;max-width:378px;padding:0;border:0;background:none}
+
+/* ---------- Workshops & talks page: past sessions under the current ones ---------- */
+.past-sessions{padding-top:0}
+.past-sessions .cls-grid{margin-top:32px}
