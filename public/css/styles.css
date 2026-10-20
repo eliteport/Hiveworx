@@ -929,31 +929,34 @@ main .sd-title{line-height:1.2}
    available through the footer switch, which sets <html data-theme="dark"> (saved in
    localStorage "hx-theme", applied before paint by the script in Base.astro).
    Same brand violet family, deepened where it carries small text so everything stays AA:
-   text 17:1 · secondary 6.9:1 · tertiary 4.7:1 · violet 4.9:1 · small violet 6.9:1 on #F7F5FA.
+   text 14:1 · secondary 5.7:1 · tertiary 4.7:1 · violet 4.7:1 · small violet 5.7:1 on the #E2E0E8 page (higher on white cards).
    Violet surfaces (bands, the next-up card, session card, tags) keep white text in both themes.
    ===================================================================================== */
 html:not([data-theme="dark"]){
   color-scheme: light;
-  --ink:#F7F5FA;         /* page: off-white with a violet tint */
+  --ink:#E2E0E8;         /* page: the brand Mute #A2A1B3 at 25% over white, a neutral grey-lavender */
   --ink-2:#FFFFFF;       /* raised surface: cards, panels */
-  --ink-3:#F1ECF7;       /* card hover */
+  --ink-3:#F3F2F6;       /* card hover */
   --line:rgba(21,18,31,.10);
   --line-2:rgba(21,18,31,.18);
   --paper:#15121F;       /* primary text */
   --mute:#55526A;        /* secondary text */
-  --mute-2:#6F6C82;      /* tertiary / ghost words */
-  --violet:#9B3BD4;      /* brand accent, one step deeper than on dark */
+  --mute-2:#625F76;      /* tertiary / ghost words */
+  --violet:#8E33C6;      /* brand accent, deeper than on dark so it stays AA on the grey page */
   --violet-lt:#7A2DB0;   /* small accent text on light */
   --violet-wash:#F1E4FB; /* tinted surface */
   --focus:#7A2DB0;
   --logo-hex:var(--mute); /* logo hexagons: the muted grey (#55526A) on light; #F3F1F7 on dark */
-  --band:#E2E0E8;        /* full-width section bands: the brand mute #A2A1B3 at 25% over the page (solid mute would drop grey/violet text below AA) */
+  --band:var(--ink);     /* full-width section bands: same grey as the page (solid Mute would drop grey/violet text below AA) */
   --tint-grid:rgba(21,18,31,.06);
-  --art:radial-gradient(120% 90% at 30% 10%,#EFE3FA 0%,#F6F2FB 55%,#FBFAFD 100%);
+  --art:radial-gradient(120% 90% at 30% 10%,#D8D6E0 0%,#E6E4EB 55%,#F1F0F4 100%);
 }
 html:not([data-theme="dark"]) .nav{background:rgba(255,255,255,.9)}
 html:not([data-theme="dark"]) footer{background:#fff}
 html:not([data-theme="dark"]) :is(.edition,.aud,.sd-inc-wrap,.sd-voices){background:var(--band)}
+/* cards are white on the grey page everywhere (dark mode darkens cards inside its lighter bands; on light the band is the page grey) */
+html:not([data-theme="dark"]) :is(.cls,#classes .cls,#about-classes .cls){background:var(--ink-2)}
+html:not([data-theme="dark"]) :is(.sd-quote,.tabs){background:var(--ink-2)}
 html:not([data-theme="dark"]) .link:hover{color:var(--paper)}
 /* light buttons only ever sit on violet: same colours as in dark mode */
 html:not([data-theme="dark"]) .btn-light{background:#F3F1F7;color:#0A0C12}
@@ -961,7 +964,7 @@ html:not([data-theme="dark"]) .btn-light:hover{background:#fff;color:#0A0C12}
 
 /* art panels and photo frames: soft violet light instead of the dark radial glow */
 html:not([data-theme="dark"]) :is(.d-art,.portrait,.sd-frame){background:var(--art)}
-html:not([data-theme="dark"]) .cls-art{background:radial-gradient(120% 100% at 30% 0%,#EFE3FA,#F8F5FC 70%)}
+html:not([data-theme="dark"]) .cls-art{background:radial-gradient(120% 100% at 30% 0%,#D8D6E0,#ECEBF0 70%)}
 html:not([data-theme="dark"]) :is(.cls-art,.sd-frame)::before{background:linear-gradient(90deg,var(--tint-grid) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(var(--tint-grid) 1px,transparent 1px) 0 0/28px 28px}
 html:not([data-theme="dark"]) .portrait-photo{background:none}
 
@@ -975,7 +978,7 @@ html:not([data-theme="dark"]) .ws-card{
 html:not([data-theme="dark"]) .cls-foot .btn-ghost:not(:hover){background:#fff}
 
 /* philosophy drawing: chalk on a dark board → ink on paper (inverted, hue kept) */
-html:not([data-theme="dark"]) .studio{background:#F4F1F9}
+html:not([data-theme="dark"]) .studio{background:#ECEBF0}
 html:not([data-theme="dark"]) .studio-img{filter:invert(1) hue-rotate(180deg) saturate(1.15)}
 
 /* badges sitting on photos keep their dark/light chips, whatever the theme */

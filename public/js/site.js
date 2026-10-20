@@ -54,7 +54,7 @@
   var themeBtns=[].slice.call(document.querySelectorAll('[data-theme-set]'));
   if(themeBtns.length){
     var root=document.documentElement,meta=document.querySelector('meta[name="theme-color"]');
-    function showTheme(){var t=root.dataset.theme==='dark'?'dark':'light';themeBtns.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.themeSet===t)});if(meta)meta.content=t==='dark'?'#0A0C12':'#F7F5FA'}
+    function showTheme(){var t=root.dataset.theme==='dark'?'dark':'light';themeBtns.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.themeSet===t)});if(meta)meta.content=t==='dark'?'#0A0C12':'#E2E0E8'}
     themeBtns.forEach(function(b){b.addEventListener('click',function(){
       var t=b.dataset.themeSet;if((root.dataset.theme==='dark'?'dark':'light')===t)return;
       root.classList.add('theme-anim');
