@@ -949,17 +949,27 @@ html:not([data-theme="dark"]){
   --tint-grid:rgba(21,18,31,.06);
   --art:radial-gradient(120% 90% at 30% 10%,#EFE3FA 0%,#F6F2FB 55%,#FBFAFD 100%);
 }
-html:not([data-theme="dark"]) .nav{background:rgba(247,245,250,.82)}
+html:not([data-theme="dark"]) .nav{background:rgba(255,255,255,.9)}
+html:not([data-theme="dark"]) footer{background:#fff}
 html:not([data-theme="dark"]) .link:hover{color:var(--paper)}
-html:not([data-theme="dark"]) .btn-light{background:#fff;color:var(--paper)}
-html:not([data-theme="dark"]) .btn-light:hover{background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.35)}
+/* light buttons only ever sit on violet: same colours as in dark mode */
+html:not([data-theme="dark"]) .btn-light{background:#F3F1F7;color:#0A0C12}
+html:not([data-theme="dark"]) .btn-light:hover{background:#fff;color:#0A0C12}
 
 /* art panels and photo frames: soft violet light instead of the dark radial glow */
-html:not([data-theme="dark"]) :is(.ws-art,.d-art,.portrait,.sd-frame){background:var(--art)}
-html:not([data-theme="dark"]) .hero-art{background:radial-gradient(120% 90% at 70% 20%,#EFE3FA 0%,var(--ink-2) 55%,var(--ink) 100%)}
+html:not([data-theme="dark"]) :is(.d-art,.portrait,.sd-frame){background:var(--art)}
 html:not([data-theme="dark"]) .cls-art{background:radial-gradient(120% 100% at 30% 0%,#EFE3FA,#F8F5FC 70%)}
-html:not([data-theme="dark"]) :is(.ws-art,.cls-art,.sd-frame)::before{background:linear-gradient(90deg,var(--tint-grid) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(var(--tint-grid) 1px,transparent 1px) 0 0/28px 28px}
+html:not([data-theme="dark"]) :is(.cls-art,.sd-frame)::before{background:linear-gradient(90deg,var(--tint-grid) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(var(--tint-grid) 1px,transparent 1px) 0 0/28px 28px}
 html:not([data-theme="dark"]) .portrait-photo{background:none}
+
+/* kept exactly as in dark mode: the home page "next up" card (dark tokens inside it). The hero sketch is a
+   transparent PNG with no panel in either theme, so it needs nothing here. */
+html:not([data-theme="dark"]) .ws-card{
+  --ink:#0A0C12;--ink-2:#10131B;--ink-3:#181C27;--line:rgba(236,232,245,.09);--line-2:rgba(236,232,245,.18);
+  --paper:#F3F1F7;--mute:#A2A1B3;--mute-2:#6E6D80;--violet:#B24EE8;--violet-lt:#D29BF6;--violet-wash:#1E1230;--focus:#E9C8FF}
+
+/* workshop cards: the "Book a spot" / "View details" button sits on white instead of being see-through */
+html:not([data-theme="dark"]) .cls-foot .btn-ghost:not(:hover){background:#fff}
 
 /* philosophy drawing: chalk on a dark board → ink on paper (inverted, hue kept) */
 html:not([data-theme="dark"]) .studio{background:#F4F1F9}
@@ -986,10 +996,10 @@ html:not([data-theme="dark"]) .cc{box-shadow:0 24px 60px -24px rgba(40,20,70,.28
 /* phones: the menu bar's blur and the open-menu overlay */
 @media (max-width:880px){
   html:not([data-theme="dark"]) .nav{background:none}
-  html:not([data-theme="dark"]) .nav::before{background:rgba(247,245,250,.82)}
+  html:not([data-theme="dark"]) .nav::before{background:rgba(255,255,255,.9)}
   /* the closed overlay gets no fill: some renderers still paint it at opacity 0, which on light would veil the page */
   html:not([data-theme="dark"]) .nav ul{background:transparent}
-  html:not([data-theme="dark"]) .nav.open::before,html:not([data-theme="dark"]) .nav.open ul{background:rgba(247,245,250,.86)}
+  html:not([data-theme="dark"]) .nav.open::before,html:not([data-theme="dark"]) .nav.open ul{background:rgba(255,255,255,.9)}
 }
 
 /* ---------- Footer: Light / Dark switch ---------- */
