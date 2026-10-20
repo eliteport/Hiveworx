@@ -98,3 +98,9 @@ export function listSessions(all: Session[], upcoming: string | null) {
   const today = todayISO();
   return all.filter((s) => !isPast(s, today)).sort((a, b) => Number(b.slug === upcoming) - Number(a.slug === upcoming) || byDate(a, b));
 }
+
+/* Workshops & talks page, "Past" section: sessions that already happened, most recent first */
+export function pastSessions(all: Session[]) {
+  const today = todayISO();
+  return all.filter((s) => isPast(s, today)).sort((a, b) => byDate(b, a));
+}
