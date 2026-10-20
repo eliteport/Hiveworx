@@ -929,38 +929,34 @@ main .sd-title{line-height:1.2}
    available through the footer switch, which sets <html data-theme="dark"> (saved in
    localStorage "hx-theme", applied before paint by the script in Base.astro).
    Same brand violet family, deepened where it carries small text so everything stays AA:
-   text 14:1 · secondary 5.7:1 · tertiary 4.7:1 · violet 4.7:1 · small violet 5.7:1 on the #E2E0E8 page (higher on white cards).
+   text 18:1 · secondary 7.5:1 · tertiary 5.1:1 · violet 5.3:1 · small violet 7.4:1 on the white page.
    Violet surfaces (bands, the next-up card, session card, tags) keep white text in both themes.
    ===================================================================================== */
 html:not([data-theme="dark"]){
   color-scheme: light;
-  --ink:#E2E0E8;         /* page: the brand Mute #A2A1B3 at 25% over white, a neutral grey-lavender */
+  --ink:#FFFFFF;         /* page, header, footer and section backgrounds: white */
   --ink-2:#FFFFFF;       /* raised surface: cards, panels */
   --ink-3:#F3F2F6;       /* card hover */
-  --line:rgba(21,18,31,.10);
+  --line:rgba(21,18,31,.12);
   --line-2:rgba(21,18,31,.18);
   --paper:#15121F;       /* primary text */
   --mute:#55526A;        /* secondary text */
-  --mute-2:#625F76;      /* tertiary / ghost words */
-  --violet:#8E33C6;      /* brand accent, deeper than on dark so it stays AA on the grey page */
+  --mute-2:#6F6C82;      /* tertiary / ghost words */
+  --violet:#9B3BD4;      /* brand accent, one step deeper than on dark so it stays AA on white */
   --violet-lt:#7A2DB0;   /* small accent text on light */
   --violet-wash:#F1E4FB; /* tinted surface */
   --focus:#7A2DB0;
   --logo-hex:#fff;       /* logo on light: white hexagons, #0A0C12 lettering and details (dark mode: #F3F1F7 / #0A0C12) */
-  --band:var(--ink);     /* full-width section bands: same grey as the page (solid Mute would drop grey/violet text below AA) */
   --tint-grid:rgba(21,18,31,.06);
   --art:radial-gradient(120% 90% at 30% 10%,#D8D6E0 0%,#E6E4EB 55%,#F1F0F4 100%);
 }
-/* header and footer: the page grey (brand Mute tint); the header stays slightly see-through for its blur */
-html:not([data-theme="dark"]) .nav{background:rgba(226,224,232,.9)}
+/* header and footer: white like the page; the header stays slightly see-through for its blur */
+html:not([data-theme="dark"]) .nav{background:rgba(255,255,255,.9)}
 html:not([data-theme="dark"]) footer{background:var(--ink)}
 html:not([data-theme="dark"]) .logo{color:#0A0C12}   /* HIVEWORX lettering (fill: currentColor) */
-html:not([data-theme="dark"]) :is(.edition,.aud,.sd-inc-wrap,.sd-voices){background:var(--band)}
-/* "Explore our workshops & talks" (home, About) and "Get involved": white sections. As in dark mode, cards and
-   tabs inside these lighter sections take the page colour; workshop cards anywhere else are white on the grey page. */
-html:not([data-theme="dark"]) :is(#classes,#about-classes,#join){background:#fff}
-html:not([data-theme="dark"]) .cls{background:var(--ink-2)}
-html:not([data-theme="dark"]) :is(#classes,#about-classes) .cls{background:var(--ink)}
+/* every section band is white too (they are tinted in dark mode); cards stay white on every screen size, set apart by their border */
+html:not([data-theme="dark"]) :is(.edition,.aud,.sd-inc-wrap,.sd-voices){background:var(--ink)}
+html:not([data-theme="dark"]) :is(.cls,#classes .cls,#about-classes .cls){background:var(--ink-2)}
 html:not([data-theme="dark"]) .link:hover{color:var(--paper)}
 /* light buttons only ever sit on violet: same colours as in dark mode */
 html:not([data-theme="dark"]) .btn-light{background:#F3F1F7;color:#0A0C12}
@@ -982,7 +978,7 @@ html:not([data-theme="dark"]) .ws-card{
 html:not([data-theme="dark"]) .cls-foot .btn-ghost:not(:hover){background:#fff}
 
 /* philosophy drawing: chalk on a dark board → ink on paper (inverted, hue kept) */
-html:not([data-theme="dark"]) .studio{background:#ECEBF0}
+html:not([data-theme="dark"]) .studio{background:var(--ink)}
 html:not([data-theme="dark"]) .studio-img{filter:invert(1) hue-rotate(180deg) saturate(1.15)}
 
 /* badges sitting on photos keep their dark/light chips, whatever the theme */
@@ -1006,10 +1002,10 @@ html:not([data-theme="dark"]) .cc{box-shadow:0 24px 60px -24px rgba(40,20,70,.28
 /* phones: the menu bar's blur and the open-menu overlay */
 @media (max-width:880px){
   html:not([data-theme="dark"]) .nav{background:none}
-  html:not([data-theme="dark"]) .nav::before{background:rgba(226,224,232,.9)}
+  html:not([data-theme="dark"]) .nav::before{background:rgba(255,255,255,.9)}
   /* the closed overlay gets no fill: some renderers still paint it at opacity 0, which on light would veil the page */
   html:not([data-theme="dark"]) .nav ul{background:transparent}
-  html:not([data-theme="dark"]) .nav.open::before,html:not([data-theme="dark"]) .nav.open ul{background:rgba(226,224,232,.94)}
+  html:not([data-theme="dark"]) .nav.open::before,html:not([data-theme="dark"]) .nav.open ul{background:rgba(255,255,255,.94)}
 }
 
 /* ---------- Footer: Light / Dark switch ---------- */
