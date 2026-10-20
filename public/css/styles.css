@@ -925,14 +925,14 @@ main .sd-title{line-height:1.2}
 .past-sessions .cls-grid{margin-top:32px}
 
 /* =====================================================================================
-   LIGHT THEME (the default). The rules above are the original dark design; dark stays
-   available through the footer switch, which sets <html data-theme="dark"> (saved in
+   LIGHT THEME. The rules above are the original dark design, which is the default; light is
+   opt-in through the footer switch, which sets <html data-theme="light"> (saved in
    localStorage "hx-theme", applied before paint by the script in Base.astro).
    Same brand violet family, deepened where it carries small text so everything stays AA:
    text 18:1 · secondary 7.5:1 · tertiary 5.1:1 · violet 5.3:1 · small violet 7.4:1 on the white page.
    Violet surfaces (bands, the next-up card, session card, tags) keep white text in both themes.
    ===================================================================================== */
-html:not([data-theme="dark"]){
+html[data-theme="light"]{
   color-scheme: light;
   --ink:#FFFFFF;         /* page, header, footer and section backgrounds: white */
   --ink-2:#FFFFFF;       /* raised surface: cards, panels */
@@ -952,70 +952,70 @@ html:not([data-theme="dark"]){
   --art:radial-gradient(120% 90% at 30% 10%,#D8D6E0 0%,#E6E4EB 55%,#F1F0F4 100%);
 }
 /* header and footer: white like the page; the header stays slightly see-through for its blur */
-html:not([data-theme="dark"]) .nav{background:rgba(255,255,255,.9)}
-html:not([data-theme="dark"]) footer{background:var(--ink)}
-html:not([data-theme="dark"]) .logo{color:#0A0C12}   /* HIVEWORX lettering (fill: currentColor) */
+html[data-theme="light"] .nav{background:rgba(255,255,255,.9)}
+html[data-theme="light"] footer{background:var(--ink)}
+html[data-theme="light"] .logo{color:#0A0C12}   /* HIVEWORX lettering (fill: currentColor) */
 /* every section band is white too (they are tinted in dark mode); cards stay white on every screen size, set apart by their border */
-html:not([data-theme="dark"]) :is(.edition,.aud,.sd-inc-wrap,.sd-voices){background:var(--ink)}
+html[data-theme="light"] :is(.edition,.aud,.sd-inc-wrap,.sd-voices){background:var(--ink)}
 /* workshop and talk cards (incl. past ones): Mute surface, image area included */
-html:not([data-theme="dark"]) :is(.cls,#classes .cls,#about-classes .cls){background:var(--mute-bg)}
-html:not([data-theme="dark"]) .link:hover{color:var(--paper)}
+html[data-theme="light"] :is(.cls,#classes .cls,#about-classes .cls){background:var(--mute-bg)}
+html[data-theme="light"] .link:hover{color:var(--paper)}
 /* light buttons only ever sit on violet: same colours as in dark mode */
-html:not([data-theme="dark"]) .btn-light{background:#F3F1F7;color:#0A0C12}
-html:not([data-theme="dark"]) .btn-light:hover{background:#fff;color:#0A0C12}
+html[data-theme="light"] .btn-light{background:#F3F1F7;color:#0A0C12}
+html[data-theme="light"] .btn-light:hover{background:#fff;color:#0A0C12}
 
 /* art panels and photo frames: soft violet light instead of the dark radial glow */
-html:not([data-theme="dark"]) :is(.d-art,.portrait,.sd-frame){background:var(--art)}
-html:not([data-theme="dark"]) .cls-art{background:var(--mute-bg)}
-html:not([data-theme="dark"]) :is(.cls-art,.sd-frame)::before{background:linear-gradient(90deg,var(--tint-grid) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(var(--tint-grid) 1px,transparent 1px) 0 0/28px 28px}
-html:not([data-theme="dark"]) .portrait-photo{background:none}
+html[data-theme="light"] :is(.d-art,.portrait,.sd-frame){background:var(--art)}
+html[data-theme="light"] .cls-art{background:var(--mute-bg)}
+html[data-theme="light"] :is(.cls-art,.sd-frame)::before{background:linear-gradient(90deg,var(--tint-grid) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(var(--tint-grid) 1px,transparent 1px) 0 0/28px 28px}
+html[data-theme="light"] .portrait-photo{background:none}
 
 /* kept exactly as in dark mode: the home page "next up" card (dark tokens inside it). The hero sketch is a
    transparent PNG with no panel in either theme, so it needs nothing here. */
-html:not([data-theme="dark"]) .ws-card{
+html[data-theme="light"] .ws-card{
   --ink:#0A0C12;--ink-2:#10131B;--ink-3:#181C27;--line:rgba(236,232,245,.09);--line-2:rgba(236,232,245,.18);
   --paper:#F3F1F7;--mute:#A2A1B3;--mute-2:#6E6D80;--violet:#B24EE8;--violet-lt:#D29BF6;--violet-wash:#1E1230;--focus:#E9C8FF}
 /* ...except its colour on light: the brand violet #B24EE8; secondary text goes full white for contrast (white on #B24EE8 is 4.1:1) */
-html:not([data-theme="dark"]) .ws-card{background:#B24EE8}
-html:not([data-theme="dark"]) :is(.ws-card .ws-by,.ws-card .ws-meta b){color:#fff}
-html:not([data-theme="dark"]) .ws-card:hover{box-shadow:0 30px 80px -40px rgba(154,58,207,.55)}
+html[data-theme="light"] .ws-card{background:#B24EE8}
+html[data-theme="light"] :is(.ws-card .ws-by,.ws-card .ws-meta b){color:#fff}
+html[data-theme="light"] .ws-card:hover{box-shadow:0 30px 80px -40px rgba(154,58,207,.55)}
 
 /* workshop cards: the "Book a spot" / "View details" button sits on white instead of being see-through */
-html:not([data-theme="dark"]) .cls-foot .btn-ghost:not(:hover){background:#fff}
+html[data-theme="light"] .cls-foot .btn-ghost:not(:hover){background:#fff}
 
 /* philosophy drawing: dark mode shows the chalk-on-board original, light mode a redrawn copy on pure white
    (public/images/philosophy-light.webp: ink lines, brand-violet notes) */
 .studio-light{display:none}
-html:not([data-theme="dark"]) .studio-dark{display:none}
-html:not([data-theme="dark"]) .studio-light{display:block}
-html:not([data-theme="dark"]) .studio{background:#fff}
+html[data-theme="light"] .studio-dark{display:none}
+html[data-theme="light"] .studio-light{display:block}
+html[data-theme="light"] .studio{background:#fff}
 
 /* badges sitting on photos keep their dark/light chips, whatever the theme */
-html:not([data-theme="dark"]) .cls-status:not(.cls-status-up){background:rgba(10,12,18,.7);border-color:rgba(243,241,247,.18);color:#F3F1F7}
-html:not([data-theme="dark"]) .cls-status-up{color:#B24EE8}   /* handwritten "next up" on the photo: the bright dark-mode violet */
-html:not([data-theme="dark"]) .ws-card .ws-art .tag-ghost{background:rgba(10,12,18,.8);border-color:rgba(255,255,255,.28);color:#F3F1F7}
-html:not([data-theme="dark"]) :is(.cls[data-kind="talk"] .cls-type,.cls-status-sold,.ws-card .ws-art .tag-sold){background:rgba(255,255,255,.88);color:#0A0C12}
+html[data-theme="light"] .cls-status:not(.cls-status-up){background:rgba(10,12,18,.7);border-color:rgba(243,241,247,.18);color:#F3F1F7}
+html[data-theme="light"] .cls-status-up{color:#B24EE8}   /* handwritten "next up" on the photo: the bright dark-mode violet */
+html[data-theme="light"] .ws-card .ws-art .tag-ghost{background:rgba(10,12,18,.8);border-color:rgba(255,255,255,.28);color:#F3F1F7}
+html[data-theme="light"] :is(.cls[data-kind="talk"] .cls-type,.cls-status-sold,.ws-card .ws-art .tag-sold){background:rgba(255,255,255,.88);color:#0A0C12}
 
 /* hover lift: same violet glow, lighter so it reads as a shadow on white */
-html:not([data-theme="dark"]) :is(.cls,.mt-card):hover{box-shadow:0 24px 60px -34px rgba(110,35,150,.35)}
-html:not([data-theme="dark"]) .card:hover{border-color:rgba(155,59,212,.45)}
+html[data-theme="light"] :is(.cls,.mt-card):hover{box-shadow:0 24px 60px -34px rgba(110,35,150,.35)}
+html[data-theme="light"] .card:hover{border-color:rgba(155,59,212,.45)}
 
 /* forms */
-html:not([data-theme="dark"]) :is(.field input,.field select,.field textarea):hover{border-color:rgba(21,18,31,.32)}
-html:not([data-theme="dark"]) :is(.field input,.field select,.field textarea):focus{box-shadow:0 0 0 3px rgba(155,59,212,.18)}
-html:not([data-theme="dark"]) :is(.field-err,.ct-status.is-error){color:#C0264A}
-html:not([data-theme="dark"]) .field [aria-invalid="true"]{border-color:#C0264A}
+html[data-theme="light"] :is(.field input,.field select,.field textarea):hover{border-color:rgba(21,18,31,.32)}
+html[data-theme="light"] :is(.field input,.field select,.field textarea):focus{box-shadow:0 0 0 3px rgba(155,59,212,.18)}
+html[data-theme="light"] :is(.field-err,.ct-status.is-error){color:#C0264A}
+html[data-theme="light"] .field [aria-invalid="true"]{border-color:#C0264A}
 
 /* cookie banner and lightbox */
-html:not([data-theme="dark"]) .cc{box-shadow:0 24px 60px -24px rgba(40,20,70,.28)}
+html[data-theme="light"] .cc{box-shadow:0 24px 60px -24px rgba(40,20,70,.28)}
 
 /* phones: the menu bar's blur and the open-menu overlay */
 @media (max-width:880px){
-  html:not([data-theme="dark"]) .nav{background:none}
-  html:not([data-theme="dark"]) .nav::before{background:rgba(255,255,255,.9)}
+  html[data-theme="light"] .nav{background:none}
+  html[data-theme="light"] .nav::before{background:rgba(255,255,255,.9)}
   /* the closed overlay gets no fill: some renderers still paint it at opacity 0, which on light would veil the page */
-  html:not([data-theme="dark"]) .nav ul{background:transparent}
-  html:not([data-theme="dark"]) .nav.open::before,html:not([data-theme="dark"]) .nav.open ul{background:rgba(255,255,255,.94)}
+  html[data-theme="light"] .nav ul{background:transparent}
+  html[data-theme="light"] .nav.open::before,html[data-theme="light"] .nav.open ul{background:rgba(255,255,255,.94)}
 }
 
 /* ---------- Footer: Light / Dark switch ---------- */
@@ -1031,17 +1031,20 @@ html.theme-anim,html.theme-anim *,html.theme-anim *::before,html.theme-anim *::a
 @media (prefers-reduced-motion:reduce){html.theme-anim,html.theme-anim *,html.theme-anim *::before,html.theme-anim *::after{transition:none!important}}
 
 /* ---------- Light mode: main menu and section body text ---------- */
-html:not([data-theme="dark"]) .nav ul a{color:#0A0C12}
-html:not([data-theme="dark"]) .nav ul a:hover{color:#181C27}
+html[data-theme="light"] .nav ul a{color:#0A0C12}
+html[data-theme="light"] .nav ul a:hover{color:#181C27}
 /* running text of sections (intros, leads, paragraphs, card copy); small meta like dates, roles and labels keep the softer grey */
-html:not([data-theme="dark"]) :is(.hero-lead,.page-lead,.sec-head p,.about-head p,.ab-body p,.ab-side p,.approach .body,.panel .intro,.cloud-line,
+html[data-theme="light"] :is(.hero-lead,.page-lead,.sec-head p,.about-head p,.ab-body p,.ab-side p,.approach .body,.panel .intro,.cloud-line,
   .value p,.dcard p,.mt-text,.ws-for p:last-child,.d-body p,.letter blockquote p+p,.p-cta p,.stat-l,.fund p,.sd-gal-head p,.ct-lead:not(.ct-lead-first),
   .sd-sec-body,.sd-explore details p,.sd-inc-grid li,.legal p,.notfound p,.empty){color:#181C27}
 /* "What is Hiveworx" / About value cards: same light violet as the workshop cards (they keep it on hover; the border and lift mark the hover) */
-html:not([data-theme="dark"]) :is(.card.value,.card.value:hover){background:var(--mute-bg)}
+html[data-theme="light"] :is(.card.value,.card.value:hover){background:var(--mute-bg)}
 /* footer text: the darkest brand ink #0A0C12 (links hover to #181C27, like the main menu); "Lisbon, PT" stays violet */
-html:not([data-theme="dark"]) :is(footer .f-brand p,footer h4,footer .menu-link,.f-bottom,.f-bottom .link,.f-bottom .linkbtn,.theme-switch button){color:#0A0C12}
-html:not([data-theme="dark"]) :is(footer .menu-link,.f-bottom .link,.f-bottom .linkbtn):hover{color:#181C27}
+html[data-theme="light"] :is(footer .f-brand p,footer h4,footer .menu-link,.f-bottom,.f-bottom .link,.f-bottom .linkbtn,.theme-switch button){color:#0A0C12}
+html[data-theme="light"] :is(footer .menu-link,.f-bottom .link,.f-bottom .linkbtn):hover{color:#181C27}
 /* upcoming workshop card (home): its "See … details" button is pure white on light */
-html:not([data-theme="dark"]) .ws-card .btn-light{background:#fff;color:#0A0C12}
-html:not([data-theme="dark"]) .ws-card .btn-light:hover{background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.3)}
+html[data-theme="light"] .ws-card .btn-light{background:#fff;color:#0A0C12}
+html[data-theme="light"] .ws-card .btn-light:hover{background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.3)}
+
+/* footer: room under it while the cookie banner is open (--cc-space is set by public/js/site.js), so the banner never covers the Light/Dark switch */
+footer{padding-bottom:calc(36px + var(--cc-space,0px))}
