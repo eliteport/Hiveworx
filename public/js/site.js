@@ -50,6 +50,21 @@
       [].forEach.call(grid.querySelectorAll('.cls'),function(c){c.hidden=!(b.dataset.filter==='all'||c.dataset.kind===b.dataset.filter)});
     })});
   });
+  /* footer Light / Dark switch: light is the default; the choice is saved and applied before paint (Base.astro) */
+  var themeBtns=[].slice.call(document.querySelectorAll('[data-theme-set]'));
+  if(themeBtns.length){
+    var root=document.documentElement,meta=document.querySelector('meta[name="theme-color"]');
+    function showTheme(){var t=root.dataset.theme==='dark'?'dark':'light';themeBtns.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.themeSet===t)});if(meta)meta.content=t==='dark'?'#0A0C12':'#F7F5FA'}
+    themeBtns.forEach(function(b){b.addEventListener('click',function(){
+      var t=b.dataset.themeSet;if((root.dataset.theme==='dark'?'dark':'light')===t)return;
+      root.classList.add('theme-anim');
+      if(t==='dark')root.dataset.theme='dark';else delete root.dataset.theme;
+      try{localStorage.setItem('hx-theme',t)}catch(e){}
+      showTheme();setTimeout(function(){root.classList.remove('theme-anim')},450);
+    })});
+    showTheme();
+  }
+
   /* Workshops & talks page: format × discipline, with a count and an empty message */
   var bar=document.getElementById('pageFilters');
   if(bar){
