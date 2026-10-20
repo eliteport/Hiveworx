@@ -946,7 +946,7 @@ html:not([data-theme="dark"]){
   --violet-lt:#7A2DB0;   /* small accent text on light */
   --violet-wash:#F1E4FB; /* tinted surface */
   --focus:#7A2DB0;
-  --logo-hex:var(--mute); /* logo hexagons: the muted grey (#55526A) on light; #F3F1F7 on dark */
+  --logo-hex:#fff;       /* logo on light: white hexagons, #0A0C12 lettering and details (dark mode: #F3F1F7 / #0A0C12) */
   --band:var(--ink);     /* full-width section bands: same grey as the page (solid Mute would drop grey/violet text below AA) */
   --tint-grid:rgba(21,18,31,.06);
   --art:radial-gradient(120% 90% at 30% 10%,#D8D6E0 0%,#E6E4EB 55%,#F1F0F4 100%);
@@ -954,6 +954,7 @@ html:not([data-theme="dark"]){
 /* header and footer: the page grey (brand Mute tint); the header stays slightly see-through for its blur */
 html:not([data-theme="dark"]) .nav{background:rgba(226,224,232,.9)}
 html:not([data-theme="dark"]) footer{background:var(--ink)}
+html:not([data-theme="dark"]) .logo{color:#0A0C12}   /* HIVEWORX lettering (fill: currentColor) */
 html:not([data-theme="dark"]) :is(.edition,.aud,.sd-inc-wrap,.sd-voices){background:var(--band)}
 /* "Explore our workshops & talks" (home, About) and "Get involved": white sections. As in dark mode, cards and
    tabs inside these lighter sections take the page colour; workshop cards anywhere else are white on the grey page. */
