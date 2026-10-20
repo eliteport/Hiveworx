@@ -946,7 +946,7 @@ html:not([data-theme="dark"]){
   --violet-lt:#7A2DB0;   /* small accent text on light */
   --violet-wash:#F1E4FB; /* tinted surface */
   --focus:#7A2DB0;
-  --logo-hex:#fff;      /* logo hexagons: pure white (the dark-mode #F3F1F7 reads pinkish on white) */
+  --logo-hex:var(--mute); /* logo hexagons: the muted grey (#55526A) on light; #F3F1F7 on dark */
   --tint-grid:rgba(21,18,31,.06);
   --art:radial-gradient(120% 90% at 30% 10%,#EFE3FA 0%,#F6F2FB 55%,#FBFAFD 100%);
 }
