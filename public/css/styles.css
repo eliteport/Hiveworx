@@ -947,11 +947,13 @@ html:not([data-theme="dark"]){
   --violet-wash:#F1E4FB; /* tinted surface */
   --focus:#7A2DB0;
   --logo-hex:var(--mute); /* logo hexagons: the muted grey (#55526A) on light; #F3F1F7 on dark */
+  --band:#E2E0E8;        /* full-width section bands: the brand mute #A2A1B3 at 25% over the page (solid mute would drop grey/violet text below AA) */
   --tint-grid:rgba(21,18,31,.06);
   --art:radial-gradient(120% 90% at 30% 10%,#EFE3FA 0%,#F6F2FB 55%,#FBFAFD 100%);
 }
 html:not([data-theme="dark"]) .nav{background:rgba(255,255,255,.9)}
 html:not([data-theme="dark"]) footer{background:#fff}
+html:not([data-theme="dark"]) :is(.edition,.aud,.sd-inc-wrap,.sd-voices){background:var(--band)}
 html:not([data-theme="dark"]) .link:hover{color:var(--paper)}
 /* light buttons only ever sit on violet: same colours as in dark mode */
 html:not([data-theme="dark"]) .btn-light{background:#F3F1F7;color:#0A0C12}
