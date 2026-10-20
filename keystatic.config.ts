@@ -138,7 +138,7 @@ export default config({
       label: 'Site settings',
       path: 'src/content/site',
       format: { data: 'json' },
-      schema: { mentorsPage: fields.checkbox({ label: 'Show the Mentors page', description: 'Off: the menu shows "Mentors" with a "soon" note and the page is not published.', defaultValue: false }) },
+      schema: { mentorsPage: fields.checkbox({ label: 'Show the Mentors page', description: 'Off: the menu shows "Mentors" with a "soon" note; the page still opens at /mentors/ by direct link, hidden from search engines. On: a normal menu link, listed for Google.', defaultValue: false }) },
     }),
     defaults: singleton({
       label: 'Practical notes (standard)',
