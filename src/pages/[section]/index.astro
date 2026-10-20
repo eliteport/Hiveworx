@@ -1,17 +1,17 @@
 ---
-/* /mentors/ — published only while "Show the Mentors page" is on (Keystatic → Site settings) */
+/* /mentors/ — always published. While "Show the Mentors page" is off (Keystatic → Site settings) it opens only by direct
+   link: the menu shows "soon", it is left out of the sitemap and search engines are asked not to index it. */
 import Base from '../../layouts/Base.astro';
 import { getContent } from '../../lib/content';
 import { SITE, TITLES, DESCRIPTIONS, breadcrumb, mentorsLd } from '../../lib/seo';
 
-export async function getStaticPaths() {
-  const { mentorsPage } = await getContent();
-  return mentorsPage ? [{ params: { section: 'mentors' } }] : [];
+export function getStaticPaths() {
+  return [{ params: { section: 'mentors' } }];
 }
-const { mentors } = await getContent();
+const { mentors, mentorsPage } = await getContent();
 const list = mentors.filter((m) => m.listed).sort((a, b) => a.order - b.order || a.name.localeCompare(b.name));
 ---
-<Base title={TITLES.mentors} description={DESCRIPTIONS.mentors} path="/mentors/"
+<Base title={TITLES.mentors} description={DESCRIPTIONS.mentors} path="/mentors/" noindex={!mentorsPage}
   ld={[breadcrumb([['Home', SITE + '/'], ['Mentors', SITE + '/mentors/']]), mentorsLd(list)]}>
   <section class="page-head">
     <div class="wrap">
