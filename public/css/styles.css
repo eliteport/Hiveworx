@@ -947,7 +947,7 @@ html:not([data-theme="dark"]){
   --violet-wash:#F1E4FB; /* tinted surface */
   --focus:#7A2DB0;
   --logo-hex:#fff;       /* logo on light: white hexagons, #0A0C12 lettering and details (dark mode: #F3F1F7 / #0A0C12) */
-  --mute-bg:#E2E0E8;     /* "Mute" surface: workshop/talk cards and their image areas (brand Mute #A2A1B3 at 25% over white) */
+  --mute-bg:var(--violet-wash); /* workshop/talk cards, their image areas and the "What is Hiveworx" cards: the same light violet (#F1E4FB) as the "Design in the widest sense" cards on hover */
   --tint-grid:rgba(21,18,31,.06);
   --art:radial-gradient(120% 90% at 30% 10%,#D8D6E0 0%,#E6E4EB 55%,#F1F0F4 100%);
 }
@@ -983,9 +983,12 @@ html:not([data-theme="dark"]) .ws-card:hover{box-shadow:0 30px 80px -40px rgba(1
 /* workshop cards: the "Book a spot" / "View details" button sits on white instead of being see-through */
 html:not([data-theme="dark"]) .cls-foot .btn-ghost:not(:hover){background:#fff}
 
-/* philosophy drawing: chalk on a dark board → ink on paper (inverted, hue kept) */
-html:not([data-theme="dark"]) .studio{background:var(--ink)}
-html:not([data-theme="dark"]) .studio-img{filter:invert(1) hue-rotate(180deg) saturate(1.15)}
+/* philosophy drawing: dark mode shows the chalk-on-board original, light mode a redrawn copy on pure white
+   (public/images/philosophy-light.webp: ink lines, brand-violet notes) */
+.studio-light{display:none}
+html:not([data-theme="dark"]) .studio-dark{display:none}
+html:not([data-theme="dark"]) .studio-light{display:block}
+html:not([data-theme="dark"]) .studio{background:#fff}
 
 /* badges sitting on photos keep their dark/light chips, whatever the theme */
 html:not([data-theme="dark"]) .cls-status:not(.cls-status-up){background:rgba(10,12,18,.7);border-color:rgba(243,241,247,.18);color:#F3F1F7}
@@ -1026,3 +1029,19 @@ html:not([data-theme="dark"]) .cc{box-shadow:0 24px 60px -24px rgba(40,20,70,.28
 /* switching themes: colours glide instead of snapping (only while switching) */
 html.theme-anim,html.theme-anim *,html.theme-anim *::before,html.theme-anim *::after{transition:background-color .35s var(--ease),border-color .35s var(--ease),color .35s var(--ease),fill .35s var(--ease)!important}
 @media (prefers-reduced-motion:reduce){html.theme-anim,html.theme-anim *,html.theme-anim *::before,html.theme-anim *::after{transition:none!important}}
+
+/* ---------- Light mode: main menu and section body text ---------- */
+html:not([data-theme="dark"]) .nav ul a{color:#0A0C12}
+html:not([data-theme="dark"]) .nav ul a:hover{color:#181C27}
+/* running text of sections (intros, leads, paragraphs, card copy); small meta like dates, roles and labels keep the softer grey */
+html:not([data-theme="dark"]) :is(.hero-lead,.page-lead,.sec-head p,.about-head p,.ab-body p,.ab-side p,.approach .body,.panel .intro,.cloud-line,
+  .value p,.dcard p,.mt-text,.ws-for p:last-child,.d-body p,.letter blockquote p+p,.p-cta p,.stat-l,.fund p,.sd-gal-head p,.ct-lead:not(.ct-lead-first),
+  .sd-sec-body,.sd-explore details p,.sd-inc-grid li,.legal p,.notfound p,.empty){color:#181C27}
+/* "What is Hiveworx" / About value cards: same light violet as the workshop cards (they keep it on hover; the border and lift mark the hover) */
+html:not([data-theme="dark"]) :is(.card.value,.card.value:hover){background:var(--mute-bg)}
+/* footer text: the darkest brand ink #0A0C12 (links hover to #181C27, like the main menu); "Lisbon, PT" stays violet */
+html:not([data-theme="dark"]) :is(footer .f-brand p,footer h4,footer .menu-link,.f-bottom,.f-bottom .link,.f-bottom .linkbtn,.theme-switch button){color:#0A0C12}
+html:not([data-theme="dark"]) :is(footer .menu-link,.f-bottom .link,.f-bottom .linkbtn):hover{color:#181C27}
+/* upcoming workshop card (home): its "See … details" button is pure white on light */
+html:not([data-theme="dark"]) .ws-card .btn-light{background:#fff;color:#0A0C12}
+html:not([data-theme="dark"]) .ws-card .btn-light:hover{background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.3)}

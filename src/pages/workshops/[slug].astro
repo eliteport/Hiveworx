@@ -3,7 +3,7 @@
 import Base from '../../layouts/Base.astro';
 import Media from '../../components/Media.astro';
 import SessionCard from '../../components/SessionCard.astro';
-import { getContent, type Session } from '../../lib/content';
+import { getContent, homeSessions, isPast, type Session } from '../../lib/content';
 import { ICON, INC, hex } from '../../lib/icons';
 import { SITE, sessionTitle, sessionDescription, sessionLd, breadcrumb } from '../../lib/seo';
 
@@ -11,7 +11,7 @@ export async function getStaticPaths() {
   const { sessions } = await getContent();
   return sessions.map((s) => ({ params: { slug: s.slug }, props: { slug: s.slug } }));
 }
-const { sessions, upcoming, standard } = await getContent();
+const { sessions, upcoming, pinned, standard } = await getContent();
 const s = sessions.find((x) => x.slug === Astro.props.slug) as Session;
 const url = `${SITE}/workshops/${s.slug}/`;
 const tl = s.typeLabel, tll = tl.toLowerCase();
@@ -24,7 +24,8 @@ const facts: [string, string, string][] = [
   [ICON.date, 'Date', s.date], [ICON.time, 'Start time', s.time], [ICON.loc, 'Location', s.location],
   [ICON.fmt, 'Format', s.formatLabel], [ICON.level, 'Level', s.level], [ICON.duration, 'Duration', s.duration],
 ];
-const more = sessions.filter((x) => x.slug !== s.slug).slice(0, 3);
+/* "More workshops & talks": the same three cards as the home page; on one of those three pages the next upcoming one in home order takes its place */
+const more = homeSessions(sessions.filter((x) => x.slug !== s.slug && !isPast(x)), upcoming, pinned);
 const n2 = (i: number) => (i < 9 ? '0' : '') + (i + 1);
 ---
 <Base title={sessionTitle(s)} description={sessionDescription(s)} path={`/workshops/${s.slug}/`} image={s.image?.src}
