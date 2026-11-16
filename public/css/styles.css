@@ -1093,3 +1093,5 @@ html.nav-up .sd-card{top:calc(env(safe-area-inset-top,0px) + 24px)}
 
 /* ---------- Top menu: the hexagon mark alone (Sprite.astro #logo-mark); the footer keeps the full logo ---------- */
 .nav .logo svg.logo-mark{height:34px;aspect-ratio:273/144}
+/* footer Light / Dark switch: icons only (the names are in aria-label and the hover tooltip) */
+.theme-switch button{padding:6px 10px}
