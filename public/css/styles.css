@@ -1082,3 +1082,6 @@ html[data-theme="light"] .lang-switch[data-active="en"] [data-lang-set="en"],htm
 .sd-card{transition:top .35s var(--ease)}
 html.nav-up .sd-card{top:calc(env(safe-area-inset-top,0px) + 24px)}
 @media (prefers-reduced-motion:reduce){.nav,.sd-card{transition:none}}
+
+/* ---------- Top menu: the hexagon mark alone (Sprite.astro #logo-mark); the footer keeps the full logo ---------- */
+.nav .logo svg.logo-mark{height:34px;aspect-ratio:273/144}
