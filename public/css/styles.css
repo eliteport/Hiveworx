@@ -1095,3 +1095,5 @@ html.nav-up .sd-card{top:calc(env(safe-area-inset-top,0px) + 24px)}
 .nav .logo svg.logo-mark{height:34px;aspect-ratio:273/144}
 /* footer Light / Dark switch: icons only (the names are in aria-label and the hover tooltip) */
 .theme-switch button{padding:6px 10px}
+/* footer: the EN / PT and Light / Dark switches sit stacked under the Follow links */
+footer .f-switches{flex-direction:column;align-items:flex-start;gap:12px;margin-top:28px}
