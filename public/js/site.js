@@ -22,8 +22,21 @@
 
   /* ===== Menu ===== */
   var nav=document.getElementById('nav');
-  function onScroll(){nav.classList.toggle('scrolled',window.scrollY>8)}
+  /* the bar slides away while scrolling down and comes straight back on any scroll up
+     (never while the phone menu is open, near the top, or while something in the bar has keyboard focus) */
+  var lastY=window.scrollY,root=document.documentElement;
+  function kbFocus(){try{return !!nav.querySelector(':focus-visible')}catch(e){return false}}
+  function setHidden(h){nav.classList.toggle('nav-hidden',h);root.classList.toggle('nav-up',h)}
+  function onScroll(){
+    var y=Math.max(0,window.scrollY),d=y-lastY;
+    nav.classList.toggle('scrolled',y>8);
+    if(y<120||nav.classList.contains('open')||kbFocus())setHidden(false);
+    else if(d>4)setHidden(true);
+    else if(d<0)setHidden(false);
+    lastY=y;
+  }
   window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  nav.addEventListener('focusin',function(){if(kbFocus())setHidden(false)});
   var mb=document.getElementById('menuBtn');
   /* mobile menu: full-screen blurred overlay; the page underneath stops scrolling while it is open */
   function setMenu(o){
@@ -228,9 +241,9 @@
         status=document.getElementById('ct-status'),count=document.getElementById('ct-count');
     var RULES={
       name:function(v){return v?'':T('Please tell us your name.','Diz-nos o teu nome.')},
-      email:function(v){return !v?T('Please add your email so we can reply.','Indica o teu email para podermos responder.'):/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)?'':T('That email doesn’t look right. Check for typos.','Esse email não parece correto. Verifica se há erros.')},
-      who:function(v){return v?'':T('Please choose who you are.','Escolhe quem és.')},
-      topic:function(v){return v?'':T('Add a short topic.','Escreve um assunto curto.')},
+      email:function(v){return !v?T('Please add your email so we can reply.','Indica o teu email para te podermos responder.'):/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)?'':T('That email doesn’t look right. Check for typos.','Este email não parece correto. Verifica se há gralhas.')},
+      who:function(v){return v?'':T('Please choose who you are.','Indica quem és.')},
+      topic:function(v){return v?'':T('Add a short topic.','Indica um assunto curto.')},
       message:function(v){return v?'':T('Write your message.','Escreve a tua mensagem.')}
     };
     function check(k){
@@ -261,14 +274,14 @@
         var payload={name:d.name,email:d.email,'I am a':d.who,topic:d.topic,message:d.message,language:PT?'Português':'English',
           _subject:'['+d.who+(PT?' · PT':'')+'] '+d.topic+' · Hiveworx website',_gotcha:form.elements._gotcha?form.elements._gotcha.value:''};
         fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(payload)})
-          .then(function(r){if(!r.ok)throw 0;track('generate_lead',{who:d.who});form.reset();count.textContent='0 / 2000';status.textContent=T('Thanks, '+d.name+'. Your message was sent. We’ll reply to '+d.email+'.','Obrigado, '+d.name+'. A tua mensagem foi enviada. Vamos responder para '+d.email+'.')})
+          .then(function(r){if(!r.ok)throw 0;track('generate_lead',{who:d.who});form.reset();count.textContent='0 / 2000';status.textContent=T('Thanks, '+d.name+'. Your message was sent. We’ll reply to '+d.email+'.','Obrigado, '+d.name+'. A tua mensagem foi enviada. Responderemos para '+d.email+'.')})
           .catch(function(){status.classList.add('is-error');status.textContent=T('Your message couldn’t be sent. Try again, or email hello@hiveworx.com.','Não foi possível enviar a mensagem. Tenta outra vez, ou escreve para hello@hiveworx.com.')})
           .then(function(){sb.disabled=false});
         return;
       }
       var body='Name: '+d.name+'\nEmail: '+d.email+'\nI am a: '+d.who+'\n\n'+d.message;
       location.href='mailto:hello@hiveworx.com?subject='+encodeURIComponent('['+d.who+'] '+d.topic)+'&body='+encodeURIComponent(body);
-      status.textContent=T('Your email app should open with the message ready to send. If nothing happened, email us at hello@hiveworx.com.','A tua aplicação de email deve abrir com a mensagem pronta a enviar. Se nada acontecer, escreve-nos para hello@hiveworx.com.');
+      status.textContent=T('Your email app should open with the message ready to send. If nothing happened, email us at hello@hiveworx.com.','A tua aplicação de email deverá abrir com a mensagem pronta a enviar. Se nada acontecer, escreve-nos para hello@hiveworx.com.');
     });
   }
 })();

@@ -45,23 +45,23 @@
     "discriminant": "default"
   },
   "pt": {
-    "title": "Let’s Touchdesign: workshop para iniciantes",
+    "title": "Let’s Touchdesign: workshop para principiantes",
     "formatLabel": "Workshop prático",
     "discipline": "Som + Visual",
     "duration": "4 horas e 30 minutos, com intervalos",
-    "level": "Iniciante absoluto",
+    "level": "Principiante absoluto",
     "imageAlt": "Um formador ao portátil conduz uma sessão de TouchDesigner numa sala com paredes de tijolo, com uma rede de nós num ecrã grande e participantes a trabalhar nos seus portáteis",
-    "summary": "Uma sessão prática para quem nunca abriu o TouchDesigner. O workshop começa por explorar o que o software realmente é — uma ferramenta multiusos para multimédia, e não uma aplicação com uma só função — antes de os participantes construírem algo em conjunto a partir de uma rede vazia. O objetivo principal é ultrapassar a curva de aprendizagem inicial, divertir-se e sair com um patch a funcionar, com parâmetros interativos ao vivo que reagem ao som, a um botão rotativo, a uma câmara ou a um clique.",
+    "summary": "Uma sessão prática para quem nunca abriu o TouchDesigner. O workshop começa por explorar o que o software realmente é — uma ferramenta multiusos para multimédia, e não uma aplicação com uma só função — antes de os participantes construírem algo em conjunto a partir de uma rede vazia. O objetivo principal é ultrapassar a curva de aprendizagem inicial, divertir-se e sair com um patch funcional, com parâmetros interativos ao vivo que reagem ao som, a um botão rotativo, a uma câmara ou a um clique.",
     "forWho": "Pessoas que nunca abriram o TouchDesigner.",
-    "levelNote": "Iniciante absoluto. Não é precisa experiência em TouchDesigner, programação ou VJing. Estar à vontade com qualquer software criativo ajuda, mas não é obrigatório.",
+    "levelNote": "Principiante absoluto. Não é precisa experiência em TouchDesigner, programação ou VJing. Estar à vontade com qualquer software criativo ajuda, mas não é obrigatório.",
     "explore": [
       {
         "title": "O que é isto?",
-        "text": "Uma breve conversa sobre a prática multimédia e o lugar do TouchDesigner em visuais de palco, instalações, performance ao vivo, prototipagem e mapping."
+        "text": "Uma breve introdução à prática multimédia e o lugar do TouchDesigner em visuais de palco, instalações, performance ao vivo, prototipagem e mapping."
       },
       {
         "title": "Construir o primeiro patch",
-        "text": "Os participantes acompanham nos seus computadores e constroem de raiz um patch simples e bonito, aprendendo como uma rede ganha forma e de onde nasce a imagem."
+        "text": "Cada participante acompanha no seu computador e constrói de raiz um patch simples e bonito, e percebe como uma rede ganha forma e de onde nasce a imagem."
       },
       {
         "title": "Fazer entrar sinais",
@@ -73,7 +73,7 @@
       }
     ],
     "outcome": [
-      "Cada participante sai com o seu próprio patch a funcionar, com pelo menos dois parâmetros interativos ao vivo, e leva para casa os ficheiros de projeto avançados da sessão para continuar a experimentar. Acima de tudo, sai a saber como um sinal se torna imagem, o conceito na base de tudo o que se constrói em TouchDesigner."
+      "Cada participante sai com o seu próprio patch funcional, com pelo menos dois parâmetros interativos ao vivo, e leva para casa os ficheiros de projeto avançados da sessão para continuar a experimentar. Acima de tudo, sai a saber como um sinal se torna imagem, o conceito na base de tudo o que se constrói em TouchDesigner."
     ]
   }
 }

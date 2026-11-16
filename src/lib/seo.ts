@@ -33,8 +33,8 @@ export const TITLES: Record<Lang, typeof TITLES_EN> = {
 export const DESCRIPTIONS: Record<Lang, typeof DESCRIPTIONS_EN> = {
   en: DESCRIPTIONS_EN,
   pt: {
-    home: 'Uma escola de design baseada na experiência, em Lisboa. Workshops práticos e palestras de design, som, tipografia e cinema, dados por profissionais no ativo.',
-    workshops: 'Workshops práticos e palestras de design em Lisboa: som e imagem, tipografia, cinema, arte e escrita. Dados por profissionais no ativo. Abertos a todos.',
+    home: 'Uma escola de design baseada na experiência, em Lisboa. Workshops práticos e palestras de design, som, tipografia e cinema, orientados por profissionais no ativo.',
+    workshops: 'Workshops práticos e palestras de design em Lisboa: som e imagem, tipografia, cinema, arte e escrita. Orientados por profissionais no ativo. Abertos a todos.',
     mentors: 'Conhece os mentores da Hiveworx: designers, artistas, músicos e críticos que ensinam a partir do seu próprio trabalho e experiência, não da teoria.',
     about: 'A Hiveworx é uma escola de design baseada na experiência, em Lisboa. Profissionais no ativo dão workshops práticos e palestras abertos a todos, sem diplomas nem requisitos de entrada.',
     privacy: 'Como a Hiveworx trata os dados pessoais: Google Analytics só com o teu consentimento, mensagens do formulário de contacto, inscrições em workshops e os teus direitos ao abrigo do RGPD.',

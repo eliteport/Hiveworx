@@ -705,7 +705,8 @@ main .ct-label{margin-bottom:32px}
 /* Lenis smooth scrolling */
 html.lenis,html.lenis body{height:auto}
 html.lenis{scroll-behavior:auto}
-.lenis:not(.lenis-autoToggle).lenis-stopped{overflow:clip}
+/* paused scrolling (phone menu open): lock on body, not html; html overflow makes body the scroller, which unsticks the menu bar */
+html.lenis:not(.lenis-autoToggle).lenis-stopped body{overflow:hidden}
 .lenis [data-lenis-prevent]{overscroll-behavior:contain}
 /* blocks: fade and rise 28px; hidden only once motion.js has switched it on */
 .rv-on .rv:not(.rv-head){opacity:0;translate:0 28px;transition:opacity .9s var(--ease) var(--d,0s),translate .9s var(--ease) var(--d,0s)}
@@ -802,7 +803,7 @@ a.sd-series-next{color:var(--paper)}
   .nav.open .mb-l2{opacity:0}
   .nav.open .mb-l3{transform:translateY(-6px) rotate(-45deg)}
   /* lock the page only on <html>: hiding body overflow too would make body a scroller and unstick the menu bar */
-  html.menu-open{overflow:hidden}
+  html.menu-open body{overflow:hidden}   /* on body, not html: html overflow would make body the scroller and unstick the bar */
 }
 @media (max-width:880px) and (prefers-reduced-motion:reduce){
   .nav ul,.nav ul li,.menu-btn path{transition:none!important}
@@ -1073,3 +1074,11 @@ html[data-theme="light"] .lang-switch[data-active="en"] [data-lang-set="en"],htm
    "Explore workshops" button (the same page as the menu link) waits for wider screens */
 .nav ul a,.nav .nav-soon,.nav-cta{white-space:nowrap}
 @media (min-width:881px) and (max-width:1100px){.nav ul{gap:22px}.nav .nav-cta{display:none}}
+
+/* ---------- Menu bar: hides while scrolling down, back on any scroll up (public/js/site.js) ---------- */
+.nav{transition:border-color .3s,transform .35s var(--ease)}
+.nav.nav-hidden{transform:translateY(calc(-100% - env(safe-area-inset-top,0px)))}
+/* the sticky workshop card moves up into the space the bar leaves */
+.sd-card{transition:top .35s var(--ease)}
+html.nav-up .sd-card{top:calc(env(safe-area-inset-top,0px) + 24px)}
+@media (prefers-reduced-motion:reduce){.nav,.sd-card{transition:none}}
