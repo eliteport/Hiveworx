@@ -1048,3 +1048,28 @@ html[data-theme="light"] .ws-card .btn-light:hover{background:#fff;box-shadow:0 
 
 /* footer: room under it while the cookie banner is open (--cc-space is set by public/js/site.js), so the banner never covers the Light/Dark switch */
 footer{padding-bottom:calc(36px + var(--cc-space,0px))}
+
+/* ---------- EN / PT language switch (menu bar and footer; src/components/LangSwitch.astro) ----------
+   Same pill as the Light / Dark switch; the violet thumb slides to the chosen language (public/js/site.js). */
+.nav-end{display:flex;align-items:center;gap:16px}
+.lang-switch{display:inline-flex;align-items:center;gap:8px}
+.ls-track{position:relative;display:inline-grid;grid-auto-flow:column;grid-auto-columns:1fr;padding:3px;border:1px solid var(--line-2);border-radius:999px;background:var(--ink-2);isolation:isolate}
+.ls-thumb{position:absolute;z-index:-1;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);border-radius:999px;background:var(--violet-wash);box-shadow:inset 0 0 0 1px var(--violet);transition:transform .38s cubic-bezier(.3,1.35,.5,1)}
+.lang-switch[data-active="pt"] .ls-thumb{transform:translateX(100%)}
+.ls-track a{display:inline-flex;align-items:center;justify-content:center;min-width:38px;padding:7px 10px;border-radius:999px;color:var(--mute);text-decoration:none;font-size:12.5px;font-weight:600;letter-spacing:.08em;line-height:1;transition:color .25s var(--ease)}
+.ls-track a:hover{color:var(--paper)}
+.lang-switch[data-active="en"] [data-lang-set="en"],.lang-switch[data-active="pt"] [data-lang-set="pt"]{color:var(--paper)}
+.ls-track a:focus-visible{outline-offset:1px}
+/* footer: full names next to a globe, sized like the Light / Dark buttons */
+.lang-switch-full .ls-track a{min-width:0;padding:6px 12px;font-size:13px;font-weight:400;letter-spacing:0}
+.ls-globe{width:16px;height:16px;fill:none;stroke:var(--mute);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.f-switches{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px}
+@media (prefers-reduced-motion:reduce){.ls-thumb{transition:none}}
+/* phones: the bar shows logo, EN / PT and the menu button */
+@media (max-width:880px){.nav-end{margin-left:auto;gap:0}.nav .wrap{gap:12px}}
+html[data-theme="light"] .ls-track a{color:#55526A}
+html[data-theme="light"] .lang-switch[data-active="en"] [data-lang-set="en"],html[data-theme="light"] .lang-switch[data-active="pt"] [data-lang-set="pt"],html[data-theme="light"] .ls-track a:hover{color:#0A0C12}
+/* medium screens: with EN / PT added the bar gets tight, so menu items stay on one line and the
+   "Explore workshops" button (the same page as the menu link) waits for wider screens */
+.nav ul a,.nav .nav-soon,.nav-cta{white-space:nowrap}
+@media (min-width:881px) and (max-width:1100px){.nav ul{gap:22px}.nav .nav-cta{display:none}}

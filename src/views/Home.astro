@@ -1,0 +1,31 @@
+---
+/* home page, English (/) and Portuguese (/pt/) */
+import Base from '../layouts/Base.astro';
+import HomeHero from '../components/static/HomeHero.astro';
+import HomeValues from '../components/static/HomeValues.astro';
+import HomeDisciplines from '../components/static/HomeDisciplines.astro';
+import HomeApproach from '../components/static/HomeApproach.astro';
+import HomeJoin from '../components/static/HomeJoin.astro';
+import HomeContact from '../components/static/HomeContact.astro';
+import Featured from '../components/Featured.astro';
+import SessionsSection from '../components/SessionsSection.astro';
+import { getContent, homeSessions } from '../lib/content';
+import { SITE, TITLES, DESCRIPTIONS } from '../lib/seo';
+import { langOf, href } from '../lib/i18n';
+
+const lang = langOf(Astro.url);
+const { sessions, upcoming, pinned } = await getContent(lang);
+const next = sessions.find((s) => s.slug === upcoming) ?? null;
+const home = SITE + href('/', lang);
+---
+<Base title={TITLES[lang].home} description={DESCRIPTIONS[lang].home} path="/"
+  ld={[{ '@type': 'WebSite', '@id': SITE + '/#site', name: 'Hiveworx', url: home, inLanguage: ['en', 'pt-PT'], publisher: { '@id': SITE + '/#org' } }]}>
+  <HomeHero />
+  <Featured session={next} />
+  <SessionsSection id="classes" filtersId="homeFilters" sessions={homeSessions(sessions, upcoming, pinned)} upcoming={upcoming} />
+  <HomeValues />
+  <HomeDisciplines />
+  <HomeApproach />
+  <HomeJoin />
+  <HomeContact />
+</Base>

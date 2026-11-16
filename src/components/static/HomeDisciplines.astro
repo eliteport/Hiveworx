@@ -1,53 +1,58 @@
 ---
 // copied from the one-page site; edit freely
+// English and Portuguese side by side: T('English', 'Português')
+import { langOf, href, tr } from '../../lib/i18n';
+const lang = langOf(Astro.url);
+const T = tr(lang);
+const h = (p: string) => href(p, lang);
 ---
 <!-- DISCIPLINES -->
 <section id="disciplines">
   <div class="wrap">
     <div class="sec-head">
       <div>
-        <p class="label">What you can study</p>
-        <h2>Design in the <span class="v">widest</span> sense.</h2>
+        <p class="label">{T("What you can study", "O que podes estudar")}</p>
+        <h2><Fragment set:html={T("Design in the <span class=\"v\">widest</span> sense.", "Design no sentido <span class=\"v\">mais amplo</span>.")} /></h2>
       </div>
-      <p>Six fields, one approach: touch the material, try the process, understand the decisions behind it.</p>
+      <p>{T("Six fields, one approach: touch the material, try the process, understand the decisions behind it.", "Seis áreas, uma abordagem: tocar no material, experimentar o processo, perceber as decisões por trás dele.")}</p>
     </div>
 
     <div class="disc">
-      <a class="dcard" href="/workshops/">
+      <a class="dcard" href={h("/workshops/")}>
         <svg class="glyph" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="22" cy="22" r="16"/><path d="M22 6v8M22 30v8M6 22h8M30 22h8"/><circle cx="22" cy="22" r="4"/></svg>
         <span class="go" aria-hidden="true">↗</span>
         <h3>Design Thinking</h3>
-        <p>Observe, question, prototype, test, improve. A way of thinking you can use anywhere.</p>
+        <p>{T("Observe, question, prototype, test, improve. A way of thinking you can use anywhere.", "Observar, questionar, prototipar, testar, melhorar. Uma forma de pensar que podes usar em qualquer lado.")}</p>
       </a>
-      <a class="dcard" href="/workshops/">
+      <a class="dcard" href={h("/workshops/")}>
         <svg class="glyph" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 22h4M10 14v16M16 8v28M22 16v12M28 10v24M34 18v8M40 22h0"/></svg>
         <span class="go" aria-hidden="true">↗</span>
-        <h3>Sound + Visual</h3>
-        <p>How sound and visuals connect: identity, rhythm, atmosphere, events and exhibitions.</p>
+        <h3>{T("Sound + Visual", "Som + Visual")}</h3>
+        <p>{T("How sound and visuals connect: identity, rhythm, atmosphere, events and exhibitions.", "Como o som e a imagem se ligam: identidade, ritmo, ambiente, eventos e exposições.")}</p>
       </a>
-      <a class="dcard" href="/workshops/">
+      <a class="dcard" href={h("/workshops/")}>
         <svg class="glyph" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><rect x="5" y="8" width="20" height="16"/><path d="m5 20 6-5 5 4 4-3 5 4M30 12h9M30 18h9M5 30h34M5 36h24"/></svg>
         <span class="go" aria-hidden="true">↗</span>
-        <h3>Image + Word</h3>
-        <p>The art of telling stories through images and words, across film, photography, books and everything in between.</p>
+        <h3>{T("Image + Word", "Imagem + Palavra")}</h3>
+        <p>{T("The art of telling stories through images and words, across film, photography, books and everything in between.", "A arte de contar histórias com imagens e palavras, no cinema, na fotografia, nos livros e em tudo o que fica pelo meio.")}</p>
       </a>
-      <a class="dcard" href="/workshops/">
+      <a class="dcard" href={h("/workshops/")}>
         <svg class="glyph" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="32" height="32"/><path d="M14 31 21 13h2l7 18M17 25h10"/></svg>
         <span class="go" aria-hidden="true">↗</span>
-        <h3>Graphic Design &amp; Typography</h3>
-        <p>Type, iconography, wayfinding and print. Layout, posters and composition.</p>
+        <h3>{T("Graphic Design & Typography", "Design Gráfico e Tipografia")}</h3>
+        <p>{T("Type, iconography, wayfinding and print. Layout, posters and composition.", "Tipos de letra, iconografia, sinalética e impressão. Paginação, cartazes e composição.")}</p>
       </a>
-      <a class="dcard" href="/workshops/">
+      <a class="dcard" href={h("/workshops/")}>
         <svg class="glyph" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><rect x="5" y="8" width="34" height="23" rx="2"/><path d="M15 37h14M22 31v6"/><path d="M22 13.5l1.6 3.9 3.9 1.6-3.9 1.6L22 24.5l-1.6-3.9-3.9-1.6 3.9-1.6Z"/></svg>
         <span class="go" aria-hidden="true">↗</span>
-        <h3>Digital, AI, UX &amp; UI</h3>
-        <p>Interfaces, prototyping and designing with AI. How digital products are made, tested and used today.</p>
+        <h3>{T("Digital, AI, UX & UI", "Digital, IA, UX e UI")}</h3>
+        <p>{T("Interfaces, prototyping and designing with AI. How digital products are made, tested and used today.", "Interfaces, prototipagem e design com IA. Como os produtos digitais são feitos, testados e usados hoje.")}</p>
       </a>
-      <a class="dcard" href="/workshops/">
+      <a class="dcard" href={h("/workshops/")}>
         <svg class="glyph" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M22 4 38 13v18L22 40 6 31V13Z"/><path d="M6 13l16 9 16-9M22 22v18"/></svg>
         <span class="go" aria-hidden="true">↗</span>
-        <h3>Craft and Making</h3>
-        <p>Shape, materials, form and function. Woodworking, screen printing and more.</p>
+        <h3>{T("Craft and Making", "Ofícios e Fabrico")}</h3>
+        <p>{T("Shape, materials, form and function. Woodworking, screen printing and more.", "Forma, materiais e função. Carpintaria, serigrafia e muito mais.")}</p>
       </a>
     </div>
   </div>

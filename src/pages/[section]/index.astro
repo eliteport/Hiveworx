@@ -1,33 +1,8 @@
 ---
-/* /mentors/ — always published. While "Show the Mentors page" is off (Keystatic → Site settings) it opens only by direct
-   link: the menu shows "soon", it is left out of the sitemap and search engines are asked not to index it. */
-import Base from '../../layouts/Base.astro';
-import { getContent } from '../../lib/content';
-import { SITE, TITLES, DESCRIPTIONS, breadcrumb, mentorsLd } from '../../lib/seo';
-
+/* /mentors/ (a [section] route so it can be hidden from the menu); the page itself is src/views/Mentors.astro */
+import Mentors from '../../views/Mentors.astro';
 export function getStaticPaths() {
   return [{ params: { section: 'mentors' } }];
 }
-const { mentors, mentorsPage } = await getContent();
-const list = mentors.filter((m) => m.listed).sort((a, b) => a.order - b.order || a.name.localeCompare(b.name));
 ---
-<Base title={TITLES.mentors} description={DESCRIPTIONS.mentors} path="/mentors/" noindex={!mentorsPage}
-  ld={[breadcrumb([['Home', SITE + '/'], ['Mentors', SITE + '/mentors/']]), mentorsLd(list)]}>
-  <section class="page-head">
-    <div class="wrap">
-      <nav class="crumbs" aria-label="Breadcrumb"><a class="link" href="/">Home</a><span aria-hidden="true">/</span><span>Mentors</span></nav>
-      <h1 class="page-title">Mentors</h1>
-      <p class="page-lead">Composers, artists, designers and makers who teach the way they work. Meet the practitioners behind our workshops and talks, and see what each of them brings to the studio.</p>
-      <div class="mt-grid" id="mentorGrid">
-        {list.map((m) => (
-          <article class="mt-card">
-            <div class="mt-photo">{m.photo
-              ? <img class="mt-img" loading="lazy" src={m.photo} alt={`Portrait of ${m.name}`}>
-              : <div class="ph mt-ph"><span class="ph-text">No image</span></div>}</div>
-            <div class="mt-body"><h3>{m.name}</h3><p class="mt-role">{m.role}</p>{m.short && <p class="mt-text">{m.short}</p>}</div>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-</Base>
+<Mentors />

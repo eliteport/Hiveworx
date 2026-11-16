@@ -45,5 +45,40 @@
   "practical": {
     "discriminant": "default"
   },
-  "metaDescription": ""
+  "metaDescription": "",
+  "pt": {
+    "title": "Desenhar letras: como nasce um tipo de letra",
+    "formatLabel": "Workshop prático",
+    "discipline": "Tipografia",
+    "duration": "A anunciar",
+    "level": "Todos os níveis",
+    "imageAlt": "Mesa de trabalho de design de tipos: esboços a lápis da letra a em papel quadriculado e um portátil com o a em contornos digitais, com notas violeta como Start with a pencil, Cap height, Counter, Iterate, Spacing matters e Sketch, construct, refine, digitalize",
+    "summary": "Um workshop prático sobre a origem das letras. A partir de lápis, papel e algumas regras simples, vamos ver como um tipo de letra é planeado, desenhado e afinado, e levar um punhado de letras do primeiro esboço até uma forma digital com que se pode escrever.",
+    "about": [
+      "Todo o tipo de letra começa como um conjunto de decisões: que largura, que peso, como as curvas se encontram com as retas. Trabalhando como os designers de tipos, vamos tomar essas decisões nós próprios e ver como pequenas escolhas mudam a voz de um alfabeto inteiro."
+    ],
+    "forWho": "Designers, ilustradores, estudantes e qualquer pessoa curiosa sobre letras, incluindo quem nunca desenhou uma.",
+    "levelNote": "Não é preciso experiência em lettering ou design de tipos. Traz lápis e paciência; tudo o resto é fornecido.",
+    "explore": [
+      {
+        "title": "Anatomia de uma letra",
+        "text": "Hastes, bojos, contraformas e serifas: as partes que tornam uma letra legível, e porque têm o aspeto que têm."
+      },
+      {
+        "title": "Esboçar com regras",
+        "text": "Desenha algumas letras-chave, como n, o, H e a, numa grelha simples e vê como a proporção e o contraste definem o tom de um tipo de letra."
+      },
+      {
+        "title": "Do papel ao vetor",
+        "text": "Passa os teus melhores esboços a contornos limpos e aprende como as curvas se constroem a partir de pontos e alças."
+      },
+      {
+        "title": "Espaçamento e ritmo",
+        "text": "Põe as letras lado a lado, ajusta os espaços e vê uma palavra começar a ler-se como uma só forma."
+      }
+    ],
+    "outcome": [
+      "Sais com um pequeno conjunto de letras tuas, do primeiro esboço ao contorno digital, e com um olhar mais atento para os tipos de letra que vês todos os dias."
+    ]
+  }
 }

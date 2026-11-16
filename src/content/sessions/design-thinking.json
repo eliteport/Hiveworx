@@ -45,5 +45,49 @@
   "practical": {
     "discriminant": "none"
   },
-  "metaDescription": "An online talk by Temo K. Dolidze on design thinking: where it came from, its core principles, and why it puts people’s needs first in product development."
+  "metaDescription": "An online talk by Temo K. Dolidze on design thinking: where it came from, its core principles, and why it puts people’s needs first in product development.",
+  "pt": {
+    "title": "Design Thinking: o que é e porque importa no desenvolvimento de produto",
+    "formatLabel": "Palestra online",
+    "discipline": "Design Thinking",
+    "imageAlt": "As cinco fases do design thinking desenhadas como círculos: Empatia, Definição, Ideação, Protótipo e Teste, sobre grandes letras esbatidas onde se lê Design Thinking, com notas violeta desenhadas à mão: What’s happening here? e Design lecture",
+    "about": [
+      "Em 1958, apenas quatro meses depois do lançamento do Sputnik e da criação da NASA pelo Presidente Eisenhower, John Arnold, professor de engenharia em Stanford, fez um discurso em que defendia que a engenharia de design devia centrar-se nas pessoas.",
+      "Na altura, a proposta de Arnold era muito pouco convencional. Durante a Guerra Fria, os engenheiros concentravam-se sobretudo em duas prioridades: ganhar a corrida espacial e otimizar a bomba de hidrogénio.",
+      "Inspirado pelas ideias de Arnold, Bob McKim, professor de engenharia mecânica, criou com a ajuda do professor de arte Matt Kahn um programa de engenharia chamado Product Design.",
+      "Através deste programa, McKim e outros contribuíram para o desenvolvimento do processo de design thinking, que mais tarde ajudou a lançar as bases da d.school de Stanford. O design thinking tornou-se também uma metodologia central para empresas como a IDEO.",
+      "O processo de design thinking não é linear e não existe uma única forma certa de o seguir. É um sistema iterativo com muitas variações. Ainda assim, a d.school de Stanford ensina um processo bem testado, que oferece um ponto de partida prático para enfrentar problemas de qualquer nível de complexidade."
+    ],
+    "explore": [
+      {
+        "title": "Design centrado nas pessoas",
+        "text": ""
+      },
+      {
+        "title": "Empatia",
+        "text": ""
+      },
+      {
+        "title": "Experimentação e prototipagem",
+        "text": ""
+      },
+      {
+        "title": "Tendência para a ação",
+        "text": ""
+      },
+      {
+        "title": "Mostrar, não contar",
+        "text": ""
+      },
+      {
+        "title": "O poder da iteração",
+        "text": ""
+      }
+    ],
+    "outcomeLabel": "O que vais levar contigo",
+    "outcome": [
+      "Depois desta palestra, vais perceber melhor como se criam grandes produtos e como a metodologia do design thinking lançou as bases de um processo que nos ensina a pôr as necessidades das pessoas em primeiro lugar."
+    ],
+    "metaDescription": "Palestra online de Temo K. Dolidze sobre design thinking: de onde vem, os seus princípios e porque põe as necessidades das pessoas em primeiro lugar no desenvolvimento de produto."
+  }
 }

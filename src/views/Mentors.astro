@@ -1,0 +1,36 @@
+---
+/* /mentors/ and /pt/mentors/ — always published. While "Show the Mentors page" is off (Keystatic → Site settings) it opens only by direct
+   link: the menu shows "soon", it is left out of the sitemap and search engines are asked not to index it. */
+import Base from '../layouts/Base.astro';
+import { getContent } from '../lib/content';
+import { SITE, TITLES, DESCRIPTIONS, breadcrumb, mentorsLd } from '../lib/seo';
+import { langOf, href, tr } from '../lib/i18n';
+
+const lang = langOf(Astro.url);
+const T = tr(lang);
+const { mentors, mentorsPage } = await getContent(lang);
+const list = mentors.filter((m) => m.listed).sort((a, b) => a.order - b.order || a.name.localeCompare(b.name));
+const u = (p: string) => SITE + href(p, lang);
+---
+<Base title={TITLES[lang].mentors} description={DESCRIPTIONS[lang].mentors} path="/mentors/" noindex={!mentorsPage}
+  ld={[breadcrumb([[T('Home', 'Início'), u('/')], [T('Mentors', 'Mentores'), u('/mentors/')]]), mentorsLd(list)]}>
+  <section class="page-head">
+    <div class="wrap">
+      <nav class="crumbs" aria-label={T('Breadcrumb', 'Navegação estrutural')}><a class="link" href={href('/', lang)}>{T('Home', 'Início')}</a><span aria-hidden="true">/</span><span>{T('Mentors', 'Mentores')}</span></nav>
+      <h1 class="page-title">{T('Mentors', 'Mentores')}</h1>
+      <p class="page-lead">{T(
+        'Composers, artists, designers and makers who teach the way they work. Meet the practitioners behind our workshops and talks, and see what each of them brings to the studio.',
+        'Compositores, artistas, designers e criadores que ensinam como trabalham. Conhece os profissionais por trás dos nossos workshops e palestras, e o que cada um traz para o estúdio.')}</p>
+      <div class="mt-grid" id="mentorGrid">
+        {list.map((m) => (
+          <article class="mt-card">
+            <div class="mt-photo">{m.photo
+              ? <img class="mt-img" loading="lazy" src={m.photo} alt={T(`Portrait of ${m.name}`, `Retrato de ${m.name}`)}>
+              : <div class="ph mt-ph"><span class="ph-text">{T('No image', 'Sem imagem')}</span></div>}</div>
+            <div class="mt-body"><h3>{m.name}</h3><p class="mt-role">{m.role}</p>{m.short && <p class="mt-text">{m.short}</p>}</div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,71 +1,76 @@
 ---
 // copied from the one-page site; edit freely
+// English and Portuguese side by side: T('English', 'Português')
+import { langOf, href, tr } from '../../lib/i18n';
+const lang = langOf(Astro.url);
+const T = tr(lang);
+const h = (p: string) => href(p, lang);
 ---
 <!-- AUDIENCE TABS -->
 <section class="aud" id="join">
   <div class="wrap">
-    <p class="label">Get involved</p>
+    <p class="label">{T("Get involved", "Participa")}</p>
 
-    <div class="tabs" role="tablist" aria-label="Choose who you are">
-      <button class="tab" role="tab" id="t-students" aria-controls="p-students" aria-selected="true">Students</button>
-      <button class="tab" role="tab" id="t-mentors" aria-controls="p-mentors" aria-selected="false" tabindex="-1">Mentors</button>
-      <button class="tab" role="tab" id="t-story" aria-controls="p-story" aria-selected="false" tabindex="-1">Storytellers</button>
-      <button class="tab" role="tab" id="t-fund" aria-controls="p-fund" aria-selected="false" tabindex="-1">Funders &amp; partners</button>
+    <div class="tabs" role="tablist" aria-label={T("Choose who you are", "Escolhe quem és")}>
+      <button class="tab" role="tab" id="t-students" aria-controls="p-students" aria-selected="true">{T("Students", "Alunos")}</button>
+      <button class="tab" role="tab" id="t-mentors" aria-controls="p-mentors" aria-selected="false" tabindex="-1">{T("Mentors", "Mentores")}</button>
+      <button class="tab" role="tab" id="t-story" aria-controls="p-story" aria-selected="false" tabindex="-1">{T("Storytellers", "Contadores de histórias")}</button>
+      <button class="tab" role="tab" id="t-fund" aria-controls="p-fund" aria-selected="false" tabindex="-1">{T("Funders & partners", "Financiadores e parceiros")}</button>
     </div>
 
     <div class="panel" role="tabpanel" id="p-students" aria-labelledby="t-students">
       <div>
-        <h3>What students get</h3>
-        <p class="intro">The goal is not to graduate. Try new fields, see how design really works, and take something useful back into your life.</p>
-        <a class="btn btn-primary" href="/workshops/">Explore workshops &amp; talks <span class="arr">→</span></a>
+        <h3>{T("What students get", "O que os alunos ganham")}</h3>
+        <p class="intro">{T("The goal is not to graduate. Try new fields, see how design really works, and take something useful back into your life.", "O objetivo não é tirar um diploma. Experimenta novas áreas, vê como o design funciona realmente e leva algo útil para a tua vida.")}</p>
+        <a class="btn btn-primary" href={h("/workshops/")}>{T("Explore workshops & talks", "Explorar workshops e palestras")} <span class="arr">→</span></a>
       </div>
       <div class="gets">
-        <div class="get"><b>Try new fields</b><span>Without long-term commitment</span></div>
-        <div class="get"><b>Understand disciplines</b><span>How different design fields and processes actually work</span></div>
-        <div class="get"><b>Discover directions</b><span>Interests, hobbies, possible careers</span></div>
-        <div class="get"><b>See learning differently</b><span>Active, playful and personal</span></div>
-        <div class="get"><b>Work with real tools</b><span>Materials, processes and decisions</span></div>
-        <div class="get"><b>Build confidence</b><span>Through doing, not just listening</span></div>
+        <div class="get"><b>{T("Try new fields", "Experimentar novas áreas")}</b><span>{T("Without long-term commitment", "Sem compromissos a longo prazo")}</span></div>
+        <div class="get"><b>{T("Understand disciplines", "Perceber as disciplinas")}</b><span>{T("How different design fields and processes actually work", "Como funcionam realmente as diferentes áreas e processos do design")}</span></div>
+        <div class="get"><b>{T("Discover directions", "Descobrir caminhos")}</b><span>{T("Interests, hobbies, possible careers", "Interesses, passatempos, possíveis carreiras")}</span></div>
+        <div class="get"><b>{T("See learning differently", "Ver a aprendizagem de outra forma")}</b><span>{T("Active, playful and personal", "Ativa, lúdica e pessoal")}</span></div>
+        <div class="get"><b>{T("Work with real tools", "Trabalhar com ferramentas reais")}</b><span>{T("Materials, processes and decisions", "Materiais, processos e decisões")}</span></div>
+        <div class="get"><b>{T("Build confidence", "Ganhar confiança")}</b><span>{T("Through doing, not just listening", "A fazer, não só a ouvir")}</span></div>
       </div>
     </div>
 
     <div class="panel" role="tabpanel" id="p-mentors" aria-labelledby="t-mentors" hidden>
       <div>
-        <h3>What mentors get</h3>
-        <p class="intro">You learned through practice, mistakes and obsession. Teach the same way, to people who want to hear how it really happened.</p>
-        <a class="btn btn-primary" href="/#contact" data-who="Mentor">Become a mentor <span class="arr">→</span></a>
+        <h3>{T("What mentors get", "O que os mentores ganham")}</h3>
+        <p class="intro">{T("You learned through practice, mistakes and obsession. Teach the same way, to people who want to hear how it really happened.", "Aprendeste com a prática, os erros e a obsessão. Ensina da mesma forma, a pessoas que querem ouvir como tudo aconteceu de verdade.")}</p>
+        <a class="btn btn-primary" href={h("/#contact")} data-who="Mentor">{T("Become a mentor", "Ser mentor")} <span class="arr">→</span></a>
       </div>
       <div class="groups">
-        <div><h4>Platform &amp; presence</h4><ul><li>Share your experience and personal journey</li><li>Present your work to a new audience</li><li>Build your personal or professional brand</li><li>Become part of a creative cultural movement</li></ul></div>
-        <div><h4>Teaching &amp; impact</h4><ul><li>Teach through practice, not theory only</li><li>Create meaningful content from the sessions</li><li>Connect with future collaborators and clients</li><li>Discover potential students or assistants</li></ul></div>
+        <div><h4>{T("Platform & presence", "Plataforma e presença")}</h4><ul><li>{T("Share your experience and personal journey", "Partilha a tua experiência e o teu percurso")}</li><li>{T("Present your work to a new audience", "Apresenta o teu trabalho a um novo público")}</li><li>{T("Build your personal or professional brand", "Constrói a tua marca pessoal ou profissional")}</li><li>{T("Become part of a creative cultural movement", "Faz parte de um movimento cultural criativo")}</li></ul></div>
+        <div><h4>{T("Teaching & impact", "Ensino e impacto")}</h4><ul><li>{T("Teach through practice, not theory only", "Ensina pela prática, não só pela teoria")}</li><li>{T("Create meaningful content from the sessions", "Cria conteúdo com significado a partir das sessões")}</li><li>{T("Connect with future collaborators and clients", "Conhece futuros colaboradores e clientes")}</li><li>{T("Discover potential students or assistants", "Descobre potenciais alunos ou assistentes")}</li></ul></div>
       </div>
     </div>
 
     <div class="panel" role="tabpanel" id="p-story" aria-labelledby="t-story" hidden>
       <div>
-        <h3>Hiveworx is a stage</h3>
-        <p class="intro">Not every mentor runs a workshop. Some just take the stage. Hiveworx is a stage as much as a studio: a place to share your journey.</p>
-        <a class="btn btn-primary" href="/#contact" data-who="Other">Pitch a talk <span class="arr">→</span></a>
+        <h3>{T("Hiveworx is a stage", "A Hiveworx é um palco")}</h3>
+        <p class="intro">{T("Not every mentor runs a workshop. Some just take the stage. Hiveworx is a stage as much as a studio: a place to share your journey.", "Nem todos os mentores dão um workshop. Alguns só sobem ao palco. A Hiveworx é tanto um palco como um estúdio: um lugar para partilhar o teu percurso.")}</p>
+        <a class="btn btn-primary" href={h("/#contact")} data-who="Other">{T("Pitch a talk", "Propor uma palestra")} <span class="arr">→</span></a>
       </div>
       <div class="groups">
-        <div><h4>Your story</h4><ul><li>How you started</li><li>What you learned by yourself</li><li>What mistakes shaped you</li></ul></div>
-        <div><h4>Your craft</h4><ul><li>How you built your craft</li><li>What tools, books or moments changed you</li><li>Why your work matters</li></ul></div>
+        <div><h4>{T("Your story", "A tua história")}</h4><ul><li>{T("How you started", "Como começaste")}</li><li>{T("What you learned by yourself", "O que aprendeste sozinho")}</li><li>{T("What mistakes shaped you", "Que erros te marcaram")}</li></ul></div>
+        <div><h4>{T("Your craft", "O teu ofício")}</h4><ul><li>{T("How you built your craft", "Como construíste o teu ofício")}</li><li>{T("What tools, books or moments changed you", "Que ferramentas, livros ou momentos te mudaram")}</li><li>{T("Why your work matters", "Porque é que o teu trabalho importa")}</li></ul></div>
       </div>
     </div>
 
     <div class="panel" role="tabpanel" id="p-fund" aria-labelledby="t-fund" hidden>
       <div>
-        <h3>Support a new creative education platform</h3>
-        <p class="intro">Your support funds talks and workshops from real practitioners behind famous products, events, designs, exhibitions, film and music.</p>
-        <a class="btn btn-primary" href="/#contact" data-who="Funder">Partner with us <span class="arr">→</span></a>
+        <h3>{T("Support a new creative education platform", "Apoia uma nova plataforma de educação criativa")}</h3>
+        <p class="intro">{T("Your support funds talks and workshops from real practitioners behind famous products, events, designs, exhibitions, film and music.", "O teu apoio financia palestras e workshops de profissionais reais por trás de produtos, eventos, designs, exposições, filmes e música conhecidos.")}</p>
+        <a class="btn btn-primary" href={h("/#contact")} data-who="Funder">{T("Partner with us", "Sê nosso parceiro")} <span class="arr">→</span></a>
       </div>
       <div class="gets">
-        <div class="get"><b>Creative education</b><span>Delivered through practice, not lectures</span></div>
-        <div class="get"><b>Content &amp; visibility</b><span>Documented, shareable, cultural</span></div>
-        <div class="get"><b>Future talent</b><span>A pipeline for the creative economy</span></div>
-        <div class="get"><b>Community building</b><span>Connecting people, makers, brands and institutions</span></div>
-        <div class="get"><b>Youth development</b><span>Empowering the next generation</span></div>
-        <div class="get"><b>Local creative industry</b><span>Embedded in the local ecosystem</span></div>
+        <div class="get"><b>{T("Creative education", "Educação criativa")}</b><span>{T("Delivered through practice, not lectures", "Feita através da prática, não de aulas teóricas")}</span></div>
+        <div class="get"><b>{T("Content & visibility", "Conteúdo e visibilidade")}</b><span>{T("Documented, shareable, cultural", "Documentado, partilhável, cultural")}</span></div>
+        <div class="get"><b>{T("Future talent", "Talento futuro")}</b><span>{T("A pipeline for the creative economy", "Uma porta de entrada para a economia criativa")}</span></div>
+        <div class="get"><b>{T("Community building", "Construir comunidade")}</b><span>{T("Connecting people, makers, brands and institutions", "Ligar pessoas, criadores, marcas e instituições")}</span></div>
+        <div class="get"><b>{T("Youth development", "Desenvolvimento jovem")}</b><span>{T("Empowering the next generation", "Dar força à próxima geração")}</span></div>
+        <div class="get"><b>{T("Local creative industry", "Indústria criativa local")}</b><span>{T("Embedded in the local ecosystem", "Integrada no ecossistema local")}</span></div>
       </div>
     </div>
   </div>

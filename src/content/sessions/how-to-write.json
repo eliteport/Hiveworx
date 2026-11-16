@@ -37,5 +37,37 @@
   ],
   "practical": {
     "discriminant": "default"
+  },
+  "pt": {
+    "title": "Encontrar as Palavras – O ofício da escrita",
+    "formatLabel": "Workshop prático",
+    "discipline": "Imagem + Palavra",
+    "duration": "Sessão de 2 a 3 horas",
+    "level": "Todos os níveis",
+    "imageAlt": "Fotografia a preto e branco de uma entrevista a um artista numa inauguração numa galeria, com cadernos, uma câmara e um portátil na mesa; notas violeta esboçam os géneros escritos, o evento ao vivo, a estrutura de um artigo e o resultado final: uma entrevista gravada e um artigo terminado",
+    "summary": "Um workshop de ofício para quem escreve, sobre cultura ou por trabalho. Vais aprender como diferem os géneros escritos, como se constrói um artigo e como conduzir uma boa entrevista, e depois pôr tudo em prática a cobrir, em grupo, uma exposição ou um evento reais.",
+    "forWho": "Aspirantes a jornalistas, comunicadores e qualquer pessoa que escreva por trabalho, seja qual for o tema.",
+    "levelNote": "Aberto a todos. Não precisas de gostar de cinema para tirar muito partido.",
+    "explore": [
+      {
+        "title": "Géneros escritos",
+        "text": "Como diferem as publicações, e o que faz um perfil, uma reportagem e uma crítica."
+      },
+      {
+        "title": "Como se constrói um artigo",
+        "text": "A estrutura, dividir um texto em partes, encontrar o seu eixo ou ponto de partida, e as possibilidades da escrita criativa."
+      },
+      {
+        "title": "A entrevista",
+        "text": "A preparação, conduzir a conversa, o papel do detalhe e do ambiente, criar empatia e a psicologia do encontro. Tarefa: gravar uma entrevista."
+      },
+      {
+        "title": "Cobrir um evento ao vivo",
+        "text": "O grupo vai a uma exposição ou evento, entrevista o curador ou o autor, recolhe material e constrói um artigo em conjunto, com a tutora a trabalhar ao lado."
+      }
+    ],
+    "outcome": [
+      "Sais com uma entrevista gravada e um artigo terminado, construído a partir de um evento cultural real."
+    ]
   }
 }

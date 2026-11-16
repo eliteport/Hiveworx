@@ -7,21 +7,25 @@ import Footer from '../components/static/Footer.astro';
 import Analytics from '../components/Analytics.astro';
 import CookieBanner from '../components/CookieBanner.astro';
 import { SITE, abs, ORG, DEFAULT_IMAGE } from '../lib/seo';
+import { langOf, href, HTML_LANG, OG_LOCALE } from '../lib/i18n';
 
 interface Props {
   title: string;
   description: string;
-  path: string;              // e.g. "/workshops/lets-touchdesign/"
+  path: string;              // e.g. "/workshops/lets-touchdesign/" (without /pt: the Portuguese address is worked out here)
   image?: string;            // share image, site-relative
   ld?: object[];             // extra structured data next to the organisation
   noindex?: boolean;
 }
 const { title, description, path, image = DEFAULT_IMAGE, ld = [], noindex = false } = Astro.props;
-const url = SITE + path;
+const lang = langOf(Astro.url);
+const url = SITE + href(path, lang);
+/* each page exists in both languages at the same address after /pt, so Google can show the right one */
+const alt = path.endsWith('.html') ? null : { en: SITE + href(path, 'en'), pt: SITE + href(path, 'pt') };
 const graph = JSON.stringify({ '@context': 'https://schema.org', '@graph': [ORG, ...ld] }).replace(/</g, '\\u003c');
 ---
 <!doctype html>
-<html lang="en">
+<html lang={HTML_LANG[lang]}>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -31,13 +35,15 @@ const graph = JSON.stringify({ '@context': 'https://schema.org', '@graph': [ORG,
 <title>{title}</title>
 <meta name="description" content={description}>
 {noindex ? <meta name="robots" content="noindex"> : <link rel="canonical" href={url}>}
+{!noindex && alt && <><link rel="alternate" hreflang="en" href={alt.en}><link rel="alternate" hreflang="pt-PT" href={alt.pt}><link rel="alternate" hreflang="x-default" href={alt.en}></>}
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Hiveworx">
 <meta property="og:title" content={title}>
 <meta property="og:description" content={description}>
 <meta property="og:url" content={url}>
 <meta property="og:image" content={abs(image)}>
-<meta property="og:locale" content="en_GB">
+<meta property="og:locale" content={OG_LOCALE[lang]}>
+<meta property="og:locale:alternate" content={OG_LOCALE[lang === 'pt' ? 'en' : 'pt']}>
 <meta name="twitter:card" content="summary_large_image">
 <Analytics />
 <link rel="icon" href="/favicon.ico" sizes="32x32">

@@ -85,5 +85,75 @@
       ]
     }
   },
-  "metaDescription": ""
+  "metaDescription": "",
+  "pt": {
+    "title": "Síntese de timbres acústicos e eletrónicos através da análise espectral",
+    "formatLabel": "Workshop prático",
+    "discipline": "Áudio",
+    "duration": "2 horas e 30 minutos",
+    "level": "Iniciante a intermédio",
+    "imageAlt": "Retrato a preto e branco de Giorgi Koberidze de casaco escuro, de cabeça baixa, em frente a uma velha parede de pedra",
+    "summary": "Este workshop propõe uma forma diferente de combinar som acústico e eletrónico: não sobrepondo um ao outro, mas desmontando os dois em conjunto, até à estrutura espectral que partilham. A partir de gravações acústicas reais, vamos decompor o som nos seus harmónicos individuais e voltar a juntar esses fragmentos em novo material eletrónico, com síntese modular.",
+    "forWho": "Compositores, músicos eletrónicos, artistas sonoros, produtores, entusiastas de síntese modular e qualquer pessoa interessada em som espectral, música eletroacústica, síntese e novas abordagens aos instrumentos acústicos.",
+    "levelNote": "O workshop serve tanto compositores com alguma experiência de estúdio como músicos eletrónicos que nunca usaram técnicas espectrais ou modulares. Alguma familiaridade com software de áudio ajuda, mas não é precisa experiência em síntese ou modular.",
+    "explore": [
+      {
+        "title": "Anatomia espectral",
+        "text": "Analisar uma gravação acústica e decompô-la nos parciais que a formam, vendo pela primeira vez de que é realmente feito um som."
+      },
+      {
+        "title": "Extração e recombinação de harmónicos",
+        "text": "Selecionar, isolar e recombinar harmónicos de diferentes instrumentos em novas wavetables, chegando a combinações que nenhum instrumento acústico conseguiria produzir sozinho."
+      },
+      {
+        "title": "Transformação granular",
+        "text": "Moldar o material extraído com síntese granular, explorando como a estrutura da forma de onda e o micro-timing se tornam ferramentas expressivas por direito próprio."
+      },
+      {
+        "title": "Processamento modular",
+        "text": "Passar o material espectral reorganizado por um sistema modular (Eurorack) para o granular e transformar ainda mais."
+      },
+      {
+        "title": "Reconstruir o instrumento imaginário",
+        "text": "Voltar a unir a camada eletrónica transformada à sua fonte acústica, integrando as duas ao nível do timbre em vez de simplesmente as empilhar."
+      },
+      {
+        "title": "O timbre como estrutura",
+        "text": "Repensar a composição com a cor e a textura — e não a harmonia — como motor principal do movimento musical, uma ideia central da tradição da música espectral aplicada a um processo eletrónico prático."
+      }
+    ],
+    "outcome": [
+      "Cada participante sai do workshop a compreender melhor o que é realmente o timbre e como pode funcionar como elemento estrutural na música, e a olhar para a forma e a composição de outra perspetiva, em que a cor do som e a mudança espectral moldam o desenvolvimento musical.",
+      "Ganha também experiência prática com os elementos fundamentais do som, experimentando com harmónicos e material espectral para criar e descobrir novos instrumentos e timbres sintéticos."
+    ],
+    "practicalLabel": "Nota",
+    "practicalTitle": "O que precisas <span class=\"v\">de saber</span>",
+    "practicalNote": "Vem criar connosco",
+    "practicalItems": [
+      {
+        "icon": "clock",
+        "text": "Chega uns minutos mais cedo. Começamos à hora certa e os primeiros passos são a base de tudo o que se segue."
+      },
+      {
+        "icon": "phone",
+        "text": "Desliga o telemóvel durante toda a sessão; não basta pô-lo em silêncio."
+      },
+      {
+        "icon": "quiet",
+        "text": "Trabalhamos com som. Fala baixo e evita ruído extra enquanto os outros estão a ouvir."
+      },
+      {
+        "icon": "steps",
+        "text": "Segue o processo passo a passo, mesmo que conheças um atalho. Cada etapa prepara a seguinte."
+      },
+      {
+        "icon": "calm",
+        "text": "Mantém a calma e a paciência. O trabalho espectral recompensa uma escuta lenta e cuidadosa."
+      },
+      {
+        "icon": "tools",
+        "text": "Trata o equipamento com cuidado e pergunta antes de ligar ou desligar alguma coisa."
+      }
+    ]
+  }
 }

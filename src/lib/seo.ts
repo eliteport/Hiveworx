@@ -1,28 +1,54 @@
 /* Page titles, descriptions and structured data (schema.org) for Google. */
 import type { Session, Mentor } from './content';
+import type { Lang } from './i18n';
 
 export const SITE = 'https://www.hiveworx.com';   // Vercel serves the site on www (hiveworx.com forwards here)
 export const abs = (p: string) => SITE + '/' + p.replace(/^\.?\//, '');
 export const DEFAULT_IMAGE = '/images/og-hiveworx.png';
 
-export const TITLES = {
+const TITLES_EN = {
   home: 'Hiveworx · Hands-on design workshops in Lisbon',
   about: 'About Hiveworx · An experience-based design school in Lisbon',
   mentors: 'Mentors · Practitioners who teach at Hiveworx, Lisbon',
   workshops: 'Design workshops & talks in Lisbon · Hiveworx',
+  privacy: 'Privacy policy · Hiveworx',
 };
-export const DESCRIPTIONS = {
+const DESCRIPTIONS_EN = {
   home: 'An experience-based design school in Lisbon. Hands-on workshops and talks in design, sound, typography and film, taught by working practitioners, not professors.',
   workshops: 'Hands-on design workshops and talks in Lisbon: sound and visuals, typography, film, art and writing. Taught by practitioners, not professors. Open to anyone.',
   mentors: 'Meet the Hiveworx mentors: designers, artists, musicians and critics in Lisbon who teach through their own work and experience, not theory.',
   about: 'Hiveworx is an experience-based design school in Lisbon. Working practitioners teach hands-on workshops and talks, open to anyone, with no diplomas or entry requirements.',
+  privacy: 'How Hiveworx handles personal data: Google Analytics only with your consent, contact form messages, workshop registrations, and your rights under the GDPR.',
+};
+export const TITLES: Record<Lang, typeof TITLES_EN> = {
+  en: TITLES_EN,
+  pt: {
+    home: 'Hiveworx · Workshops práticos de design em Lisboa',
+    about: 'Sobre a Hiveworx · Uma escola de design baseada na experiência, em Lisboa',
+    mentors: 'Mentores · Profissionais que ensinam na Hiveworx, Lisboa',
+    workshops: 'Workshops e palestras de design em Lisboa · Hiveworx',
+    privacy: 'Política de privacidade · Hiveworx',
+  },
+};
+export const DESCRIPTIONS: Record<Lang, typeof DESCRIPTIONS_EN> = {
+  en: DESCRIPTIONS_EN,
+  pt: {
+    home: 'Uma escola de design baseada na experiência, em Lisboa. Workshops práticos e palestras de design, som, tipografia e cinema, dados por profissionais no ativo.',
+    workshops: 'Workshops práticos e palestras de design em Lisboa: som e imagem, tipografia, cinema, arte e escrita. Dados por profissionais no ativo. Abertos a todos.',
+    mentors: 'Conhece os mentores da Hiveworx: designers, artistas, músicos e críticos que ensinam a partir do seu próprio trabalho e experiência, não da teoria.',
+    about: 'A Hiveworx é uma escola de design baseada na experiência, em Lisboa. Profissionais no ativo dão workshops práticos e palestras abertos a todos, sem diplomas nem requisitos de entrada.',
+    privacy: 'Como a Hiveworx trata os dados pessoais: Google Analytics só com o teu consentimento, mensagens do formulário de contacto, inscrições em workshops e os teus direitos ao abrigo do RGPD.',
+  },
 };
 
-/* "Drawing Letters · Workshop in Lisbon · Hiveworx"; titles that already say workshop/talk just add the city */
-export function sessionTitle(s: Session) {
-  if (s.online) return `${s.title} · Online ${s.typeLabel.toLowerCase()} · Hiveworx`;
+/* "Drawing Letters · Workshop in Lisbon · Hiveworx"; titles that already say workshop/talk just add the city.
+   Portuguese: "Desenhar letras · Workshop em Lisboa · Hiveworx" */
+export function sessionTitle(s: Session, lang: Lang = 'en') {
+  const pt = lang === 'pt';
+  if (s.online) return `${s.title} · ${pt ? `${s.typeLabel} online` : `Online ${s.typeLabel.toLowerCase()}`} · Hiveworx`;
   const says = new RegExp(`\\b${s.typeLabel}\\b`, 'i').test(s.title);
-  return `${s.title}${says ? ' in Lisbon' : ` · ${s.typeLabel} in Lisbon`} · Hiveworx`;
+  const city = pt ? 'em Lisboa' : 'in Lisbon';
+  return `${s.title}${says ? ` ${city}` : ` · ${s.typeLabel} ${city}`} · Hiveworx`;
 }
 
 export function clip(text: string, max = 155) {
