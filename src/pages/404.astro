@@ -1,13 +1,16 @@
 ---
+/* one 404 page for both languages (the host serves it for any missing address) */
 import Base from '../layouts/Base.astro';
 import { DESCRIPTIONS } from '../lib/seo';
 ---
-<Base title="Page not found · Hiveworx" description={DESCRIPTIONS.home} path="/404.html" noindex>
+<Base title="Page not found · Hiveworx" description={DESCRIPTIONS.en.home} path="/404.html" noindex>
   <section class="page-head">
     <div class="wrap notfound">
       <h1>This page doesn’t exist.</h1>
       <p>It may have moved, or the address has a typo. Try the program instead.</p>
+      <p lang="pt-PT">Esta página não existe. Pode ter mudado de sítio, ou o endereço pode ter um erro. Consulta o programa.</p>
       <a class="btn btn-primary" href="/workshops/">See all workshops <span class="arr">→</span></a>
+      <a class="btn btn-ghost" href="/pt/workshops/" lang="pt-PT">Ver workshops em português <span class="arr">→</span></a>
     </div>
   </section>
 </Base>

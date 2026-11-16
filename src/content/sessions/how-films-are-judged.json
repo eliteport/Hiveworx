@@ -35,5 +35,36 @@
   ],
   "practical": {
     "discriminant": "default"
+  },
+  "pt": {
+    "title": "O Veredicto – Como os filmes são julgados, premiados e lembrados",
+    "formatLabel": "Workshop",
+    "discipline": "Imagem + Palavra",
+    "duration": "Sessão de 2 a 3 horas",
+    "level": "Todos os níveis",
+    "summary": "Não como um filme é feito, mas como é visto, avaliado, selecionado e premiado. Orientado por uma votante dos Globos de Ouro e membro da Academia Europeia de Cinema, este workshop mostra o que os votantes procuram, como se forma o consenso crítico e como um filme viaja do festival ao prémio.",
+    "forWho": "Amantes de cinema, aspirantes a críticos e qualquer pessoa curiosa sobre a forma como os filmes são avaliados e premiados.",
+    "levelNote": "Aberto a todos. Não é preciso formação em crítica de cinema.",
+    "explore": [
+      {
+        "title": "Como os filmes são julgados",
+        "text": "O que os votantes procuram, como se forma o consenso crítico e como um filme viaja do festival ao prémio."
+      },
+      {
+        "title": "Ver em conjunto",
+        "text": "Um filme visto em grupo, com atenção ao que importa observar durante a sessão."
+      },
+      {
+        "title": "Escrever uma crítica",
+        "text": "Análise, avaliação e narração: como se constrói uma crítica. Tarefa: escrever uma crítica."
+      },
+      {
+        "title": "O lado sombrio: a censura",
+        "text": "Casos concretos e comparativos de vários países: o que foi cortado ou proibido, e quem decidiu."
+      }
+    ],
+    "outcome": [
+      "Sais a saber como os filmes são avaliados por dentro, e com uma crítica tua terminada."
+    ]
   }
 }

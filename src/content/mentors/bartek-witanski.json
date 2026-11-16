@@ -10,5 +10,14 @@
     "In addition to designing and managing the studio, Bartek shares his knowledge by lecturing and leading thematic workshops at the Polish-Japanese Academy of Information Technology in Warsaw, the University of Arts in Poznań and the Academy of Fine Arts in Katowice."
   ],
   "listed": true,
-  "order": 4
+  "order": 4,
+  "pt": {
+    "role": "Diretor de arte, cofundador do Blank Studio",
+    "short": "Designer gráfico especializado em sistemas de sinalética. Cofundador do Blank Studio, cujo trabalho para espaços públicos venceu os prémios Red Dot, iF e European Design Awards. Dá aulas e orienta workshops em escolas de arte e design por toda a Polónia.",
+    "bio": [
+      "Bartek Witański trabalha em muitas áreas do design gráfico, mas especializa-se sobretudo no design de sistemas de sinalética.",
+      "É cofundador e designer do Blank Studio, uma das poucas empresas na Polónia e na Europa dedicadas exclusivamente ao design de sistemas de sinalética complexos para espaços públicos de vários tipos. Os projetos do estúdio foram distinguidos em numerosos concursos da área, incluindo o Red Dot Communication Design Award, iF Design Award, European Design Award, German Design Award, Golden Pin, Joseph Binder Award, Polish Graphic Design Award, Project of the Year, SEGD e muitos outros.",
+      "Além de projetar e gerir o estúdio, Bartek partilha o seu conhecimento como professor e orientador de workshops temáticos na Academia Polaco-Japonesa de Tecnologias de Informação, em Varsóvia, na Universidade de Artes de Poznań e na Academia de Belas-Artes de Katowice."
+    ]
+  }
 }

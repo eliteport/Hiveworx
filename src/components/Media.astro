@@ -1,10 +1,12 @@
 ---
 /* a session's photo, or the "Coming soon" placeholder */
 import type { Session } from '../lib/content';
+import { langOf, tr } from '../lib/i18n';
 interface Props { session: Session; lazy?: boolean }
 const { session: s, lazy = false } = Astro.props;
+const T = tr(langOf(Astro.url));
 ---
 {s.image
   ? <img class="ws-photo" loading={lazy ? 'lazy' : undefined} src={s.image.src} alt={s.image.alt} width="1672" height="941"
       style={s.image.focus ? `object-position:${s.image.focus}` : undefined}>
-  : <div class="ph ph-art" role="img" aria-label="Image coming soon"><span class="ph-text">Coming soon</span></div>}
+  : <div class="ph ph-art" role="img" aria-label={T('Image coming soon', 'Imagem em breve')}><span class="ph-text">{T('Coming soon', 'Em breve')}</span></div>}

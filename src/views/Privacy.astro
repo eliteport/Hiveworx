@@ -1,0 +1,77 @@
+---
+/* /privacy/ — what the site collects and why. Keep it in step with the site:
+   Google Analytics (src/components/Analytics.astro), the contact form (Formspree), Luma links.
+   The Portuguese text is the second block below: change both when something changes. */
+import Base from '../layouts/Base.astro';
+import { SITE, TITLES, DESCRIPTIONS, breadcrumb } from '../lib/seo';
+import { langOf, href, tr } from '../lib/i18n';
+
+const lang = langOf(Astro.url);
+const T = tr(lang);
+const updated = T('2 October 2026', '2 de outubro de 2026');
+const u = (p: string) => SITE + href(p, lang);
+---
+<Base title={TITLES[lang].privacy} path="/privacy/" description={DESCRIPTIONS[lang].privacy}
+  ld={[breadcrumb([[T('Home', 'Início'), u('/')], [T('Privacy policy', 'Política de privacidade'), u('/privacy/')]])]}>
+  <section class="page-head">
+    <div class="wrap">
+      <nav class="crumbs" aria-label={T('Breadcrumb', 'Navegação estrutural')}><a class="link" href={href('/', lang)}>{T('Home', 'Início')}</a><span aria-hidden="true">/</span><span>{T('Privacy policy', 'Política de privacidade')}</span></nav>
+      <h1 class="page-title">{T('Privacy', 'Política de')} <span class="v">{T('policy', 'privacidade')}</span></h1>
+      <p class="page-lead">{T('We keep this short: what we collect when you use this site, why, and what you can do about it.', 'Seremos breves: o que recolhemos quando usas este site, porquê, e o que podes fazer quanto a isso.')}</p>
+
+      {lang === 'en' ? (
+      <div class="legal">
+        <p class="legal-date">Last updated: {updated}</p>
+
+        <h2>Who we are</h2>
+        <p>Hiveworx is a design school based in Lisbon, Portugal. For anything about your data, write to <a class="link" href="mailto:hello@hiveworx.com">hello@hiveworx.com</a>.</p>
+
+        <h2>Analytics, only if you accept</h2>
+        <p>With your consent, we use Google Analytics (provided by Google Ireland Limited) to see how the site is used: which pages are visited, roughly where visitors come from, and which workshops people click to book. It stores cookies on your device (<code>_ga</code> and <code>_ga_&lt;id&gt;</code>) and may involve transfers to Google in the United States.</p>
+        <p>Nothing is loaded or stored until you click <b>Accept</b> in the cookie banner. You can change your mind at any time with <button class="linkbtn cc-open" type="button" data-cookie-settings>Cookie settings</button> (also in the footer); declining removes the analytics cookies. The legal basis is your consent (GDPR article 6(1)(a)).</p>
+
+        <h2>The contact form</h2>
+        <p>When you send a message, we receive your name, email address, who you are (mentor, institution, funder or other), the topic and your message. We use them only to reply to you. The form is delivered by Formspree, which forwards the message to our inbox. We keep messages as long as the conversation needs, then delete them. The legal basis is replying to your request (GDPR article 6(1)(b) and (f)).</p>
+
+        <h2>Workshop registrations</h2>
+        <p>“Book a spot” and “Register” buttons take you to Luma, where registration happens. Luma handles that data under its own privacy policy.</p>
+
+        <h2>Things every visit involves</h2>
+        <p>The site is hosted by Vercel, which keeps short technical logs (such as IP address and browser) to deliver and protect the site. Fonts are loaded from Google Fonts, and one script from jsDelivr, so those services see your IP address when the page loads. We don’t use advertising or social media trackers.</p>
+
+        <h2>Your rights</h2>
+        <p>You can ask us for a copy of your data, to correct or delete it, to restrict or object to its use, or to receive it in a portable format, and you can withdraw consent at any time. Write to <a class="link" href="mailto:hello@hiveworx.com">hello@hiveworx.com</a>. If you think we got something wrong, you can complain to the Portuguese data protection authority, the CNPD (<a class="link" href="https://www.cnpd.pt" rel="noopener" target="_blank">cnpd.pt</a>).</p>
+
+        <h2>Changes</h2>
+        <p>If we change how we handle data, we’ll update this page and the date above.</p>
+      </div>
+      ) : (
+      <div class="legal">
+        <p class="legal-date">Última atualização: {updated}</p>
+
+        <h2>Quem somos</h2>
+        <p>A Hiveworx é uma escola de design sediada em Lisboa, Portugal. Para qualquer questão sobre os teus dados, escreve para <a class="link" href="mailto:hello@hiveworx.com">hello@hiveworx.com</a>.</p>
+
+        <h2>Estatísticas, só se aceitares</h2>
+        <p>Com o teu consentimento, usamos o Google Analytics (fornecido pela Google Ireland Limited) para perceber como o site é usado: que páginas são visitadas, de onde vêm aproximadamente os visitantes e em que workshops as pessoas clicam para reservar. Guarda cookies no teu dispositivo (<code>_ga</code> e <code>_ga_&lt;id&gt;</code>) e pode implicar transferências de dados para a Google nos Estados Unidos.</p>
+        <p>Nada é carregado nem guardado até clicares em <b>Aceitar</b> no aviso de cookies. Podes mudar de ideias a qualquer momento em <button class="linkbtn cc-open" type="button" data-cookie-settings>Definições de cookies</button> (também no rodapé); recusar remove os cookies de estatística. A base legal é o teu consentimento (artigo 6.º, n.º 1, alínea a), do RGPD).</p>
+
+        <h2>O formulário de contacto</h2>
+        <p>Quando envias uma mensagem, recebemos o teu nome, endereço de email, quem és (mentor, instituição, financiador ou outro), o assunto e a tua mensagem. Usamo-los apenas para te responder. O formulário é entregue pelo Formspree, que reencaminha a mensagem para a nossa caixa de correio. Guardamos as mensagens enquanto a conversa o exigir e depois apagamo-las. A base legal é responder ao teu pedido (artigo 6.º, n.º 1, alíneas b) e f), do RGPD).</p>
+
+        <h2>Inscrições em workshops</h2>
+        <p>Os botões “Reservar lugar” e “Inscreve-te” levam-te ao Luma, onde é feita a inscrição. O Luma trata esses dados ao abrigo da sua própria política de privacidade.</p>
+
+        <h2>O que qualquer visita implica</h2>
+        <p>O site está alojado na Vercel, que guarda registos técnicos breves (como o endereço IP e o navegador) para entregar e proteger o site. As fontes são carregadas a partir do Google Fonts, e um script a partir do jsDelivr, por isso esses serviços veem o teu endereço IP quando a página carrega. Não usamos publicidade nem rastreadores de redes sociais.</p>
+
+        <h2>Os teus direitos</h2>
+        <p>Podes pedir-nos uma cópia dos teus dados, pedir que os corrijamos ou apaguemos, limitar ou opor-te à sua utilização, ou recebê-los num formato portátil, e podes retirar o consentimento a qualquer momento. Escreve para <a class="link" href="mailto:hello@hiveworx.com">hello@hiveworx.com</a>. Se achares que fizemos algo de errado, podes apresentar queixa à autoridade portuguesa de proteção de dados, a CNPD (<a class="link" href="https://www.cnpd.pt" rel="noopener" target="_blank">cnpd.pt</a>).</p>
+
+        <h2>Alterações</h2>
+        <p>Se mudarmos a forma como tratamos os dados, atualizamos esta página e a data acima.</p>
+      </div>
+      )}
+    </div>
+  </section>
+</Base>

@@ -705,7 +705,8 @@ main .ct-label{margin-bottom:32px}
 /* Lenis smooth scrolling */
 html.lenis,html.lenis body{height:auto}
 html.lenis{scroll-behavior:auto}
-.lenis:not(.lenis-autoToggle).lenis-stopped{overflow:clip}
+/* paused scrolling (phone menu open): lock on body, not html; html overflow makes body the scroller, which unsticks the menu bar */
+html.lenis:not(.lenis-autoToggle).lenis-stopped body{overflow:hidden}
 .lenis [data-lenis-prevent]{overscroll-behavior:contain}
 /* blocks: fade and rise 28px; hidden only once motion.js has switched it on */
 .rv-on .rv:not(.rv-head){opacity:0;translate:0 28px;transition:opacity .9s var(--ease) var(--d,0s),translate .9s var(--ease) var(--d,0s)}
@@ -802,7 +803,7 @@ a.sd-series-next{color:var(--paper)}
   .nav.open .mb-l2{opacity:0}
   .nav.open .mb-l3{transform:translateY(-6px) rotate(-45deg)}
   /* lock the page only on <html>: hiding body overflow too would make body a scroller and unstick the menu bar */
-  html.menu-open{overflow:hidden}
+  html.menu-open body{overflow:hidden}   /* on body, not html: html overflow would make body the scroller and unstick the bar */
 }
 @media (max-width:880px) and (prefers-reduced-motion:reduce){
   .nav ul,.nav ul li,.menu-btn path{transition:none!important}
@@ -1048,3 +1049,58 @@ html[data-theme="light"] .ws-card .btn-light:hover{background:#fff;box-shadow:0 
 
 /* footer: room under it while the cookie banner is open (--cc-space is set by public/js/site.js), so the banner never covers the Light/Dark switch */
 footer{padding-bottom:calc(36px + var(--cc-space,0px))}
+
+/* ---------- EN / PT language switch (menu bar and footer; src/components/LangSwitch.astro) ----------
+   Same pill as the Light / Dark switch; the violet thumb slides to the chosen language (public/js/site.js). */
+.nav-end{display:flex;align-items:center;gap:16px}
+.lang-switch{display:inline-flex;align-items:center;gap:8px}
+.ls-track{position:relative;display:inline-grid;grid-auto-flow:column;grid-auto-columns:1fr;padding:3px;border:1px solid var(--line-2);border-radius:999px;background:var(--ink-2);isolation:isolate}
+.ls-thumb{position:absolute;z-index:-1;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);border-radius:999px;background:var(--violet-wash);box-shadow:inset 0 0 0 1px var(--violet);transition:transform .38s cubic-bezier(.3,1.35,.5,1)}
+.lang-switch[data-active="pt"] .ls-thumb{transform:translateX(100%)}
+.ls-track a{display:inline-flex;align-items:center;justify-content:center;min-width:38px;padding:7px 10px;border-radius:999px;color:var(--mute);text-decoration:none;font-size:12.5px;font-weight:600;letter-spacing:.08em;line-height:1;transition:color .25s var(--ease)}
+.ls-track a:hover{color:var(--paper)}
+.lang-switch[data-active="en"] [data-lang-set="en"],.lang-switch[data-active="pt"] [data-lang-set="pt"]{color:var(--paper)}
+.ls-track a:focus-visible{outline-offset:1px}
+/* footer: full names next to a globe, sized like the Light / Dark buttons */
+.lang-switch-full .ls-track a{min-width:0;padding:6px 12px;font-size:13px;font-weight:400;letter-spacing:0}
+.ls-globe{width:16px;height:16px;fill:none;stroke:var(--mute);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.f-switches{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px}
+@media (prefers-reduced-motion:reduce){.ls-thumb{transition:none}}
+/* phones: the bar shows only the logo and the menu button; the switch is the last item of the open menu */
+.nav-lang{display:none}
+@media (max-width:880px){
+  .nav .nav-end{display:none}
+  .nav ul .nav-lang{display:block;margin-top:32px}
+  .nav.open ul li.nav-lang{transition-delay:.3s}
+  html .nav ul .ls-track a{display:inline-flex;min-width:0;padding:10px 18px;border:0;font-size:15px;font-weight:400;letter-spacing:0;line-height:1;color:var(--mute)}
+  html .nav ul .ls-track a:hover,html .nav ul .lang-switch[data-active="en"] [data-lang-set="en"],html .nav ul .lang-switch[data-active="pt"] [data-lang-set="pt"]{color:var(--paper)}
+  .nav ul .ls-globe{width:18px;height:18px}
+}
+html[data-theme="light"] .ls-track a{color:#55526A}
+html[data-theme="light"] .lang-switch[data-active="en"] [data-lang-set="en"],html[data-theme="light"] .lang-switch[data-active="pt"] [data-lang-set="pt"],html[data-theme="light"] .ls-track a:hover{color:#0A0C12}
+/* medium screens: with EN / PT added the bar gets tight, so menu items stay on one line and the
+   "Explore workshops" button (the same page as the menu link) waits for wider screens */
+.nav ul a,.nav .nav-soon,.nav-cta{white-space:nowrap}
+@media (min-width:881px) and (max-width:1100px){.nav ul{gap:22px}}
+
+/* ---------- Menu bar: hides while scrolling down, back on any scroll up (public/js/site.js) ---------- */
+.nav{transition:border-color .3s,transform .35s var(--ease)}
+.nav.nav-hidden{transform:translateY(calc(-100% - env(safe-area-inset-top,0px)))}
+/* the sticky workshop card moves up into the space the bar leaves */
+.sd-card{transition:top .35s var(--ease)}
+html.nav-up .sd-card{top:calc(env(safe-area-inset-top,0px) + 24px)}
+@media (prefers-reduced-motion:reduce){.nav,.sd-card{transition:none}}
+
+/* ---------- Top menu: the hexagon mark alone (Sprite.astro #logo-mark); the footer keeps the full logo ---------- */
+.nav .logo svg.logo-mark{height:34px;aspect-ratio:273/144}
+/* footer Light / Dark switch: icons only (the names are in aria-label and the hover tooltip) */
+.theme-switch button{padding:6px 10px}
+/* footer: the EN / PT and Light / Dark switches sit stacked under the Follow links */
+footer .f-switches{flex-direction:column;align-items:flex-start;gap:12px;margin-top:28px}
+/* footer: language switch alone under the Follow links (the Light / Dark switch is back in the bottom line, centred) */
+footer .f-switches{margin-top:24px}
+
+/* "Beta" tag next to the top-menu logo, Portuguese pages only (the translation is new) */
+/* mustard yellow; on light the text is a deeper mustard so it stays readable on white */
+.logo .beta{display:inline-flex;align-items:center;padding:3px 7px;border:1px solid #E1AD2C;border-radius:999px;background:rgba(225,173,44,.14);color:#E8B83F;font:600 10.5px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase}
+html[data-theme="light"] .logo .beta{border-color:#C9971C;background:#FBF0D2;color:#7A5A06}

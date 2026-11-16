@@ -1,23 +1,30 @@
 ---
 /* main menu; "Mentors" is a link only when the Mentors page is switched on (Keystatic → Site settings) */
 import { getContent } from "../lib/content";
-const { mentorsPage } = await getContent();
+import { langOf, href, tr } from "../lib/i18n";
+import LangSwitch from "./LangSwitch.astro";
+const lang = langOf(Astro.url);
+const T = tr(lang);
+const { mentorsPage } = await getContent(lang);
 const here = Astro.url.pathname;
-const cur = (p: string) => (here === p ? "page" : undefined);
+const h = (p: string) => href(p, lang);
+const cur = (p: string) => (here === h(p) ? "page" : undefined);
 ---
 <header class="nav" id="nav">
   <div class="wrap">
-    <a class="logo" href="/" aria-label="Hiveworx home"><svg viewBox="0 0 899 144" aria-hidden="true"><use href="#logo"/></svg></a>
+    <a class="logo" href={h("/")} aria-label={T("Hiveworx home", "Hiveworx, página inicial")}><svg class="logo-mark" viewBox="0 0 273 144" aria-hidden="true"><use href="#logo-mark"/></svg>{lang === "pt" && <span class="beta" title="Versão beta: a tradução ainda está a ser revista">Beta</span>}</a>
     <ul id="menu">
-      <li><a href="/about/" aria-current={cur("/about/")}>About</a></li>
-      <li><a href="/workshops/" aria-current={cur("/workshops/")}>Workshops &amp; talks</a></li>
+      <li><a href={h("/about/")} aria-current={cur("/about/")}>{T("About", "Sobre")}</a></li>
+      <li><a href={h("/workshops/")} aria-current={cur("/workshops/")}>{T("Workshops & talks", "Workshops e palestras")}</a></li>
       {mentorsPage
-        ? <li><a href="/mentors/" aria-current={cur("/mentors/")}>Mentors</a></li>
-        : <li><span class="nav-soon" aria-disabled="true">Mentors <span class="soon hand" aria-label="(coming soon)">soon</span></span></li>}
-      <li><a href="/#contact">Contact</a></li>
+        ? <li><a href={h("/mentors/")} aria-current={cur("/mentors/")}>{T("Mentors", "Mentores")}</a></li>
+        : <li><span class="nav-soon" aria-disabled="true">{T("Mentors", "Mentores")} <span class="soon hand" aria-label={T("(coming soon)", "(em breve)")}>{T("soon", "em breve")}</span></span></li>}
+      <li><a href={h("/#contact")}>{T("Contact", "Contacto")}</a></li>
+      <li class="nav-lang"><LangSwitch full /></li>
     </ul>
-    <a class="btn btn-primary nav-cta" href="/workshops/">Explore workshops <span class="arr">→</span></a>
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+    <!-- language switch: here on wider screens; on phones it is the last item of the menu (below) -->
+    <div class="nav-end"><LangSwitch /></div>
+    <button class="menu-btn" id="menuBtn" aria-label={T("Open menu", "Abrir menu")} aria-expanded="false" aria-controls="menu">
       <svg width="20" height="14" viewBox="0 0 20 14" aria-hidden="true"><path class="mb-l1" d="M0 1h20" stroke="currentColor" stroke-width="1.6"/><path class="mb-l2" d="M0 7h20" stroke="currentColor" stroke-width="1.6"/><path class="mb-l3" d="M0 13h20" stroke="currentColor" stroke-width="1.6"/></svg>
     </button>
   </div>
