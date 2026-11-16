@@ -20,11 +20,10 @@ const cur = (p: string) => (here === h(p) ? "page" : undefined);
         ? <li><a href={h("/mentors/")} aria-current={cur("/mentors/")}>{T("Mentors", "Mentores")}</a></li>
         : <li><span class="nav-soon" aria-disabled="true">{T("Mentors", "Mentores")} <span class="soon hand" aria-label={T("(coming soon)", "(em breve)")}>{T("soon", "em breve")}</span></span></li>}
       <li><a href={h("/#contact")}>{T("Contact", "Contacto")}</a></li>
+      <li class="nav-lang"><LangSwitch full /></li>
     </ul>
-    <div class="nav-end">
-      <a class="btn btn-primary nav-cta" href={h("/workshops/")}>{T("Explore workshops", "Explorar workshops")} <span class="arr">→</span></a>
-      <LangSwitch />
-    </div>
+    <!-- language switch: here on wider screens; on phones it is the last item of the menu (below) -->
+    <div class="nav-end"><LangSwitch /></div>
     <button class="menu-btn" id="menuBtn" aria-label={T("Open menu", "Abrir menu")} aria-expanded="false" aria-controls="menu">
       <svg width="20" height="14" viewBox="0 0 20 14" aria-hidden="true"><path class="mb-l1" d="M0 1h20" stroke="currentColor" stroke-width="1.6"/><path class="mb-l2" d="M0 7h20" stroke="currentColor" stroke-width="1.6"/><path class="mb-l3" d="M0 13h20" stroke="currentColor" stroke-width="1.6"/></svg>
     </button>

@@ -1066,14 +1066,22 @@ footer{padding-bottom:calc(36px + var(--cc-space,0px))}
 .ls-globe{width:16px;height:16px;fill:none;stroke:var(--mute);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .f-switches{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px}
 @media (prefers-reduced-motion:reduce){.ls-thumb{transition:none}}
-/* phones: the bar shows logo, EN / PT and the menu button */
-@media (max-width:880px){.nav-end{margin-left:auto;gap:0}.nav .wrap{gap:12px}}
+/* phones: the bar shows only the logo and the menu button; the switch is the last item of the open menu */
+.nav-lang{display:none}
+@media (max-width:880px){
+  .nav .nav-end{display:none}
+  .nav ul .nav-lang{display:block;margin-top:32px}
+  .nav.open ul li.nav-lang{transition-delay:.3s}
+  html .nav ul .ls-track a{display:inline-flex;min-width:0;padding:10px 18px;border:0;font-size:15px;font-weight:400;letter-spacing:0;line-height:1;color:var(--mute)}
+  html .nav ul .ls-track a:hover,html .nav ul .lang-switch[data-active="en"] [data-lang-set="en"],html .nav ul .lang-switch[data-active="pt"] [data-lang-set="pt"]{color:var(--paper)}
+  .nav ul .ls-globe{width:18px;height:18px}
+}
 html[data-theme="light"] .ls-track a{color:#55526A}
 html[data-theme="light"] .lang-switch[data-active="en"] [data-lang-set="en"],html[data-theme="light"] .lang-switch[data-active="pt"] [data-lang-set="pt"],html[data-theme="light"] .ls-track a:hover{color:#0A0C12}
 /* medium screens: with EN / PT added the bar gets tight, so menu items stay on one line and the
    "Explore workshops" button (the same page as the menu link) waits for wider screens */
 .nav ul a,.nav .nav-soon,.nav-cta{white-space:nowrap}
-@media (min-width:881px) and (max-width:1100px){.nav ul{gap:22px}.nav .nav-cta{display:none}}
+@media (min-width:881px) and (max-width:1100px){.nav ul{gap:22px}}
 
 /* ---------- Menu bar: hides while scrolling down, back on any scroll up (public/js/site.js) ---------- */
 .nav{transition:border-color .3s,transform .35s var(--ease)}
