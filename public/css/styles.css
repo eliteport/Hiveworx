@@ -1097,3 +1097,5 @@ html.nav-up .sd-card{top:calc(env(safe-area-inset-top,0px) + 24px)}
 .theme-switch button{padding:6px 10px}
 /* footer: the EN / PT and Light / Dark switches sit stacked under the Follow links */
 footer .f-switches{flex-direction:column;align-items:flex-start;gap:12px;margin-top:28px}
+/* footer: language switch alone under the Follow links (the Light / Dark switch is back in the bottom line, centred) */
+footer .f-switches{margin-top:24px}
