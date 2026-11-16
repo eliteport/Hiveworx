@@ -1099,3 +1099,8 @@ html.nav-up .sd-card{top:calc(env(safe-area-inset-top,0px) + 24px)}
 footer .f-switches{flex-direction:column;align-items:flex-start;gap:12px;margin-top:28px}
 /* footer: language switch alone under the Follow links (the Light / Dark switch is back in the bottom line, centred) */
 footer .f-switches{margin-top:24px}
+
+/* ---------- Switches (EN / PT, Light / Dark): square, with the site's corner radius ----------
+   Outer box --r (6px) like buttons and fields; the highlighted option inside is 3px smaller so the corners stay parallel. */
+.ls-track,.theme-switch{border-radius:var(--r)}
+.ls-thumb,.ls-track a,.theme-switch button{border-radius:calc(var(--r) - 3px)}
