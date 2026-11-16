@@ -1070,7 +1070,9 @@ footer{padding-bottom:calc(36px + var(--cc-space,0px))}
 .nav-lang{display:none}
 @media (max-width:880px){
   .nav .nav-end{display:none}
-  .nav ul .nav-lang{display:block;margin-top:32px}
+  /* pinned to the bottom of the screen, as far from the bottom edge as the logo is from the top (19px) */
+  .nav ul .nav-lang{display:block;margin-top:auto;padding-top:32px}
+  .nav ul,.nav.open ul{padding-bottom:calc(19px + env(safe-area-inset-bottom,0px))}
   .nav.open ul li.nav-lang{transition-delay:.3s}
   html .nav ul .ls-track a{display:inline-flex;min-width:0;padding:10px 18px;border:0;font-size:15px;font-weight:400;letter-spacing:0;line-height:1;color:var(--mute)}
   html .nav ul .ls-track a:hover,html .nav ul .lang-switch[data-active="en"] [data-lang-set="en"],html .nav ul .lang-switch[data-active="pt"] [data-lang-set="pt"]{color:var(--paper)}
