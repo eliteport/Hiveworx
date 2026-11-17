@@ -1,10 +1,13 @@
 ---
 /* cookie consent: shown until a visitor chooses; reopened from "Cookie settings" in the footer */
+import { langOf, href, tr } from '../lib/i18n';
+const lang = langOf(Astro.url);
+const T = tr(lang);
 ---
-<div class="cc" id="cookieBanner" role="region" aria-label="Cookie consent" hidden>
-  <p class="cc-text">We use Google Analytics cookies to see how people use this site. Nothing is tracked unless you accept. <a class="link" href="/privacy/">Privacy policy</a></p>
+<div class="cc" id="cookieBanner" role="region" aria-label={T('Cookie consent', 'Consentimento de cookies')} hidden>
+  <p class="cc-text">{T('We use Google Analytics cookies to see how people use this site. Nothing is tracked unless you accept.', 'Usamos cookies do Google Analytics para perceber como este site é utilizado. Nada é registado sem a tua autorização.')} <a class="link" href={href('/privacy/', lang)}>{T('Privacy policy', 'Política de privacidade')}</a></p>
   <div class="cc-btns">
-    <button class="btn btn-ghost btn-sm" type="button" data-consent="denied">Decline</button>
-    <button class="btn btn-primary btn-sm" type="button" data-consent="granted">Accept</button>
+    <button class="btn btn-ghost btn-sm" type="button" data-consent="denied">{T('Decline', 'Recusar')}</button>
+    <button class="btn btn-primary btn-sm" type="button" data-consent="granted">{T('Accept', 'Aceitar')}</button>
   </div>
 </div>

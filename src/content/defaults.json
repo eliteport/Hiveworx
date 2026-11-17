@@ -27,5 +27,36 @@
       "icon": "tools",
       "text": "Handle the equipment with care, and ask before you move or unplug anything."
     }
-  ]
+  ],
+  "pt": {
+    "label": "Nota",
+    "title": "O que precisas <span class=\"v\">de saber</span>",
+    "note": "Vem criar connosco",
+    "items": [
+      {
+        "icon": "clock",
+        "text": "Chega uns minutos mais cedo. Começamos à hora certa e os primeiros passos são a base de tudo o que se segue."
+      },
+      {
+        "icon": "phone",
+        "text": "Desliga o telemóvel durante toda a sessão; não basta pô-lo em silêncio."
+      },
+      {
+        "icon": "quiet",
+        "text": "Trabalhamos lado a lado. Fala baixo e evita ruído extra enquanto os outros se concentram."
+      },
+      {
+        "icon": "steps",
+        "text": "Segue o processo passo a passo, mesmo que conheças um atalho. Cada etapa prepara a seguinte."
+      },
+      {
+        "icon": "calm",
+        "text": "Mantém a calma e a paciência. Um bom trabalho recompensa a atenção lenta e cuidadosa."
+      },
+      {
+        "icon": "tools",
+        "text": "Trata o equipamento com cuidado e pergunta antes de mudar ou desligar alguma coisa."
+      }
+    ]
+  }
 }

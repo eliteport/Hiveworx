@@ -26,7 +26,8 @@
     '.values > *','.nots-row','.cls-grid > .cls','.cls-more','.disc > .dcard','.studio','.aud .tabs',
     '.ws-card','.ct-panel','.founder > *','.p-grid > li','.p-cta','.g-grid > *','.stats > .stat',
     '.sd-by',':not(.ws-art) > .ws-tags','.sd-hero','.sd-tabs','.sd-block','.sd-end-note','.sd-card','.sd-inc > *','.sd-inc-grid > li','.mt-grid > .mt-card',
-    'footer .f-grid > *','footer .f-bottom'
+    'footer .f-grid > *'
+    /* not footer .f-bottom: it sits in the bottom 8% of the page, so the observer below never sees it and it would stay hidden (it holds the Light/Dark switch) */
   ].join(',');
 
   var io=new IntersectionObserver(function(entries){

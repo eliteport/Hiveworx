@@ -4,31 +4,35 @@ import type { Session } from '../lib/content';
 import { sessionUrl } from '../lib/content';
 import { ICON } from '../lib/icons';
 import Media from './Media.astro';
+import { langOf, tr } from '../lib/i18n';
 interface Props { session: Session | null }
 const { session: s } = Astro.props;
+const lang = langOf(Astro.url);
+const T = tr(lang);
 const type = s ? s.typeLabel.toLowerCase() : 'workshop';
+const talk = s?.format === 'talk';
 ---
 {s && (
 <section id="program">
   <div class="wrap">
     <div class="ws-head">
-      <p class="label">Upcoming {type}</p>
-      <span class="hand">next up</span>
+      <p class="label">{T(`Upcoming ${type}`, talk ? 'Próxima palestra' : 'Próximo workshop')}</p>
+      <span class="hand">{T('next up', 'a seguir')}</span>
     </div>
     <div id="featured">
       <article class="ws-card">
         <div class="ws-art"><Media session={s} />
-          <div class="ws-tags"><span class="tag">{s.discipline}</span><span class="tag tag-ghost">{s.typeLabel}</span>{s.soldOut && <span class="tag tag-sold">Sold out</span>}</div>
+          <div class="ws-tags"><span class="tag">{s.discipline}</span><span class="tag tag-ghost">{s.typeLabel}</span>{s.soldOut && <span class="tag tag-sold">{T('Sold out', 'Esgotado')}</span>}</div>
         </div>
         <div class="ws-body">
-          <div class="ws-title"><h2><a href={sessionUrl(s)}>{s.title}</a></h2>{s.mentor && <p class="ws-by"><Fragment set:html={ICON.person} />{s.typeLabel} by: <b>{s.mentor.name}</b></p>}</div>
+          <div class="ws-title"><h2><a href={sessionUrl(s, lang)}>{s.title}</a></h2>{s.mentor && <p class="ws-by"><Fragment set:html={ICON.person} />{T(`${s.typeLabel} by:`, talk ? 'Palestra de:' : 'Workshop de:')} <b>{s.mentor.name}</b></p>}</div>
           <ul class="ws-meta">
-            <li><Fragment set:html={ICON.date} /><span><b>Date</b>{s.date}</span></li>
-            <li><Fragment set:html={ICON.time} /><span><b>Start time</b>{s.time}</span></li>
-            <li><Fragment set:html={ICON.loc} /><span><b>Location</b>{s.location}</span></li>
-            <li><Fragment set:html={ICON.fmt} /><span><b>Format</b>{s.formatLabel}</span></li>
+            <li><Fragment set:html={ICON.date} /><span><b>{T('Date', 'Data')}</b>{s.date}</span></li>
+            <li><Fragment set:html={ICON.time} /><span><b>{T('Start time', 'Hora de início')}</b>{s.time}</span></li>
+            <li><Fragment set:html={ICON.loc} /><span><b>{T('Location', 'Local')}</b>{s.location}</span></li>
+            <li><Fragment set:html={ICON.fmt} /><span><b>{T('Format', 'Formato')}</b>{s.formatLabel}</span></li>
           </ul>
-          <div class="ws-ctas"><a class="btn btn-light" href={sessionUrl(s)}>See {type} details <span class="arr">→</span></a></div>
+          <div class="ws-ctas"><a class="btn btn-light" href={sessionUrl(s, lang)}>{T(`See ${type} details`, talk ? 'Ver detalhes da palestra' : 'Ver detalhes do workshop')} <span class="arr">→</span></a></div>
         </div>
       </article>
     </div>

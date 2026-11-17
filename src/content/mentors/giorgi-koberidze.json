@@ -10,5 +10,14 @@
     "Beyond composition he organizes an annual experimental music residency in the remote high-altitude region of Tusheti."
   ],
   "listed": true,
-  "order": 2
+  "order": 2,
+  "pt": {
+    "role": "Compositor e intérprete",
+    "short": "Compositor, intérprete e professor de Tecnologia Musical no Conservatório Estatal de Tbilisi, a trabalhar onde os sistemas digitais se encontram com o som acústico orgânico.",
+    "bio": [
+      "Giorgi Koberidze é compositor, intérprete e artista multidisciplinar, a viver em Tbilisi, na Geórgia. Professor de Tecnologia Musical no Conservatório Estatal de Tbilisi, investiga no seu trabalho a síntese entre sistemas digitais e fenómenos acústicos orgânicos. É mestre em Composição Clássica, com a tese “Síntese de timbre acústico e eletrónico”, que lançou as bases teóricas e técnicas da sua investigação atual em síntese espectral e hibridização instrumental-eletrónica.",
+      "O seu trabalho em cinema e áudio espacial tem tido um reconhecimento internacional significativo. Compôs a banda sonora de “O Que Vemos Quando Olhamos para o Céu?” (Prémio FIPRESCI, Berlinale), pela qual foi nomeado para Melhor Música nos prémios da Associação Alemã de Críticos de Cinema. Para lá do ecrã, a sua recente obra de grande escala, “Forests, Tales, Cities, Forests”, é uma composição de “cinema invisível” pensada para salas às escuras, que lhe valeu o Prémio Tsinandali.",
+      "Além da composição, organiza todos os anos uma residência de música experimental na remota região de alta montanha de Tusheti."
+    ]
+  }
 }

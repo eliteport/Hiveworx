@@ -1,0 +1,111 @@
+---
+/* one page per workshop/talk: /workshops/<web address>/ and /pt/workshops/<web address>/
+   (the addresses come from src/pages/workshops/[slug].astro and src/pages/pt/workshops/[slug].astro) */
+import Base from '../layouts/Base.astro';
+import Media from '../components/Media.astro';
+import SessionCard from '../components/SessionCard.astro';
+import { getContent, homeSessions, isPast, sessionUrl, TBA_TEXT, type Session } from '../lib/content';
+import { ICON, INC, hex } from '../lib/icons';
+import { SITE, sessionTitle, sessionDescription, sessionLd, breadcrumb } from '../lib/seo';
+import { langOf, href, tr } from '../lib/i18n';
+
+interface Props { slug: string }
+const lang = langOf(Astro.url);
+const T = tr(lang);
+const { sessions, upcoming, pinned, standard } = await getContent(lang);
+const s = sessions.find((x) => x.slug === Astro.props.slug) as Session;
+const url = SITE + sessionUrl(s, lang);
+const tl = s.typeLabel, tll = tl.toLowerCase();
+const talk = s.format === 'talk';
+/* Portuguese: "do workshop" / "da palestra", "este workshop" / "esta palestra" */
+const of = T(`${tll}`, talk ? 'da palestra' : 'do workshop');
+const thisOne = T(`this ${tll}`, talk ? 'esta palestra' : 'este workshop');
+const bio = s.mentor?.bio ?? [];
+const lead = s.summary || s.about[0] || '';
+const rest = s.summary ? s.about : s.about.slice(1);
+const book = s.bookUrl || `mailto:hello@hiveworx.com?subject=${encodeURIComponent((s.dateISO ? T('Booking: ', 'Reserva: ') : T('Interest: ', 'Interesse: ')) + s.title)}`;
+const endNote = s.practical?.note || standard?.note || T('just bring curiosity', 'basta trazeres curiosidade');
+const facts: [string, string, string][] = [
+  [ICON.date, T('Date', 'Data'), s.date], [ICON.time, T('Start time', 'Hora de início'), s.time], [ICON.loc, T('Location', 'Local'), s.location],
+  [ICON.fmt, T('Format', 'Formato'), s.formatLabel], [ICON.level, T('Level', 'Nível'), s.level], [ICON.duration, T('Duration', 'Duração'), s.duration],
+];
+const u = (p: string) => SITE + href(p, lang);
+const home = T('Home', 'Início'), all = T('Workshops & talks', 'Workshops e palestras');
+/* "More workshops & talks": the same three cards as the home page; on one of those three pages the next upcoming one in home order takes its place */
+const more = homeSessions(sessions.filter((x) => x.slug !== s.slug && !isPast(x)), upcoming, pinned);
+const n2 = (i: number) => (i < 9 ? '0' : '') + (i + 1);
+---
+<Base title={sessionTitle(s, lang)} description={sessionDescription(s)} path={`/workshops/${s.slug}/`} image={s.image?.src}
+  ld={[sessionLd(s, url), breadcrumb([[home, u('/')], [all, u('/workshops/')], [s.title, url]])]}>
+  <!-- 1. title + hero -->
+  <section class="sd-head"><div class="wrap">
+    <nav class="crumbs" aria-label={T('Breadcrumb', 'Navegação estrutural')}><a class="link" href={href('/', lang)}>{home}</a><span aria-hidden="true">/</span><a class="link" href={href('/workshops/', lang)}>{all}</a><span aria-hidden="true">/</span><span>{tl}</span></nav>
+    <div class="ws-tags"><span class="tag">{s.discipline}</span><span class="tag tag-ghost">{s.formatLabel}</span></div>
+    <h1 class="sd-title">{s.title}</h1>
+    {s.mentor && <div class="sd-by"><div class="cls-mentor"><Fragment set:html={ICON.person} /><span><b>{s.mentor.name}</b>{s.mentor.role}</span></div></div>}
+    <div class="sd-hero"><div class="sd-frame"><Media session={s} /></div><Fragment set:html={hex('sd-hex-a', 0.08) + hex('sd-hex-b', -0.06) + hex('sd-hex-c', 0.12)} /></div>
+  </div></section>
+
+  <!-- 2. tabbed content on the left, the details card on the right (it follows the scroll) -->
+  <section class="sd-main"><div class="wrap sd-main-grid">
+    <div class="sd-main-col">
+      {bio.length > 0 && (
+        <div class="tabs sd-tabs" role="tablist" aria-label={T('Workshop information', 'Informação ' + of)}>
+          <button class="tab" role="tab" id="sdt-details" aria-controls="sdp-details" aria-selected="true">{T(`${tl} details`, 'Detalhes ' + of)}</button>
+          <button class="tab" role="tab" id="sdt-mentor" aria-controls="sdp-mentor" aria-selected="false" tabindex="-1">{T('About the mentor', 'Quem orienta')}</button>
+        </div>
+      )}
+      <div class="sd-panel-tab" role="tabpanel" id="sdp-details" aria-labelledby="sdt-details">
+        <div class="sd-block"><p class="label">{T('About', 'Sobre')} {thisOne}</p>
+          <p class="sd-sec-body">{lead}</p>
+          {rest.map((p) => <p class="sd-sec-body">{p}</p>)}
+        </div>
+        {s.forWho && <div class="sd-block"><p class="label">{T('Who it’s for', 'Para quem é')}</p><p class="sd-sec-body">{s.forWho}</p>{s.levelNote && <p class="sd-sec-body">{s.levelNote}</p>}</div>}
+        {s.explore.length > 0 && (
+          <div class="sd-block"><p class="label">{T('What you’ll explore', 'O que vais explorar')}</p>
+            <ol class="sd-explore">
+              {s.explore.map((e, i) => e.text
+                ? <li><details name="explore"><summary><span class="sd-ex-n">{n2(i)}</span><h3>{e.title}</h3></summary><p>{e.text}</p></details></li>
+                : <li><div class="sd-ex-row"><span class="sd-ex-n">{n2(i)}</span><h3>{e.title}</h3></div></li>)}
+            </ol>
+            {s.outcome.length > 0 && <div class="sd-outcome"><p class="label">{s.outcomeLabel || T('End of day outcome', 'No fim do dia')}</p>{s.outcome.map((p) => <p class="sd-sec-body">{p}</p>)}</div>}
+          </div>
+        )}
+      </div>
+      {bio.length > 0 && (
+        <div class="sd-panel-tab" role="tabpanel" id="sdp-mentor" aria-labelledby="sdt-mentor" hidden>
+          <div class="sd-block"><p class="label">{T('About the mentor', 'Quem orienta')}</p><h2 class="sd-mentor-name">{s.mentor!.name}</h2>{bio.map((p) => <p class="sd-sec-body">{p}</p>)}</div>
+        </div>
+      )}
+      <!-- closing note: the last thing in the column, so the sticky card stops level with it -->
+      <p class="hand sd-end-note">{endNote}</p>
+    </div>
+    <aside class="sd-card" aria-label={T(`${tl} details`, 'Detalhes ' + of)}>
+      {s.soldOut
+        ? <div class="sd-card-price"><span class="sd-card-k">{T('Tickets', 'Bilhetes')}</span><b>{T('Sold out', 'Esgotado')}</b></div>
+        : <div class="sd-card-price"><span class="sd-card-k">{T('Price', 'Preço')}</span><b>{s.price || TBA_TEXT[lang]}</b>{s.priceNote && <span>{s.priceNote}</span>}</div>}
+      <ul class="sd-card-facts">
+        {facts.filter(([, , v]) => v).map(([icon, label, v]) => <li><Fragment set:html={icon} /><span><b>{label}</b>{v}</span></li>)}
+      </ul>
+      {s.soldOut
+        ? <span class="btn btn-light sd-card-cta is-disabled" aria-disabled="true">{T('Sold out', 'Esgotado')}</span>
+        : <a class="btn btn-light sd-card-cta" href={book} target={s.bookUrl ? '_blank' : undefined} rel={s.bookUrl ? 'noopener' : undefined}>{T(`Register for the ${tll}`, talk ? 'Inscreve-te na palestra' : 'Inscreve-te no workshop')} <span class="arr">→</span></a>}
+    </aside>
+  </div></section>
+
+  <!-- 3. practical notes -->
+  {s.practical && s.practical.items.length > 0 && (
+    <section class="sd-inc-wrap"><div class="wrap"><div class="sd-inc">
+      <div><p class="label">{s.practical.label || standard?.label || T('The practical bit', 'O lado prático')}</p><h2 set:html={s.practical.title || standard?.title || T('What’s <span class="v">included</span>', 'O que está <span class="v">incluído</span>')} /></div>
+      <ul class="sd-inc-grid">{s.practical.items.map((it) => <li><Fragment set:html={INC[it.icon] || INC.idea} /><span>{it.text}</span></li>)}</ul>
+    </div></div></section>
+  )}
+
+  <!-- 4. more sessions -->
+  <section class="sd-more">
+    <div class="wrap">
+      <div class="sec-head"><div><p class="label">{T('Keep exploring', 'Continua a explorar')}</p><h2 class="more-title">{T('More workshops & talks', 'Mais workshops e palestras')}</h2></div><a class="btn btn-ghost" href={href('/workshops/', lang)}>{T('See all workshops', 'Ver todos os workshops')} <span class="arr">→</span></a></div>
+      <div class="cls-grid" id="moreGrid" style="margin-top:32px">{more.map((x) => <SessionCard session={x} nextUp={x.slug === upcoming} />)}</div>
+    </div>
+  </section>
+</Base>

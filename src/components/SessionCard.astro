@@ -4,23 +4,26 @@ import type { Session } from '../lib/content';
 import { sessionUrl } from '../lib/content';
 import { ICON } from '../lib/icons';
 import Media from './Media.astro';
+import { langOf, tr } from '../lib/i18n';
 interface Props { session: Session; nextUp?: boolean; past?: boolean }
 const { session: s, nextUp = false, past = false } = Astro.props;
 /* with a date and a registration link, "Book a spot" goes straight to registration */
+const lang = langOf(Astro.url);
+const T = tr(lang);
 const bookable = !past && !!(s.dateISO && s.bookUrl && !s.soldOut);
-const label = !past && s.dateISO && !s.soldOut ? 'Book a spot' : 'View details';
+const label = !past && s.dateISO && !s.soldOut ? T('Book a spot', 'Reservar lugar') : T('View details', 'Ver detalhes');
 /* cards have little room: an unset price shows as TBD; sold-out sessions show no price */
-const price = past || s.soldOut ? '' : s.price || 'TBD';
+const price = past || s.soldOut ? '' : s.price || T('TBD', 'A definir');
 ---
 <article class:list={["cls", past && "cls-past"]} data-kind={s.format} data-disc={s.discipline} data-date={s.dateISO}>
   <div class="cls-art"><Media session={s} lazy /><span class="cls-type">{s.typeLabel}</span>{past ? null : s.soldOut
-    ? <span class="cls-status cls-status-sold">Sold out</span>
-    : nextUp && <span class="cls-status cls-status-up">next up</span>}</div>
+    ? <span class="cls-status cls-status-sold">{T('Sold out', 'Esgotado')}</span>
+    : nextUp && <span class="cls-status cls-status-up">{T('next up', 'a seguir')}</span>}</div>
   <div class="cls-body">
     <p class="cls-tag">{s.discipline}</p>
-    <h3><a href={sessionUrl(s)}>{s.title}</a></h3>
+    <h3><a href={sessionUrl(s, lang)}>{s.title}</a></h3>
     <ul class="cls-when"><li><Fragment set:html={ICON.date} />{s.date}</li><li><Fragment set:html={ICON.time} />{s.time}</li></ul>
     {s.mentor && <div class="cls-mentor"><Fragment set:html={ICON.person} /><span><b>{s.mentor.name}</b>{s.mentor.role}</span></div>}
-    <div class="cls-foot">{price && <p class="price"><b>{price}</b>{s.priceNote}</p>}<a class="btn btn-ghost btn-sm" href={bookable ? s.bookUrl! : sessionUrl(s)} target={bookable ? '_blank' : undefined} rel={bookable ? 'noopener' : undefined}>{label} <span class="arr">→</span></a></div>
+    <div class="cls-foot">{price && <p class="price"><b>{price}</b>{s.priceNote}</p>}<a class="btn btn-ghost btn-sm" href={bookable ? s.bookUrl! : sessionUrl(s, lang)} target={bookable ? '_blank' : undefined} rel={bookable ? 'noopener' : undefined}>{label} <span class="arr">→</span></a></div>
   </div>
 </article>

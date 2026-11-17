@@ -1,8 +1,10 @@
 ---
 // copied from the one-page site; edit freely
+import { langOf, tr } from '../../lib/i18n';
+const T = tr(langOf(Astro.url));
 ---
-<dialog class="lightbox" id="lightbox" aria-label="Photo">
+<dialog class="lightbox" id="lightbox" aria-label={T('Photo', 'Fotografia')}>
   <img id="lbImg" alt="">
   <p id="lbCap"></p>
-  <div class="lb-ctrl"><button class="filter" type="button" id="lbPrev">← Previous</button><button class="filter" type="button" id="lbNext">Next →</button><button class="filter" type="button" id="lbClose">Close</button></div>
+  <div class="lb-ctrl"><button class="filter" type="button" id="lbPrev">← {T('Previous', 'Anterior')}</button><button class="filter" type="button" id="lbNext">{T('Next', 'Seguinte')} →</button><button class="filter" type="button" id="lbClose">{T('Close', 'Fechar')}</button></div>
 </dialog>

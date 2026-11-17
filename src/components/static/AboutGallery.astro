@@ -1,13 +1,18 @@
 ---
 // copied from the one-page site; edit freely
+// English and Portuguese side by side: T('English', 'Português')
+import { langOf, href, tr } from '../../lib/i18n';
+const lang = langOf(Astro.url);
+const T = tr(lang);
+const h = (p: string) => href(p, lang);
 ---
 <!-- "Where it happens" studio gallery: hidden for now, kept for later -->
 <section class="edition" id="gallery" hidden>
   <div class="wrap">
     <div class="sec-head">
-      <div><p class="label">Inside the studio</p><h2>Where it <span class="v">happens.</span></h2></div>
-      <span class="hand" style="font-size:28px;transform:rotate(-5deg)">notes from our editions</span>
+      <div><p class="label">{T("Inside the studio", "Dentro do estúdio")}</p><h2><Fragment set:html={T("Where it <span class=\"v\">happens.</span>", "Onde <span class=\"v\">acontece.</span>")} /></h2></div>
+      <span class="hand" style="font-size:28px;transform:rotate(-5deg)">{T("notes from our editions", "notas das nossas edições")}</span>
     </div>
-    <div class="g-grid" aria-label="Studio photos coming soon"><div class="g-tile ph"><span class="ph-text">No image</span></div><div class="g-tile ph"><span class="ph-text">No image</span></div><div class="g-tile ph"><span class="ph-text">No image</span></div><div class="g-tile ph"><span class="ph-text">No image</span></div><div class="g-tile ph"><span class="ph-text">No image</span></div><div class="g-tile ph"><span class="ph-text">No image</span></div><div class="g-tile ph"><span class="ph-text">No image</span></div><div class="g-tile ph"><span class="ph-text">No image</span></div></div>
+    <div class="g-grid" aria-label={T("Studio photos coming soon", "Fotografias do estúdio em breve")}><div class="g-tile ph"><span class="ph-text">{T("No image", "Sem imagem")}</span></div><div class="g-tile ph"><span class="ph-text">{T("No image", "Sem imagem")}</span></div><div class="g-tile ph"><span class="ph-text">{T("No image", "Sem imagem")}</span></div><div class="g-tile ph"><span class="ph-text">{T("No image", "Sem imagem")}</span></div><div class="g-tile ph"><span class="ph-text">{T("No image", "Sem imagem")}</span></div><div class="g-tile ph"><span class="ph-text">{T("No image", "Sem imagem")}</span></div><div class="g-tile ph"><span class="ph-text">{T("No image", "Sem imagem")}</span></div><div class="g-tile ph"><span class="ph-text">{T("No image", "Sem imagem")}</span></div></div>
   </div>
 </section>

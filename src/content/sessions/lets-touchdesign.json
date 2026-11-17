@@ -43,5 +43,37 @@
   ],
   "practical": {
     "discriminant": "default"
+  },
+  "pt": {
+    "title": "Let’s Touchdesign: workshop para principiantes",
+    "formatLabel": "Workshop prático",
+    "discipline": "Som + Visual",
+    "duration": "4 horas e 30 minutos, com intervalos",
+    "level": "Principiante absoluto",
+    "imageAlt": "Um formador ao portátil conduz uma sessão de TouchDesigner numa sala com paredes de tijolo, com uma rede de nós num ecrã grande e participantes a trabalhar nos seus portáteis",
+    "summary": "Uma sessão prática para quem nunca abriu o TouchDesigner. O workshop começa por explorar o que o software realmente é — uma ferramenta multiusos para multimédia, e não uma aplicação com uma só função — antes de os participantes construírem algo em conjunto a partir de uma rede vazia. O objetivo principal é ultrapassar a curva de aprendizagem inicial, divertir-se e sair com um patch funcional, com parâmetros interativos ao vivo que reagem ao som, a um botão rotativo, a uma câmara ou a um clique.",
+    "forWho": "Pessoas que nunca abriram o TouchDesigner.",
+    "levelNote": "Principiante absoluto. Não é precisa experiência em TouchDesigner, programação ou VJing. Estar à vontade com qualquer software criativo ajuda, mas não é obrigatório.",
+    "explore": [
+      {
+        "title": "O que é isto?",
+        "text": "Uma breve introdução à prática multimédia e o lugar do TouchDesigner em visuais de palco, instalações, performance ao vivo, prototipagem e mapping."
+      },
+      {
+        "title": "Construir o primeiro patch",
+        "text": "Cada participante acompanha no seu computador e constrói de raiz um patch simples e bonito, e percebe como uma rede ganha forma e de onde nasce a imagem."
+      },
+      {
+        "title": "Fazer entrar sinais",
+        "text": "Como o som se torna um número que comanda uma imagem, ligar um controlador MIDI a um parâmetro e usar a interface do próprio TouchDesigner (sliders, botões, painéis) para que um patch se possa tocar sem hardware. Se o grupo avançar depressa, junta-se a integração com câmara de profundidade/Kinect."
+      },
+      {
+        "title": "Escolhe o teu input e aplica-o",
+        "text": "Com ficheiros de projeto avançados fornecidos, os participantes escolhem um input (MIDI, câmara de profundidade, webcam, áudio ou interface) e põem alguns parâmetros do seu visual a reagir a ele."
+      }
+    ],
+    "outcome": [
+      "Cada participante sai com o seu próprio patch funcional, com pelo menos dois parâmetros interativos ao vivo, e leva para casa os ficheiros de projeto avançados da sessão para continuar a experimentar. Acima de tudo, sai a saber como um sinal se torna imagem, o conceito na base de tudo o que se constrói em TouchDesigner."
+    ]
   }
 }

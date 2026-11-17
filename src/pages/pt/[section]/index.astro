@@ -1,0 +1,8 @@
+---
+/* /mentors/ (a [section] route so it can be hidden from the menu); the page itself is src/views/Mentors.astro */
+import Mentors from '../../../views/Mentors.astro';
+export function getStaticPaths() {
+  return [{ params: { section: 'mentors' } }];
+}
+---
+<Mentors />

@@ -47,5 +47,41 @@
   "practical": {
     "discriminant": "default"
   },
-  "metaDescription": ""
+  "metaDescription": "",
+  "pt": {
+    "title": "A Imagem e o Espelho – Das paredes das grutas ao cinema",
+    "formatLabel": "Workshop em 3 sessões",
+    "discipline": "Imagem + Palavra",
+    "duration": "3 semanas · uma sessão de 2 horas por semana",
+    "level": "Todos os níveis",
+    "imageAlt": "Fotografia em meio-tom de uma mulher a chamar alguém, com a mão junto à boca; da sua voz saem esboços violeta: um retrato, uma câmara, uma película, um olho, balões de fala e uma página escrita",
+    "summary": "A imagem visual sempre foi uma forma de manter as pessoas presentes: da pintura rupestre à pintura, à fotografia e ao cinema. Este workshop segue essa linha e transforma-a numa competência prática: para onde olhar, em que reparar e como pôr em palavras o que vês.",
+    "forWho": "Qualquer pessoa que queira olhar para a arte e o cinema com mais profundidade e falar sobre eles com confiança.",
+    "levelNote": "Não é preciso formação em história da arte ou crítica.",
+    "explore": [
+      {
+        "title": "Da pintura rupestre ao cinema",
+        "text": "Como a imagem visual evoluiu como forma de manter as pessoas presentes, e o que a pintura, a fotografia e o cinema acrescentaram."
+      },
+      {
+        "title": "Olhar e descrever",
+        "text": "Para onde olhar, em que reparar e como descrever uma pintura ou uma imagem com palavras claras e confiantes."
+      },
+      {
+        "title": "A cultura como fenómeno",
+        "text": "O que entendemos por cultura e como as formas de arte se cruzam e se alimentam umas às outras."
+      },
+      {
+        "title": "A cultura como arma",
+        "text": "Cinema e propaganda, com exemplos de Leni Riefenstahl, Mikhail Kalatozov e Otar Iosseliani."
+      },
+      {
+        "title": "Fora da sala",
+        "text": "Uma das sessões leva o grupo para fora do estúdio, para ver obras em conjunto, ao vivo."
+      }
+    ],
+    "outcome": [
+      "Vais conseguir olhar para uma pintura ou uma imagem e falar sobre ela com confiança, e sais com um texto teu terminado."
+    ]
+  }
 }

@@ -1,0 +1,28 @@
+---
+/* About page, English (/about/) and Portuguese (/pt/about/) */
+import Base from '../layouts/Base.astro';
+import AboutIntro from '../components/static/AboutIntro.astro';
+import AboutFounder from '../components/static/AboutFounder.astro';
+import AboutPartners from '../components/static/AboutPartners.astro';
+import AboutGallery from '../components/static/AboutGallery.astro';
+import AboutNumbers from '../components/static/AboutNumbers.astro';
+import SessionsSection from '../components/SessionsSection.astro';
+import { getContent, homeSessions } from '../lib/content';
+import { SITE, TITLES, DESCRIPTIONS, breadcrumb } from '../lib/seo';
+import { langOf, href, tr } from '../lib/i18n';
+
+const lang = langOf(Astro.url);
+const T = tr(lang);
+const { sessions, upcoming, pinned } = await getContent(lang);
+const u = (p: string) => SITE + href(p, lang);
+---
+<Base title={TITLES[lang].about} description={DESCRIPTIONS[lang].about} path="/about/"
+  ld={[{ '@type': 'AboutPage', url: u('/about/'), name: T('About Hiveworx', 'Sobre a Hiveworx'), about: { '@id': SITE + '/#org' } },
+       breadcrumb([[T('Home', 'Início'), u('/')], [T('About', 'Sobre'), u('/about/')]])]}>
+  <AboutIntro />
+  <AboutFounder />
+  <AboutPartners />
+  <AboutGallery />
+  <AboutNumbers />
+  <SessionsSection id="about-classes" filtersId="aboutFilters" sessions={homeSessions(sessions, upcoming, pinned)} upcoming={upcoming} />
+</Base>

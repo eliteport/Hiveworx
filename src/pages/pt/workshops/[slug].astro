@@ -1,0 +1,11 @@
+---
+/* one page per workshop/talk; the page itself is src/views/Session.astro (shared by English and Portuguese) */
+import Session from '../../../views/Session.astro';
+import { getContent } from '../../../lib/content';
+
+export async function getStaticPaths() {
+  const { sessions } = await getContent();
+  return sessions.map((s) => ({ params: { slug: s.slug }, props: { slug: s.slug } }));
+}
+---
+<Session slug={Astro.props.slug} />

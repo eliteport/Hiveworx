@@ -1,0 +1,52 @@
+---
+/* Workshops & talks page, English (/workshops/) and Portuguese (/pt/workshops/) */
+import Base from '../layouts/Base.astro';
+import SessionCard from '../components/SessionCard.astro';
+import { getContent, listSessions, pastSessions } from '../lib/content';
+import { SITE, TITLES, DESCRIPTIONS, breadcrumb } from '../lib/seo';
+import { langOf, href, tr } from '../lib/i18n';
+
+const lang = langOf(Astro.url);
+const T = tr(lang);
+const { sessions: all, upcoming } = await getContent(lang);
+const sessions = listSessions(all, upcoming);
+const past = pastSessions(all);
+const disciplines = [...new Set(sessions.map((s) => s.discipline).filter(Boolean))];
+const count = (n: number) => `${n} ${n === 1 ? T('session', 'sessão') : T('sessions', 'sessões')}`;
+const u = (p: string) => SITE + href(p, lang);
+---
+<Base title={TITLES[lang].workshops} description={DESCRIPTIONS[lang].workshops} path="/workshops/"
+  ld={[breadcrumb([[T('Home', 'Início'), u('/')], [T('Workshops & talks', 'Workshops e palestras'), u('/workshops/')]])]}>
+  <section class="page-head">
+    <div class="wrap">
+      <nav class="crumbs" aria-label={T('Breadcrumb', 'Navegação estrutural')}><a class="link" href={href('/', lang)}>{T('Home', 'Início')}</a><span aria-hidden="true">/</span><span>{T('Workshops & talks', 'Workshops e palestras')}</span></nav>
+      <h1 class="page-title">Workshops <span class="v">{T('& talks', 'e palestras')}</span></h1>
+      <p class="page-lead">{T(
+        'Each edition is a temporary, themed experience: talks, workshop series, practical activities, mentors’ stories, a public exhibition and a community gathering. Everything is taught by practitioners, not professors.',
+        'Cada edição é uma experiência temporária e temática: palestras, séries de workshops, atividades práticas, histórias de mentores, uma exposição aberta ao público e um encontro da comunidade. Tudo é ensinado por profissionais no ativo, não por professores.')}</p>
+      <!-- filters: data-group says which card attribute a group filters on -->
+      <div class="filter-bar" id="pageFilters">
+        <div class="filters" id="pageFormat" data-group="kind" role="group" aria-label={T('Filter by format', 'Filtrar por formato')}>
+          <button class="filter" type="button" data-v="all" aria-pressed="true">{T('All formats', 'Todos os formatos')}</button>
+          <button class="filter" type="button" data-v="workshop" aria-pressed="false">Workshops</button>
+          <button class="filter" type="button" data-v="talk" aria-pressed="false">{T('Talks', 'Palestras')}</button>
+        </div>
+        <div class="filters" id="pageDisc" data-group="disc" role="group" aria-label={T('Filter by discipline', 'Filtrar por disciplina')}>
+          <button class="filter" type="button" data-v="all" aria-pressed="true">{T('All disciplines', 'Todas as disciplinas')}</button>
+          {disciplines.map((d) => <button class="filter" type="button" data-v={d} aria-pressed="false">{d}</button>)}
+        </div>
+      </div>
+      <p class="result-count" id="resultCount" aria-live="polite">{count(sessions.length)}</p>
+      <div class="cls-grid" id="pageGrid">{sessions.map((s) => <SessionCard session={s} nextUp={s.slug === upcoming} />)}</div>
+      <p class="empty" id="pageEmpty" hidden>{T('Nothing here yet for this filter.', 'Ainda não há nada para este filtro.')} <button class="linkbtn" type="button" id="resetFilters">{T('Show everything', 'Mostrar tudo')}</button></p>
+    </div>
+  </section>
+
+  <!-- sessions that already happened, most recent first; site.js moves cards here when their date passes -->
+  <section class="past-sessions" id="past" hidden={past.length === 0}>
+    <div class="wrap">
+      <div class="sec-head"><div><p class="label">{T('Archive', 'Arquivo')}</p><h2 class="more-title">{T('Past workshops', 'Workshops')} <span class="v">{T('& talks', 'e palestras anteriores')}</span></h2></div></div>
+      <div class="cls-grid" id="pastGrid">{past.map((s) => <SessionCard session={s} past />)}</div>
+    </div>
+  </section>
+</Base>

@@ -2,15 +2,45 @@
    the menu, tabs, filters, counters, smooth section scrolling and the contact form. */
 (function(){
   var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* the page language (<html lang>): T('English','Português') picks the text for messages written from here */
+  var PT=/^pt/.test(document.documentElement.lang||'');
+  function T(en,pt){return PT?pt:en}
+
+  /* ===== Language switch (menu bar and footer): the pill slides to the new language, then the page changes.
+     The #section and ?query go along, so a visitor stays where they were. ===== */
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('[data-lang-set]');if(!a)return;
+    var sw=a.closest('[data-lang-switch]'),to=a.dataset.langSet;
+    try{localStorage.setItem('hx-lang',to)}catch(err){}
+    if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button)return;
+    e.preventDefault();
+    var url=a.getAttribute('href')+location.search+location.hash;
+    if(sw.dataset.active===to){return}
+    document.querySelectorAll('[data-lang-switch]').forEach(function(x){x.dataset.active=to});
+    if(reduce)location.href=url;else setTimeout(function(){location.href=url},260);
+  });
 
   /* ===== Menu ===== */
   var nav=document.getElementById('nav');
-  function onScroll(){nav.classList.toggle('scrolled',window.scrollY>8)}
+  /* the bar slides away while scrolling down and comes straight back on any scroll up
+     (never while the phone menu is open, near the top, or while something in the bar has keyboard focus) */
+  var lastY=window.scrollY,root=document.documentElement;
+  function kbFocus(){try{return !!nav.querySelector(':focus-visible')}catch(e){return false}}
+  function setHidden(h){nav.classList.toggle('nav-hidden',h);root.classList.toggle('nav-up',h)}
+  function onScroll(){
+    var y=Math.max(0,window.scrollY),d=y-lastY;
+    nav.classList.toggle('scrolled',y>8);
+    if(y<120||nav.classList.contains('open')||kbFocus())setHidden(false);
+    else if(d>4)setHidden(true);
+    else if(d<0)setHidden(false);
+    lastY=y;
+  }
   window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  nav.addEventListener('focusin',function(){if(kbFocus())setHidden(false)});
   var mb=document.getElementById('menuBtn');
   /* mobile menu: full-screen blurred overlay; the page underneath stops scrolling while it is open */
   function setMenu(o){
-    nav.classList.toggle('open',o);mb.setAttribute('aria-expanded',o);mb.setAttribute('aria-label',o?'Close menu':'Open menu');
+    nav.classList.toggle('open',o);mb.setAttribute('aria-expanded',o);mb.setAttribute('aria-label',o?T('Close menu','Fechar menu'):T('Open menu','Abrir menu'));
     document.documentElement.classList.toggle('menu-open',o);
     if(window.lenis){o?lenis.stop():lenis.start()}
   }
@@ -50,15 +80,15 @@
       [].forEach.call(grid.querySelectorAll('.cls'),function(c){c.hidden=!(b.dataset.filter==='all'||c.dataset.kind===b.dataset.filter)});
     })});
   });
-  /* footer Light / Dark switch: light is the default; the choice is saved and applied before paint (Base.astro) */
+  /* footer Light / Dark switch: dark is the default; the choice is saved and applied before paint (Base.astro) */
   var themeBtns=[].slice.call(document.querySelectorAll('[data-theme-set]'));
   if(themeBtns.length){
     var root=document.documentElement,meta=document.querySelector('meta[name="theme-color"]');
-    function showTheme(){var t=root.dataset.theme==='dark'?'dark':'light';themeBtns.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.themeSet===t)});if(meta)meta.content=t==='dark'?'#0A0C12':'#FFFFFF'}
+    function showTheme(){var t=root.dataset.theme==='light'?'light':'dark';themeBtns.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.themeSet===t)});if(meta)meta.content=t==='dark'?'#0A0C12':'#FFFFFF'}
     themeBtns.forEach(function(b){b.addEventListener('click',function(){
-      var t=b.dataset.themeSet;if((root.dataset.theme==='dark'?'dark':'light')===t)return;
+      var t=b.dataset.themeSet;if((root.dataset.theme==='light'?'light':'dark')===t)return;
       root.classList.add('theme-anim');
-      if(t==='dark')root.dataset.theme='dark';else delete root.dataset.theme;
+      if(t==='light')root.dataset.theme='light';else delete root.dataset.theme;
       try{localStorage.setItem('hx-theme',t)}catch(e){}
       showTheme();setTimeout(function(){root.classList.remove('theme-anim')},450);
     })});
@@ -78,7 +108,7 @@
       moved.sort(function(a,b){return a.dataset.date<b.dataset.date?1:-1}).forEach(function(c){
         c.classList.add('cls-past');[].forEach.call(c.querySelectorAll('.cls-status,.price'),function(x){x.remove()});
         var btn=c.querySelector('.cls-foot .btn'),page=c.querySelector('h3 a');
-        if(btn&&page){btn.href=page.getAttribute('href');btn.removeAttribute('target');btn.removeAttribute('rel');btn.innerHTML='View details <span class="arr">→</span>'}
+        if(btn&&page){btn.href=page.getAttribute('href');btn.removeAttribute('target');btn.removeAttribute('rel');btn.innerHTML=T('View details','Ver detalhes')+' <span class="arr">→</span>'}
         pastGrid.insertBefore(c,first);
       });
       document.getElementById('past').hidden=false;
@@ -89,7 +119,7 @@
     function apply(){
       var want={};groups.forEach(function(g){var on=g.querySelector('[aria-pressed="true"]');want[g.dataset.group]=on?on.dataset.v:'all'});
       var n=0;cards.forEach(function(c){var ok=Object.keys(want).every(function(k){return want[k]==='all'||c.dataset[k]===want[k]});c.hidden=!ok;if(ok)n++});
-      cnt.textContent=n+(n===1?' session':' sessions');empty.hidden=n>0;
+      cnt.textContent=n+' '+(n===1?T('session','sessão'):T('sessions','sessões'));empty.hidden=n>0;
     }
     groups.forEach(function(g){var btns=[].slice.call(g.querySelectorAll('.filter'));btns.forEach(function(b){b.addEventListener('click',function(){btns.forEach(function(x){x.setAttribute('aria-pressed',x===b)});apply()})})});
     document.getElementById('resetFilters').addEventListener('click',function(){groups.forEach(function(g){g.querySelectorAll('.filter').forEach(function(x,i){x.setAttribute('aria-pressed',i===0)})});apply()});
@@ -113,7 +143,7 @@
     var io=new IntersectionObserver(function(es){es.forEach(function(e){
       if(!e.isIntersecting)return;io.disconnect();
       els.forEach(function(el){var to=+el.dataset.to,t0=null;
-        function step(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/1400),v=1-Math.pow(1-p,3);el.textContent=Math.round(to*v).toLocaleString('en');if(p<1)requestAnimationFrame(step)}
+        function step(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/1400),v=1-Math.pow(1-p,3);el.textContent=Math.round(to*v).toLocaleString(PT?'pt-PT':'en');if(p<1)requestAnimationFrame(step)}
         el.textContent='0';requestAnimationFrame(step)});
     })},{threshold:.4});
     io.observe(stats);
@@ -152,6 +182,13 @@
   /* ===== Cookie consent + Google Analytics (set up in src/components/Analytics.astro) ===== */
   function choice(){try{return localStorage.getItem('hx-consent')}catch(e){return null}}
   var cc=document.getElementById('cookieBanner');
+  /* while the banner is open the footer gets extra room underneath, so the banner never covers the Light/Dark switch */
+  if(cc){
+    var ccSpace=function(){document.documentElement.style.setProperty('--cc-space',cc.hidden?'0px':(cc.offsetHeight+24)+'px')};
+    new MutationObserver(ccSpace).observe(cc,{attributes:true,attributeFilter:['hidden']});
+    if(window.ResizeObserver)new ResizeObserver(ccSpace).observe(cc);
+    ccSpace();
+  }
   function consent(v){
     try{localStorage.setItem('hx-consent',v)}catch(e){}
     if(window.gtag)gtag('consent','update',{analytics_storage:v});
@@ -184,8 +221,8 @@
   /* ===== Contact ===== */
   var btn=document.getElementById('copyBtn'),msg=document.getElementById('copyMsg'),email='hello@hiveworx.com';
   if(btn)btn.addEventListener('click',function(){
-    function fallback(){var r=document.createRange();r.selectNodeContents(document.getElementById('email'));var s=getSelection();s.removeAllRanges();s.addRange(r);msg.textContent='Address selected. Press Ctrl/Cmd+C to copy.'}
-    try{navigator.clipboard.writeText(email).then(function(){msg.textContent='Copied hello@hiveworx.com'},fallback)}catch(e){fallback()}
+    function fallback(){var r=document.createRange();r.selectNodeContents(document.getElementById('email'));var s=getSelection();s.removeAllRanges();s.addRange(r);msg.textContent=T('Address selected. Press Ctrl/Cmd+C to copy.','Endereço selecionado. Carrega em Ctrl/Cmd+C para copiar.')}
+    try{navigator.clipboard.writeText(email).then(function(){msg.textContent=T('Copied hello@hiveworx.com','hello@hiveworx.com copiado')},fallback)}catch(e){fallback()}
   });
 
   /* buttons like "Become a mentor" or "Partner with us" pre-select who you are, also from other pages */
@@ -203,11 +240,11 @@
     var F={name:form.elements.name,email:form.elements.email,who:form.elements.who,topic:form.elements.topic,message:form.elements.message},
         status=document.getElementById('ct-status'),count=document.getElementById('ct-count');
     var RULES={
-      name:function(v){return v?'':'Please tell us your name.'},
-      email:function(v){return !v?'Please add your email so we can reply.':/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)?'':'That email doesn’t look right. Check for typos.'},
-      who:function(v){return v?'':'Please choose who you are.'},
-      topic:function(v){return v?'':'Add a short topic.'},
-      message:function(v){return v?'':'Write your message.'}
+      name:function(v){return v?'':T('Please tell us your name.','Diz-nos o teu nome.')},
+      email:function(v){return !v?T('Please add your email so we can reply.','Indica o teu email para te podermos responder.'):/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)?'':T('That email doesn’t look right. Check for typos.','Este email não parece correto. Verifica se há gralhas.')},
+      who:function(v){return v?'':T('Please choose who you are.','Indica quem és.')},
+      topic:function(v){return v?'':T('Add a short topic.','Indica um assunto curto.')},
+      message:function(v){return v?'':T('Write your message.','Escreve a tua mensagem.')}
     };
     function check(k){
       var el=F[k],err=RULES[k](el.value.trim()),box=document.getElementById(el.id+'-err');
@@ -233,17 +270,18 @@
       var d={name:F.name.value.trim(),email:F.email.value.trim(),who:F.who.value,topic:F.topic.value.trim(),message:F.message.value.trim()};
       if(FORM_ENDPOINT){
         var sb=form.querySelector('[type=submit]');sb.disabled=true;
-        var payload={name:d.name,email:d.email,'I am a':d.who,topic:d.topic,message:d.message,
-          _subject:'['+d.who+'] '+d.topic+' · Hiveworx website',_gotcha:form.elements._gotcha?form.elements._gotcha.value:''};
+        /* "language" tells us which language to reply in */
+        var payload={name:d.name,email:d.email,'I am a':d.who,topic:d.topic,message:d.message,language:PT?'Português':'English',
+          _subject:'['+d.who+(PT?' · PT':'')+'] '+d.topic+' · Hiveworx website',_gotcha:form.elements._gotcha?form.elements._gotcha.value:''};
         fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(payload)})
-          .then(function(r){if(!r.ok)throw 0;track('generate_lead',{who:d.who});form.reset();count.textContent='0 / 2000';status.textContent='Thanks, '+d.name+'. Your message was sent. We’ll reply to '+d.email+'.'})
-          .catch(function(){status.classList.add('is-error');status.textContent='Your message couldn’t be sent. Try again, or email hello@hiveworx.com.'})
+          .then(function(r){if(!r.ok)throw 0;track('generate_lead',{who:d.who});form.reset();count.textContent='0 / 2000';status.textContent=T('Thanks, '+d.name+'. Your message was sent. We’ll reply to '+d.email+'.','Obrigado, '+d.name+'. A tua mensagem foi enviada. Responderemos para '+d.email+'.')})
+          .catch(function(){status.classList.add('is-error');status.textContent=T('Your message couldn’t be sent. Try again, or email hello@hiveworx.com.','Não foi possível enviar a mensagem. Tenta outra vez, ou escreve para hello@hiveworx.com.')})
           .then(function(){sb.disabled=false});
         return;
       }
       var body='Name: '+d.name+'\nEmail: '+d.email+'\nI am a: '+d.who+'\n\n'+d.message;
       location.href='mailto:hello@hiveworx.com?subject='+encodeURIComponent('['+d.who+'] '+d.topic)+'&body='+encodeURIComponent(body);
-      status.textContent='Your email app should open with the message ready to send. If nothing happened, email us at hello@hiveworx.com.';
+      status.textContent=T('Your email app should open with the message ready to send. If nothing happened, email us at hello@hiveworx.com.','A tua aplicação de email deverá abrir com a mensagem pronta a enviar. Se nada acontecer, escreve-nos para hello@hiveworx.com.');
     });
   }
 })();

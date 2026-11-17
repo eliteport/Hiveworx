@@ -15,6 +15,10 @@ const paragraphs = (label: string, description?: string) => fields.array(
   { label, description, itemLabel: (p) => (p.value || 'New paragraph').slice(0, 60) },
 );
 
+/* "Portuguese version" group on each entry: what /pt/ pages show. Empty fields fall back to the English text. */
+const ptText = (label: string, multiline = false) => fields.text({ label, multiline });
+const PT_NOTE = 'Shown on the Portuguese pages (/pt/…). Leave a field empty to show the English text there.';
+
 export default config({
   storage: import.meta.env.PROD ? { kind: 'cloud' } : { kind: 'local' },
   cloud: { project: 'hiveworx-team/hiveworx' },
@@ -98,6 +102,32 @@ export default config({
           },
         ),
         metaDescription: fields.text({ label: 'Google description', multiline: true, description: 'Optional, about 150 characters. Without it the intro is used.' }),
+
+        pt: fields.object({
+          title: ptText('Title'),
+          formatLabel: ptText('Format label'),
+          discipline: ptText('Discipline'),
+          duration: ptText('Duration'),
+          location: ptText('Location'),
+          level: ptText('Level'),
+          priceNote: ptText('Price note'),
+          imageAlt: ptText('Image description'),
+          summary: ptText('Intro', true),
+          about: paragraphs('About this session'),
+          forWho: ptText('Who it’s for', true),
+          levelNote: ptText('Level note', true),
+          explore: fields.array(
+            fields.object({ title: fields.text({ label: 'Topic' }), text: fields.text({ label: 'Description (optional)', multiline: true }) }),
+            { label: 'What you’ll explore', description: 'Empty: the English list is used.', itemLabel: (p) => p.fields.title.value || 'New topic' },
+          ),
+          outcomeLabel: ptText('Outcome heading'),
+          outcome: paragraphs('Outcome'),
+          practicalLabel: ptText('Custom practical notes: small heading'),
+          practicalTitle: ptText('Custom practical notes: title'),
+          practicalNote: ptText('Custom practical notes: handwritten closing note'),
+          practicalItems: noteList('Custom practical notes: notes'),
+          metaDescription: ptText('Google description', true),
+        }, { label: 'Portuguese version (PT)', description: PT_NOTE }),
       },
     }),
 
@@ -116,6 +146,11 @@ export default config({
         bio: paragraphs('Full bio (session pages)'),
         listed: fields.checkbox({ label: 'Show on the Mentors page', defaultValue: true }),
         order: fields.integer({ label: 'Order on the Mentors page', defaultValue: 99, description: '1 comes first.' }),
+        pt: fields.object({
+          role: ptText('Role'),
+          short: ptText('Short bio (mentor card)', true),
+          bio: paragraphs('Full bio (session pages)'),
+        }, { label: 'Portuguese version (PT)', description: PT_NOTE }),
       },
     }),
   },
@@ -149,6 +184,12 @@ export default config({
         title: fields.text({ label: 'Title', description: 'Can include <span class="v">…</span> for the violet part.' }),
         note: fields.text({ label: 'Handwritten closing note' }),
         items: noteList('Notes'),
+        pt: fields.object({
+          label: ptText('Small heading'),
+          title: ptText('Title'),
+          note: ptText('Handwritten closing note'),
+          items: noteList('Notes'),
+        }, { label: 'Portuguese version (PT)', description: PT_NOTE }),
       },
     }),
   },

@@ -1,20 +1,25 @@
 ---
 // copied from the one-page site; edit freely
+// English and Portuguese side by side: T('English', 'Português')
+import { langOf, href, tr } from '../../lib/i18n';
+const lang = langOf(Astro.url);
+const T = tr(lang);
+const h = (p: string) => href(p, lang);
 ---
 <!-- APPROACH -->
 <section class="approach" id="approach" style="padding-top:0">
   <div class="wrap">
     <div class="approach-grid">
       <div>
-        <p class="label">Philosophy</p>
-        <h2>People learn deeply when they meet someone who has <span class="v">lived the process.</span></h2>
+        <p class="label">{T("Philosophy", "Filosofia")}</p>
+        <h2><Fragment set:html={T("People learn deeply when they meet someone who has <span class=\"v\">lived the process.</span>", "Aprende-se a fundo quando se conhece alguém que <span class=\"v\">viveu o processo.</span>")} /></h2>
       </div>
     </div>
 
     <figure class="studio" style="margin-inline:0;margin-bottom:0">
       <!-- dark mode: chalk on a dark board; light mode: philosophy-light.webp (same drawing, ink on white). The hidden one is never downloaded (lazy + display:none). -->
-      <img class="studio-img studio-dark" src="/images/philosophy.webp" width="1672" height="941" loading="lazy" alt="Line drawing of a Hiveworx session: a speaker on stage beside a screen showing a three-step process, facing an audience, with violet notes: Tell the story, Show the process, Make the lesson real, Invite questions.">
-      <img class="studio-img studio-light" src="/images/philosophy-light.webp" width="1672" height="941" loading="lazy" alt="Line drawing of a Hiveworx session: a speaker on stage beside a screen showing a three-step process, facing an audience, with violet notes: Tell the story, Show the process, Make the lesson real, Invite questions.">
+      <img class="studio-img studio-dark" src="/images/philosophy.webp" width="1672" height="941" loading="lazy" alt={T("Line drawing of a Hiveworx session: a speaker on stage beside a screen showing a three-step process, facing an audience, with violet notes: Tell the story, Show the process, Make the lesson real, Invite questions.", "Desenho de linha de uma sessão da Hiveworx: um orador em palco ao lado de um ecrã com um processo em três passos, de frente para o público, com notas violeta: Tell the story, Show the process, Make the lesson real, Invite questions.")}>
+      <img class="studio-img studio-light" src="/images/philosophy-light.webp" width="1672" height="941" loading="lazy" alt={T("Line drawing of a Hiveworx session: a speaker on stage beside a screen showing a three-step process, facing an audience, with violet notes: Tell the story, Show the process, Make the lesson real, Invite questions.", "Desenho de linha de uma sessão da Hiveworx: um orador em palco ao lado de um ecrã com um processo em três passos, de frente para o público, com notas violeta: Tell the story, Show the process, Make the lesson real, Invite questions.")}>
     </figure>
   </div>
 </section>

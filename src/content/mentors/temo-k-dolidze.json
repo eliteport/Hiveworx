@@ -8,5 +8,12 @@
     "In the world of product design, leading a team of specialists focused on design systems. The design freak deeply involved in arts, crafts, and the nuanced world of music and sound. An avid cyclist, I thrive on offroad and downhill challenges."
   ],
   "listed": true,
-  "order": 1
+  "order": 1,
+  "pt": {
+    "role": "Especialista em design de produto, empreendedor",
+    "short": "No mundo do design de produto, lidero uma equipa de especialistas focada em design systems. Apaixonado por design, profundamente ligado às artes, aos ofícios e ao mundo subtil da música e do som. Ciclista dedicado, adoro os desafios do todo-o-terreno e do downhill.",
+    "bio": [
+      "No mundo do design de produto, lidero uma equipa de especialistas focada em design systems. Apaixonado por design, profundamente ligado às artes, aos ofícios e ao mundo subtil da música e do som. Ciclista dedicado, adoro os desafios do todo-o-terreno e do downhill."
+    ]
+  }
 }
