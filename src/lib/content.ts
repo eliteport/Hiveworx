@@ -6,6 +6,13 @@ import { type Lang, ptDate } from './i18n';
 
 const reader = createReader(process.cwd(), keystaticConfig);
 
+/* the language a session is taught in, written in the page's own language */
+const LANGUAGE: Record<string, Record<Lang, string>> = {
+  en: { en: 'English', pt: 'Inglês' },
+  pt: { en: 'Portuguese', pt: 'Português' },
+  'en-pt': { en: 'English and Portuguese', pt: 'Inglês e português' },
+};
+
 export type Note = { icon: string; text: string };
 export type Practical = { label: string; title: string; note: string; items: Note[] };
 export type Mentor = {
@@ -15,7 +22,7 @@ export type Mentor = {
 export type Session = {
   slug: string; title: string; format: 'workshop' | 'talk'; typeLabel: 'Workshop' | 'Talk' | 'Palestra'; formatLabel: string;
   discipline: string; mentor: Mentor | null;
-  dateISO: string | null; date: string; time: string; duration: string; location: string; level: string;
+  dateISO: string | null; date: string; time: string; duration: string; location: string; level: string; language: string;
   price: string; priceNote: string; status: 'open' | 'interest' | 'soldout'; soldOut: boolean; bookUrl: string | null;
   image: { src: string; alt: string; focus: string } | null;
   summary: string; about: string[]; forWho: string; levelNote: string;
@@ -82,6 +89,7 @@ export function getContent(lang: Lang = 'en'): Promise<Content> {
         discipline: x(s.discipline, p?.discipline), mentor: s.mentor ? bySlug.get(s.mentor) ?? null : null,
         dateISO: s.date, date: displayDate(s.date, lang), time: s.time || TBA_TEXT[lang],
         duration: xa(s.duration, p?.duration), location: xa(s.location, p?.location), level: xa(s.level, p?.level),
+        language: LANGUAGE[s.language]?.[lang] ?? LANGUAGE.en[lang],
         price: xa(s.price, null), priceNote: xa(s.priceNote, p?.priceNote), status: s.status, soldOut: s.status === 'soldout', bookUrl: s.bookUrl,
         image: s.image ? { src: s.image, alt: x(s.imageAlt, p?.imageAlt), focus: s.imageFocus } : null,
         summary: x(s.summary, p?.summary), about: P ? orList(p?.about, [...s.about]) : [...s.about],
