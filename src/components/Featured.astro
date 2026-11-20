@@ -29,8 +29,8 @@ const talk = s?.format === 'talk';
           <ul class="ws-meta">
             <li><Fragment set:html={ICON.date} /><span><b>{T('Date', 'Data')}</b>{s.date}</span></li>
             <li><Fragment set:html={ICON.time} /><span><b>{T('Start time', 'Hora de início')}</b>{s.time}</span></li>
-            <li><Fragment set:html={ICON.loc} /><span><b>{T('Location', 'Local')}</b>{s.location}</span></li>
             <li><Fragment set:html={ICON.fmt} /><span><b>{T('Format', 'Formato')}</b>{s.formatLabel}</span></li>
+            {s.duration && <li><Fragment set:html={ICON.duration} /><span><b>{T('Duration', 'Duração')}</b>{s.duration}</span></li>}
           </ul>
           <div class="ws-ctas"><a class="btn btn-light" href={sessionUrl(s, lang)}>{T(`See ${type} details`, talk ? 'Ver detalhes da palestra' : 'Ver detalhes do workshop')} <span class="arr">→</span></a></div>
         </div>

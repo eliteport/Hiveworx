@@ -26,7 +26,7 @@ const rest = s.summary ? s.about : s.about.slice(1);
 const book = s.bookUrl || `mailto:hello@hiveworx.com?subject=${encodeURIComponent((s.dateISO ? T('Booking: ', 'Reserva: ') : T('Interest: ', 'Interesse: ')) + s.title)}`;
 const endNote = s.practical?.note || standard?.note || T('just bring curiosity', 'basta trazeres curiosidade');
 const facts: [string, string, string][] = [
-  [ICON.date, T('Date', 'Data'), s.date], [ICON.time, T('Start time', 'Hora de início'), s.time], [ICON.loc, T('Location', 'Local'), s.location],
+  [ICON.date, T('Date', 'Data'), s.date], [ICON.time, T('Start time', 'Hora de início'), s.time],
   [ICON.fmt, T('Format', 'Formato'), s.formatLabel], [ICON.language, T('Language', 'Idioma'), s.language], [ICON.level, T('Level', 'Nível'), s.level], [ICON.duration, T('Duration', 'Duração'), s.duration],
 ];
 const u = (p: string) => SITE + href(p, lang);
