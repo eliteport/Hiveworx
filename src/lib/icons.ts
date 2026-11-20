@@ -6,6 +6,7 @@ export const ICON = {
   fmt: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h2l2-6 3 12 3-9 2 5 2-2h4"/></svg>',
   level: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19v-5M12 19V9M19 19V5"/></svg>',
   duration: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10M7 21h10M8 3c0 5 8 5 8 9s-8 4-8 9M16 3c0 5-8 5-8 9s8 4 8 9"/></svg>',
+  language: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.4 2.3 3.6 5.1 3.6 8.5s-1.2 6.2-3.6 8.5c-2.4-2.3-3.6-5.1-3.6-8.5s1.2-6.2 3.6-8.5Z"/></svg>',
   person: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.8"/><path d="M4.5 20c.6-4.4 3.5-7 7.5-7s6.9 2.6 7.5 7"/></svg>',
 };
 

@@ -53,6 +53,12 @@ export default config({
         duration: fields.text({ label: 'Duration', description: 'e.g. 2 hours 30 minutes' }),
         location: fields.text({ label: 'Location', description: 'e.g. Hiveworx – Design school, or Online' }),
         level: fields.text({ label: 'Level', description: 'e.g. All levels, Absolute beginner' }),
+        language: fields.select({
+          label: 'Language',
+          description: 'The language the session is taught in. The site writes it in English or Portuguese to match the page.',
+          options: [{ label: 'English', value: 'en' }, { label: 'Portuguese', value: 'pt' }, { label: 'English and Portuguese', value: 'en-pt' }],
+          defaultValue: 'en',
+        }),
         price: fields.text({ label: 'Price', description: 'e.g. Free, or €40. Empty shows "TBD" on cards.' }),
         priceNote: fields.text({ label: 'Price note', description: 'e.g. registration required' }),
         status: fields.select({

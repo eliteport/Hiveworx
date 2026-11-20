@@ -27,7 +27,7 @@ const book = s.bookUrl || `mailto:hello@hiveworx.com?subject=${encodeURIComponen
 const endNote = s.practical?.note || standard?.note || T('just bring curiosity', 'basta trazeres curiosidade');
 const facts: [string, string, string][] = [
   [ICON.date, T('Date', 'Data'), s.date], [ICON.time, T('Start time', 'Hora de início'), s.time], [ICON.loc, T('Location', 'Local'), s.location],
-  [ICON.fmt, T('Format', 'Formato'), s.formatLabel], [ICON.level, T('Level', 'Nível'), s.level], [ICON.duration, T('Duration', 'Duração'), s.duration],
+  [ICON.fmt, T('Format', 'Formato'), s.formatLabel], [ICON.language, T('Language', 'Idioma'), s.language], [ICON.level, T('Level', 'Nível'), s.level], [ICON.duration, T('Duration', 'Duração'), s.duration],
 ];
 const u = (p: string) => SITE + href(p, lang);
 const home = T('Home', 'Início'), all = T('Workshops & talks', 'Workshops e palestras');
