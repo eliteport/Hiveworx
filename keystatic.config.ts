@@ -43,6 +43,11 @@ export default config({
           name: { label: 'Title' },
           slug: { label: 'Web address', description: 'Used in the page address: /workshops/<this>/. Changing it changes the link.' },
         }),
+        hidden: fields.checkbox({
+          label: 'Hidden (link only)',
+          description: 'On: the page exists at its link but is not shown anywhere on the site (home, About, Workshops & talks, other workshop pages) or in the sitemap, and search engines are asked not to index it. Turn off to publish it.',
+          defaultValue: false,
+        }),
         format: fields.select({ label: 'Format', options: [{ label: 'Workshop', value: 'workshop' }, { label: 'Talk', value: 'talk' }], defaultValue: 'workshop' }),
         formatLabel: fields.text({ label: 'Format label', description: 'Shown on the page, e.g. "Hands-on workshop", "3-session workshop", "Online talk".' }),
         discipline: fields.text({ label: 'Discipline', description: 'e.g. Typography, Sound + Visual, Image + Word. Sessions with the same discipline share a filter.' }),

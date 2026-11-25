@@ -20,7 +20,7 @@ export type Mentor = {
   short: string; bio: string[]; listed: boolean; order: number;
 };
 export type Session = {
-  slug: string; title: string; format: 'workshop' | 'talk'; typeLabel: 'Workshop' | 'Talk' | 'Palestra'; formatLabel: string;
+  slug: string; hidden: boolean; title: string; format: 'workshop' | 'talk'; typeLabel: 'Workshop' | 'Talk' | 'Palestra'; formatLabel: string;
   discipline: string; mentor: Mentor | null;
   dateISO: string | null; date: string; time: string; duration: string; location: string; level: string; language: string;
   price: string; priceNote: string; status: 'open' | 'interest' | 'soldout'; soldOut: boolean; bookUrl: string | null;
@@ -84,7 +84,7 @@ export function getContent(lang: Lang = 'en'): Promise<Content> {
               items: (P ? orList(p?.practicalItems, cv.items as Note[]) : cv.items).map((i) => ({ ...i })) }
           : std;
       return {
-        slug, title: x(s.title, p?.title), format: s.format, typeLabel: s.format === 'talk' ? (P ? 'Palestra' : 'Talk') : 'Workshop',
+        slug, hidden: !!s.hidden, title: x(s.title, p?.title), format: s.format, typeLabel: s.format === 'talk' ? (P ? 'Palestra' : 'Talk') : 'Workshop',
         formatLabel: xa(s.formatLabel, p?.formatLabel),
         discipline: x(s.discipline, p?.discipline), mentor: s.mentor ? bySlug.get(s.mentor) ?? null : null,
         dateISO: s.date, date: displayDate(s.date, lang), time: s.time || TBA_TEXT[lang],
@@ -114,10 +114,13 @@ export function byDate(a: Session, b: Session) {
   return a.dateISO < b.dateISO ? -1 : a.dateISO > b.dateISO ? 1 : 0;
 }
 
+/* hidden sessions (Keystatic: "Hidden (link only)") have their own page but are never listed anywhere */
+export const listed = (all: Session[]) => all.filter((s) => !s.hidden);
+
 /* the three home-page cards: next up, then pinned sessions, then the rest; earliest first within each */
 export function homeSessions(all: Session[], upcoming: string | null, pinned: string[]) {
   const rank = (s: Session) => (s.slug === upcoming ? 0 : pinned.includes(s.slug) ? 1 : 2);
-  return all.slice().sort((a, b) => rank(a) - rank(b) || byDate(a, b)).slice(0, 3);
+  return listed(all).sort((a, b) => rank(a) - rank(b) || byDate(a, b)).slice(0, 3);
 }
 
 export const sessionUrl = (s: { slug: string }, lang: Lang = 'en') => `${lang === 'pt' ? '/pt' : ''}/workshops/${s.slug}/`;
@@ -130,11 +133,11 @@ export const isPast = (s: Session, today = todayISO()) => !!s.dateISO && s.dateI
 /* Workshops & talks page: no past sessions, next up first, then by date */
 export function listSessions(all: Session[], upcoming: string | null) {
   const today = todayISO();
-  return all.filter((s) => !isPast(s, today)).sort((a, b) => Number(b.slug === upcoming) - Number(a.slug === upcoming) || byDate(a, b));
+  return listed(all).filter((s) => !isPast(s, today)).sort((a, b) => Number(b.slug === upcoming) - Number(a.slug === upcoming) || byDate(a, b));
 }
 
 /* Workshops & talks page, "Past" section: sessions that already happened, most recent first */
 export function pastSessions(all: Session[]) {
   const today = todayISO();
-  return all.filter((s) => isPast(s, today)).sort((a, b) => byDate(b, a));
+  return listed(all).filter((s) => isPast(s, today)).sort((a, b) => byDate(b, a));
 }
