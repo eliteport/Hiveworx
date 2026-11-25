@@ -35,7 +35,7 @@ const home = T('Home', 'Início'), all = T('Workshops & talks', 'Workshops e pal
 const more = homeSessions(sessions.filter((x) => x.slug !== s.slug && !isPast(x)), upcoming, pinned);
 const n2 = (i: number) => (i < 9 ? '0' : '') + (i + 1);
 ---
-<Base title={sessionTitle(s, lang)} description={sessionDescription(s)} path={`/workshops/${s.slug}/`} image={s.image?.src}
+<Base title={sessionTitle(s, lang)} description={sessionDescription(s)} path={`/workshops/${s.slug}/`} image={s.image?.src} noindex={s.hidden}
   ld={[sessionLd(s, url), breadcrumb([[home, u('/')], [all, u('/workshops/')], [s.title, url]])]}>
   <!-- 1. title + hero -->
   <section class="sd-head"><div class="wrap">

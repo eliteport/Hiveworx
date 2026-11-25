@@ -7,7 +7,7 @@ import { SITE } from '../lib/seo';
 export const GET: APIRoute = async () => {
   const { sessions, mentorsPage } = await getContent();
   const today = new Date().toISOString().slice(0, 10);
-  const paths = ['/', '/workshops/', '/about/', ...(mentorsPage ? ['/mentors/'] : []), ...sessions.map((s) => `/workshops/${s.slug}/`), '/privacy/'];
+  const paths = ['/', '/workshops/', '/about/', ...(mentorsPage ? ['/mentors/'] : []), ...sessions.filter((s) => !s.hidden).map((s) => `/workshops/${s.slug}/`), '/privacy/'];
   const links = (p: string) =>
     `<xhtml:link rel="alternate" hreflang="en" href="${SITE}${p}"/><xhtml:link rel="alternate" hreflang="pt-PT" href="${SITE}/pt${p}"/>`;
   const urls = paths.flatMap((p) => [p, '/pt' + p]).map((loc) => {
