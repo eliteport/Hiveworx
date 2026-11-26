@@ -679,6 +679,8 @@ main .label,main .ws-for-label,.cls-tag,footer h4{line-height:var(--lh-label)}
 /* same size, weight and tilt as the "next up" note on the home page */
 /* closing note under the workshop text; same size, weight and tilt as the home page "next up" note */
 .sd-end-note{margin-top:clamp(56px,7vw,88px);font-size:30px;font-weight:500;line-height:1;transform:rotate(-6deg);transform-origin:left center;width:fit-content}
+/* big screens: each sentence of the closing note on its own line */
+@media (min-width:981px){.sd-end-note span{display:block}.sd-end-note span+span{margin-top:.2em}}
 /* workshop page body copy: one size throughout (18px body); the first paragraph after a label or heading sits 32px below it */
 .sd-block .sd-sec-body,.sd-outcome .sd-sec-body{margin-top:18px}
 .sd-block > .label + .sd-sec-body,.sd-outcome > .label + .sd-sec-body,.sd-mentor-name + .sd-sec-body{margin-top:32px}
