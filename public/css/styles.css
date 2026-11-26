@@ -637,7 +637,7 @@ main .label,main .ws-for-label,.cls-tag,footer h4{line-height:var(--lh-label)}
 .sd-outcome-list{list-style:none;padding:0}
 .sd-outcome-list li{position:relative;padding-left:24px}
 .sd-outcome-list li + li{margin-top:10px}
-.sd-outcome-list li::before{content:"";position:absolute;left:4px;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--violet)}
+.sd-outcome-list li::before{content:"";position:absolute;left:4px;top:.62em;width:6px;height:6px;border-radius:50%;background:currentColor}
 .sd-sec-head h2{font-size:var(--h-section);letter-spacing:-.03em;line-height:var(--lh-title);margin-top:20px}
 .sd-sec-lead{font-size:clamp(19px,1.8vw,24px);line-height:var(--lh-lead);color:var(--paper);max-width:60ch}
 .sd-sec-body{margin-top:18px;font-size:18px;line-height:var(--lh-body);color:var(--mute);max-width:64ch}
