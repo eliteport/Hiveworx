@@ -23,7 +23,7 @@ export type Session = {
   slug: string; hidden: boolean; title: string; format: 'workshop' | 'talk'; typeLabel: 'Workshop' | 'Talk' | 'Palestra'; formatLabel: string;
   discipline: string; mentor: Mentor | null;
   dateISO: string | null; date: string; time: string; duration: string; location: string; level: string; language: string;
-  price: string; priceNote: string; status: 'open' | 'interest' | 'soldout'; soldOut: boolean; bookUrl: string | null;
+  price: string; priceTag: string; priceNote: string; status: 'open' | 'interest' | 'soldout'; soldOut: boolean; bookUrl: string | null;
   image: { src: string; alt: string; focus: string } | null;
   summary: string; about: string[]; forWho: string; levelNote: string;
   explore: { title: string; text: string }[]; outcomeLabel: string; outcome: string[];
@@ -90,7 +90,7 @@ export function getContent(lang: Lang = 'en'): Promise<Content> {
         dateISO: s.date, date: displayDate(s.date, lang), time: s.time || TBA_TEXT[lang],
         duration: xa(s.duration, p?.duration), location: xa(s.location, p?.location), level: xa(s.level, p?.level),
         language: LANGUAGE[s.language]?.[lang] ?? LANGUAGE.en[lang],
-        price: xa(s.price, null), priceNote: xa(s.priceNote, p?.priceNote), status: s.status, soldOut: s.status === 'soldout', bookUrl: s.bookUrl,
+        price: xa(s.price, null), priceTag: x(s.priceTag || '', p?.priceTag), priceNote: xa(s.priceNote, p?.priceNote), status: s.status, soldOut: s.status === 'soldout', bookUrl: s.bookUrl,
         image: s.image ? { src: s.image, alt: x(s.imageAlt, p?.imageAlt), focus: s.imageFocus } : null,
         summary: x(s.summary, p?.summary), about: P ? orList(p?.about, [...s.about]) : [...s.about],
         forWho: x(s.forWho, p?.forWho), levelNote: x(s.levelNote, p?.levelNote),

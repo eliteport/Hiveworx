@@ -65,6 +65,7 @@ export default config({
           defaultValue: 'en',
         }),
         price: fields.text({ label: 'Price', description: 'e.g. Free, or €40. Empty shows "TBD" on cards.' }),
+        priceTag: fields.text({ label: 'Price highlight', description: 'Optional line shown above the price note on the workshop page card, e.g. Special launch price. Leave empty for none.' }),
         priceNote: fields.text({ label: 'Price note', description: 'e.g. registration required' }),
         status: fields.select({
           label: 'Status',
@@ -121,6 +122,7 @@ export default config({
           duration: ptText('Duration'),
           location: ptText('Location'),
           level: ptText('Level'),
+          priceTag: ptText('Price highlight'),
           priceNote: ptText('Price note'),
           imageAlt: ptText('Image description'),
           summary: ptText('Intro', true),
