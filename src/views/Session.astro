@@ -83,7 +83,7 @@ const n2 = (i: number) => (i < 9 ? '0' : '') + (i + 1);
     <aside class="sd-card" aria-label={T(`${tl} details`, 'Detalhes ' + of)}>
       {s.soldOut
         ? <div class="sd-card-price"><span class="sd-card-k">{T('Tickets', 'Bilhetes')}</span><b>{T('Sold out', 'Esgotado')}</b></div>
-        : <div class="sd-card-price"><span class="sd-card-k">{T('Price', 'Preço')}</span><b>{s.price || TBA_TEXT[lang]}</b>{s.priceNote && <span>{s.priceNote}</span>}</div>}
+        : <div class="sd-card-price"><span class="sd-card-k">{T('Price', 'Preço')}</span><b>{s.price || TBA_TEXT[lang]}</b>{s.priceTag && <span class="sd-card-tag">{s.priceTag}</span>}{s.priceNote && <span>{s.priceNote}</span>}</div>}
       <ul class="sd-card-facts">
         {facts.filter(([, , v]) => v).map(([icon, label, v]) => <li><Fragment set:html={icon} /><span><b>{label}</b>{v}</span></li>)}
       </ul>

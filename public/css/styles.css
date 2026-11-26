@@ -665,6 +665,7 @@ main .label,main .ws-for-label,.cls-tag,footer h4{line-height:var(--lh-label)}
 .sd-card{position:sticky;top:calc(env(safe-area-inset-top,0px) + 96px);display:flex;flex-direction:column;gap:24px;padding:clamp(24px,2.6vw,32px);background:var(--violet-deep);color:#fff;border-radius:10px}
 .sd-card-price b{display:block;font-weight:500;font-size:clamp(26px,2.4vw,34px);letter-spacing:-.03em;line-height:1.2}
 .sd-card-price span{display:block;margin-top:4px;font-size:14px;line-height:var(--lh-small);color:rgba(255,255,255,.78)}
+.sd-card-price .sd-card-tag{margin-top:6px;font-weight:600;color:#fff}
 .sd-card-facts{list-style:none;margin:0;padding:0;border-top:1px solid rgba(255,255,255,.22)}
 .sd-card-facts li{display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.22)}
 .sd-card-facts svg{flex:none;width:22px;height:22px;margin-top:1px;fill:none;stroke:#fff;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
