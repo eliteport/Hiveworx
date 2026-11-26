@@ -78,7 +78,7 @@ const n2 = (i: number) => (i < 9 ? '0' : '') + (i + 1);
         </div>
       )}
       <!-- closing note: the last thing in the column, so the sticky card stops level with it -->
-      <p class="hand sd-end-note">{endNote}</p>
+      <p class="hand sd-end-note">{endNote.split(/(?<=[.!?])\s+/).map((part, i) => <>{i > 0 && ' '}<span>{part}</span></>)}</p>
     </div>
     <aside class="sd-card" aria-label={T(`${tl} details`, 'Detalhes ' + of)}>
       {s.soldOut
