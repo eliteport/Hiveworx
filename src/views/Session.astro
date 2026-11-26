@@ -68,7 +68,12 @@ const n2 = (i: number) => (i < 9 ? '0' : '') + (i + 1);
                 ? <li><details name="explore"><summary><span class="sd-ex-n">{n2(i)}</span><h3>{e.title}</h3></summary><p>{e.text}</p></details></li>
                 : <li><div class="sd-ex-row"><span class="sd-ex-n">{n2(i)}</span><h3>{e.title}</h3></div></li>)}
             </ol>
-            {s.outcome.length > 0 && <div class="sd-outcome"><p class="label">{s.outcomeLabel || T('End of day outcome', 'No fim do dia')}</p>{s.outcome.map((p) => <p class="sd-sec-body">{p}</p>)}</div>}
+            {s.outcome.length > 0 && <div class="sd-outcome"><p class="label">{s.outcomeLabel || T('End of day outcome', 'No fim do dia')}</p>
+              {/* a first line ending in ":" introduces a list: the lines after it become bullet points */}
+              {s.outcome.length > 1 && s.outcome[0].trim().endsWith(':')
+                ? <><p class="sd-sec-body">{s.outcome[0]}</p><ul class="sd-sec-body sd-outcome-list">{s.outcome.slice(1).map((p) => <li>{p}</li>)}</ul></>
+                : s.outcome.map((p) => <p class="sd-sec-body">{p}</p>)}
+            </div>}
           </div>
         )}
       </div>
